@@ -1,0 +1,3 @@
+<? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<a class="product-fav-label" <? if (!$arResult['CHECKED']) { ?>style="display: none;"<? } ?> href="javascript:void(0)" id="favourite-add-<?=$arParams['ID']?>" onclick="addFavourite('<?=$arParams['ID']?>')"></a>
+<a class="product-fav-label is-active" <? if ($arResult['CHECKED']) { ?>style="display: none;"<? } ?> href="javascript:void(0)" id="favourite-remove-<?=$arParams['ID']?>" onclick="removeFavourite('<?=$arParams['ID']?>')"></a>

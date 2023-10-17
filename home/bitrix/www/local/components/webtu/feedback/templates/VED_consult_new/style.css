@@ -1,0 +1,401 @@
+/*:root {
+    --time-stretch: .9s;
+}
+.v21 .ved-page__background-time {
+    transition: var(--time-stretch);
+}*/
+.v21 .ved-consult {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 48px;
+    column-gap: 30px;
+}
+.v21 .ved-consult--text {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 339px;
+    font-family: Canela Deck LC;
+}
+.v21 .ved-consult .ved-consult--text_title {
+    margin: 0 0 16px 0;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 42px;
+    letter-spacing: 0;
+    color: #00345e;
+}
+.v21 .ved-consult .ved-consult--text_title span {
+    font-style: italic;
+}
+.v21 .ved-consult--box {
+    font-family: "RF Dewi";
+    padding-left: 20px;
+    margin: 0;
+    font-size: 19px;
+    line-height: 25px;
+}
+.v21 .ved-consult--box span {
+    margin: 0 0 12px 0;
+    display: block;
+    position: relative;
+    left: -20px;
+}
+.v21 .ved-consult--box li {
+    margin-bottom: 12px;
+}
+.v21 .ved-consult--form {
+    flex: 1 1 339px;
+}
+.v21 .ved-consult--form__content {
+    padding: 44px 16px 23px 16px;
+    background-color: transparent;
+    border: 1px solid #667a8e;
+    border-radius: 8px;
+}
+
+.v21 .ved-consult--form__section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.v21 .ved-consult--form__section:not(:first-of-type) {
+    margin: 48px 0 0 0;
+}
+.v21 .ved-consult--form__section:last-of-type {
+    margin: 0;
+}
+.v21 .grid__item-1 {
+    width: 100%;
+    position: relative;
+}
+.v21 .grid__item-2 {
+    width: 100%;
+    margin-right: 0;
+    position: relative;
+}
+.v21 .grid__item-2:not(:last-child) {
+    margin: 0 0 50px 0;
+}
+.v21 .input-group {
+    /*position: relative; !!!*/
+}
+.v21 .input-group .input-group__label {
+    width: max-content;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /*transform: scale(1) translateY(-25px);*/
+    transform: scale(1) translateY(-1px);
+    cursor: pointer;
+    transform-origin: 0 0;
+    transition: opacity .4s ease-in-out, transform .4s ease-in-out;
+}
+.v21 .input-group__field {
+    width: 100%;
+    /*height: 34px;*/
+    height: 27px;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #667a8e;
+    color: #546770;
+    transition: var(--time-stretch);
+    /*-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;*/
+    border-radius: unset;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.v21 .input-group__field::-moz-placeholder {
+    color: transparent;
+}
+.v21 .input-group__field::placeholder {
+    color: transparent;
+}
+.v21 .input-group__label:hover,
+.v21 .input-group__label:focus,
+.v21 .input-group__label:not(:placeholder-shown) {
+}
+.v21 .input-group__field:hover ~ .input-group__label,
+.v21 .input-group__field:focus ~ .input-group__label,
+.v21 .input-group__field:not(:placeholder-shown) ~ .input-group__label {
+    transform: scale(.9) translateY(-25px) translateX(3px);
+}
+.v21 .input-group__field[name="PHONE"] {
+    width: 100%;
+}
+.v21 .input-group__field[name="CAPTCHA_WORD"] {
+    border-bottom: none;
+}
+.v21 .input-group--arrow {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 10px;
+    height: 10px;
+    background: url("/images/arrow_down_black.png") center;
+    transition: var(--time-stretch);
+}
+
+.v21 .ved-consult--form .v21-checkbox__text {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    color: #546770;
+    transition: var(--time-stretch);
+}
+.v21 .ved-consult--form .v21-checkbox__text::before {
+    color: #546770;
+    border: 1px solid #667a8e;
+    transition: var(--time-stretch);
+}
+.v21 .ved-consult--form .v21-checkbox__text::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M4.35462 8.83905L9.85267 2.93903C9.94763 2.8316 10 2.6933 10 2.55005C10 2.4068 9.94763 2.26846 9.85267 2.16104C9.8081 2.11044 9.75321 2.06988 9.6917 2.04211C9.63019 2.01434 9.56345 2 9.49594 2C9.42842 2 9.36168 2.01434 9.30017 2.04211C9.23866 2.06988 9.18378 2.11044 9.1392 2.16104L4.00291 7.67303L0.861593 4.16403C0.816839 4.11355 0.76184 4.07313 0.700259 4.04544C0.638677 4.01776 0.571911 4.00345 0.50437 4.00345C0.436829 4.00345 0.370062 4.01776 0.308481 4.04544C0.246899 4.07313 0.191901 4.11355 0.147146 4.16403C0.0523127 4.27171 0 4.41017 0 4.55353C0 4.69689 0.0523127 4.83537 0.147146 4.94305L3.64519 8.84305C3.69037 8.89218 3.74535 8.93132 3.80659 8.95798C3.86783 8.98464 3.93395 8.99821 4.00076 8.99783C4.06758 8.99746 4.13358 8.98316 4.19451 8.95581C4.25545 8.92846 4.31001 8.88869 4.35462 8.83905Z' fill='%23546770'/%3E%3C/svg%3E") no-repeat center;
+}
+.v21 .ved-consult--form .v21-checkbox__text a {
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    color: #546770;
+    transition: var(--time-stretch);
+}
+.v21 .ved-consult--form .ved-consult--form__captcha {
+    margin: 36px 0 36px 0;
+    flex-wrap: wrap;
+}
+.v21 .grid__item-captcha {
+    margin-top: 36px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.v21 .grid__item-captcha .grid__item-2 {
+    width: 100%;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #546770;
+}
+.v21 .grid__item-captcha .grid__item-2:not(:last-child) {
+    margin-bottom: 0;
+    margin-right: 15px;
+}
+.v21 .grid__item-captcha .grid__item-2 .captcha_image {
+    float: none;
+    outline: none;
+    border: none;
+}
+.v21 .grid__item-captcha .grid__item-2 #reloadCaptchaConsult {
+    float: none;
+    margin-right: 0;
+    background: transparent url("/images/turn_black.png");
+    width: 32px;
+    height: 32px;
+    border: none;
+    transition: var(--time-stretch);
+    cursor: pointer;
+}
+.v21 .ved-consult--form .input-captcha {
+    height: 43px;
+    font-family: RF Dewi;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 32px;
+    letter-spacing: 0.01em;
+    color: #546770;
+    transition: var(--time-stretch);
+}
+.v21 .ved-consult--form .input-captcha:-moz-placeholder {
+    color: #546770;
+    transition: var(--time-stretch);
+}
+.v21 .ved-consult--form .input-captcha::-webkit-input-placeholder {
+    color: #546770;
+    transition: var(--time-stretch);
+}
+.v21 .ved-consult--form .input-captcha::placeholder {
+    color: #546770;
+    transition: var(--time-stretch);
+}
+
+.v21 .grid__item-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 19px 42px;
+    width: 100%;
+    background-color: transparent;
+    color: #202020;
+    font-family: RF Dewi;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    outline: none;
+    border: 1px solid #a58a57;
+    border-radius: 8px;
+    cursor: pointer;
+    /*transition: .3s linear;*/
+    transition: var(--time-stretch);
+}
+.v21 .grid__item-button:hover {
+    color: #a58a57;
+    transition: var(--time-stretch);
+}
+.v21 .grid__item-button svg {
+    position: relative;
+    left: 6px;
+}
+.v21 .grid__item-button svg path {
+    fill: #202020;
+    transition: var(--time-stretch);
+}
+.v21 .grid__item-button:hover svg path {
+    fill: #a58a57;
+    transition: var(--time-stretch);
+}
+
+@media screen and (min-width: 480px) {
+}
+@media screen and (min-width: 768px) {
+    .v21 .ved-consult {
+        flex-wrap: nowrap;
+    }
+    .v21 .ved-consult--form {
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 339px;
+    }
+    .v21 .grid__item-captcha {
+        flex-wrap: nowrap;
+    }
+    .v21 .grid__item-2 {
+        width: 48%;
+    }
+    .v21 .grid__item-captcha .grid__item-2 {
+        /*width: 210px;*/
+        /*margin-right: 30px;*/
+    }
+    .v21 .grid__item-2:not(:last-child) {
+        margin-bottom: 0;
+    }
+    .v21 .grid__item-captcha .grid__item-2:not(:last-child) {
+        margin-right: 30px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+/*
+.v21 .ved-consult--form_input-group {
+    display: block;
+    margin: 0 0 20px;
+}
+.v21 .ved-consult--form_input-group .caption {
+    display: block;
+    margin: 0 0 10px;
+    font-family: RF Dewi;
+    font-size: 12px;
+    line-height: 18px;
+}
+.v21 .ved-consult--form_input-group .content {
+    display: block;
+}
+.v21 .ved-consult--form_input-group .input-field {
+    width: 100%;
+    height: 60px;
+    border: 1px solid rgba(32, 32, 32, .12);
+    border-radius: 4px;
+    font-family: RF Dewi;
+    font-size: 16px;
+}
+.v21 .ved-consult--form_agreement {
+    display: block;
+    margin: 32px 0 32px 0;
+    font-family: RF Dewi;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+}
+.v21 .ved-consult--form_agreement .v21-checkbox__text {
+    margin: 0 0 10px;
+    font-family: RF Dewi;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    color: #202020;
+}
+.v21 .ved-consult--form_agreement .v21-link__text {
+    margin: 0 0 10px;
+    font-family: RF Dewi;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+}
+.v21 .ved-consult--form_captcha {
+    margin: 0 0 32px;
+}
+.v21 .ved-consult--form_button {}
+*/
+
+@media screen and (min-width: 1024px) {
+    .v21 .ved-consult .ved-consult--text_title {
+        margin-bottom: 36px;
+        font-size: 60px;
+        line-height: 54px;
+        max-width: 590px;
+    }
+    .v21 .ved-consult--text {
+        flex-basis: 540px;
+        flex-shrink: 0;
+    }
+    .v21 .ved-consult--form {
+        flex-basis: 383px;
+        width: 383px;
+    }
+    .v21 .ved-consult--form__content {
+    }
+}
+@media screen and (min-width: 1280px) {
+    .v21 .ved-consult--text {
+        flex-basis: 591px;
+    }
+    .v21 .ved-consult--form {
+        flex-basis: 593px;
+        flex-shrink: 0;
+    }
+    .v21 .ved-consult--form__content {
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 40px;
+    }
+}
+@media screen and (min-width: 1440px) {
+}
+
+/*
+@media screen and (max-width: 1100px) {
+    .v21 .ved-consult {
+        flex-wrap: wrap;
+    }
+    .v21 .ved-consult--text {
+        width: 100%;
+    }
+    .v21 .ved-consult--form {
+        width: 100%;
+    }
+    .v21 .ved-consult--form form {
+        margin: 0 auto;
+        max-width: 580px;
+    }
+}
+@media screen and (max-width: 560px) {
+    .v21 .ved-consult--form_content {
+        padding: 25px 20px 30px 20px;
+    }
+}
+*/

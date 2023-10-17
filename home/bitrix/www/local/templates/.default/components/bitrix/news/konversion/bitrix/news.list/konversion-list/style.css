@@ -1,0 +1,106 @@
+.konversion-section {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+    margin: 0 0 50px 0;
+    font-family: RF Dewi;
+}
+.konversion-section .konversion-section--item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    padding: 20px 25px 25px 25px;
+    background: linear-gradient(179.8deg, #F0F3F5 0.19%, #E9EDEF 99.85%);
+    border-radius: 8px;
+    justify-content: flex-start;
+    color: #202020;
+}
+.konversion-section .konversion-item--image {
+    display: block;
+    flex: 0 0 188px;
+}
+.konversion-section .konversion-item--bigimg {
+    display: none;
+}
+.konversion-section .konversion-item--smallimg {}
+.konversion-section .konversion-item--text-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+}
+.konversion-section .konversion-item--text-header {
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #00345e;
+}
+.konversion-section .konversion-item--text-wrap p {
+    margin: 0 0 15px 0;
+}
+.konversion-section .konversion-item--text-wrap p:last-of-type {
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(32, 32, 32, 0.1);
+}
+.konversion-section .konversion-item--control {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 40px;
+    row-gap: 10px;
+}
+.v21 .konversion-item--control .v21-plastic-card__controls-order {
+    margin-bottom: 0;
+    width: 180px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .konversion-section {
+        margin-bottom: 110px;
+    }
+    .konversion-item--text-subheader {
+        margin-bottom: 120px;
+        max-width: 560px;
+        font-size: 24px;
+    }
+    .konversion-section .konversion-section--item {
+        padding: 40px 60px 45px 70px;
+    }
+    .konversion-section .konversion-item--bigimg {
+        display: block;
+    }
+    .konversion-section .konversion-item--smallimg {
+        display: none;
+    }
+    .konversion-section .konversion-item--text-subheader {
+        font-size: 18px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .konversion-section .konversion-section--item {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .konversion-section .konversion-item--image {
+        flex-basis: 308px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .konversion-section {
+        flex-wrap: nowrap;
+    }
+    .konversion-section .konversion-section--item {
+        padding: 20px 25px 25px 25px;
+    }
+}
+@media screen and (min-width: 1440px) {
+}

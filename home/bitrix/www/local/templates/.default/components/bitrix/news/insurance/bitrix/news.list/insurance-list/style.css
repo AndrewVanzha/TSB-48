@@ -1,0 +1,175 @@
+.insurance-title {
+    margin: 0 0 50px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 30px;
+}
+.insurance-title--logo {
+    order: 5;
+}
+.insurance-title--text {
+    margin: 0;
+    order: 7;
+    /*font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: #202020;
+    font-family: RF Dewi;*/
+}
+.insurance-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+.insurance-section .insurance-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    padding: 0 20px 25px 20px;
+    background: linear-gradient(179.8deg, #F0F3F5 0.19%, #E9EDEF 99.85%);
+    border-radius: 8px;
+    justify-content: flex-start;
+    font-family: RF Dewi;
+    color: #202020;
+}
+.insurance-section .insurance-area--image {
+    display: block;
+}
+.insurance-section .insurance-item--text-wrap {
+    display: grid;
+    grid-template-rows: 36px 50px 62px 1fr 1fr;
+}
+.insurance-section .insurance-item--text-header {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0;
+}
+.insurance-section .insurance-item--text-subheader {
+    margin: 1px 0 0 0;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0;
+}
+.insurance-section .insurance-item--text-header2 {
+    margin: 10px 0 0 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(32, 32, 32, 0.1);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #a58a57;
+}
+.insurance-section .insurance-item--text-view {
+    margin: 20px 0 50px 0;
+    font-weight: 600;
+}
+.insurance-section .insurance-item--control {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 40px;
+    row-gap: 10px;
+}
+.v21 .insurance-item--control .v21-plastic-card__controls-order {
+    margin-bottom: 0;
+}
+.insurance-section .insurance-item--detail-popup {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 320px;
+    padding: 30px 20px;
+    background-color: #d8dada;
+    border: 1px solid #00345e;
+    border-radius: 8px;
+    opacity: 0;
+    z-index: 100;
+}
+.insurance-section .insurance-item--detail-popup__show {
+    display: block;
+}
+.insurance-section .insurance-item--text-detail {
+    font-size: 20px;
+}
+.insurance-section .insurance-item--text-detail ul {
+    margin: 0 0 20px 0;
+    padding-left: 20px;
+}
+.insurance-section .insurance-item--text-detail ul span {
+    position: relative;
+    left: -20px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.insurance-section .insurance-item--text-detail li {
+    margin-bottom: 10px;
+}
+.insurance-section .insurance-item--text-detail a,
+.insurance-section .insurance-item--text-detail p {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+.insurance-section .insurance-item--text-detail a:last-child,
+.insurance-section .insurance-item--text-detail p:last-child {
+    margin-bottom: 0;
+}
+.insurance-section .insurance-item--popup-close {
+    color: #202020;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 580px) {
+    .insurance-section .insurance-area--image img {
+        height: auto;
+    }
+}
+@media screen and (min-width: 590px) {
+    .insurance-title {
+        flex-wrap: nowrap;
+    }
+    .insurance-title--text {
+        order: 3;
+    }
+    .insurance-section .insurance-item {
+        padding-left: 50px;
+        padding-right: 40px;
+        padding-bottom: 45px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .insurance-title {
+        margin-bottom: 80px;
+    }
+    .insurance-section .insurance-item--text-header {
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .insurance-section .insurance-item--text-subheader {
+        font-size: 18px;
+    }
+    .insurance-section .insurance-item--text-header2 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .insurance-section .insurance-item--detail-popup {
+        width: 450px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .insurance-section .insurance-item {
+        width: calc(50% - 10px);
+    }
+}

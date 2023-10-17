@@ -1,0 +1,275 @@
+.v21 .tariff-section--topblock {
+    display: flex;
+    justify-content: space-between;
+}
+.v21 .tariff-section--topblock__content {
+    flex-grow: 1;
+    margin: 0;
+    max-width: 692px;
+}
+.v21 .tariff-section--topblock__header {
+    margin: 0 0 45px 0;
+    font-family: Canela Deck LC;
+    font-size: 82px;
+    font-weight: 300;
+    line-height: 74px;
+    color: #00345e;
+}
+.v21 .tariff-section--topblock__subheader {
+    margin: 0 0 40px 0;
+    font-family: Canela Deck LC;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 42px;
+    color: #202020;
+}
+.v21 .tariff-section--topblock__date {
+    margin: 0;
+    font-family: Canela Deck LC;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 42px;
+    color: #202020;
+}
+.v21 .tariff-section--topblock__aside {
+    font-family: RF Dewi;
+}
+.v21 .tariff-section--topblock__aside--wrap {
+    display: flex;
+    justify-content: flex-start;
+    padding: 17px 0 26px 0;
+    position: relative;
+}
+.v21 .tariff-section-tileblock__horline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+.v21 .tariff-section-tileblock__horline.horline-1 {
+    top: 0;
+    background: linear-gradient(90deg, transparent 0%, transparent 20%, #cedcdc 60%, transparent 100%) no-repeat center;
+}
+.v21 .tariff-section-tileblock__horline.horline-2 {
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, transparent 20%, #cedcdc 60%, transparent 100%) no-repeat center;
+}
+.v21 .tariff-section--topblock__doc {
+    flex-grow: 0;
+    margin-right: 30px;
+    order: 1;
+}
+.v21 .tariff-section--topblock__link {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.v21 .tariff-section--topblock__img {
+    width: 90px;
+    height: 90px;
+}
+.v21 .tariff-section--topblock__download {
+    display: inline-flex;
+    align-items: center;
+}
+.v21 .tariff-section--topblock__download .download--text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    color: #00345e;
+}
+.v21 .tariff-section--topblock__download .download--icon {
+    margin: 1px 0 0 8px;
+}
+.v21 .tariff-section--topblock__list {
+    flex: 1 0 320px;
+    order: 2;
+}
+.v21 .tariff-section--topblock__list--header {
+    margin: 0 0 8px 0;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0.01em;
+    color: #202020;
+}
+.v21 .tariff-section--topblock__list--list {
+    margin: 0;
+    padding-left: 22px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+}
+.v21 .tariff-section--topblock__list--list li:not(:last-of-type) {
+    margin-bottom: 3px;
+}
+
+@media screen and (max-width: 1200px) {
+    .v21 .tariff-section--topblock {
+        flex-wrap: wrap;
+    }
+    .v21 .tariff-section--topblock__aside {
+        margin-top: 42px;
+    }
+    .v21 .tariff-section--topblock__doc {
+        margin-right: 0;
+        order: 3;
+    }
+    .v21 .tariff-section--topblock__list {
+        margin-right: 30px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .v21 .tariff-section--topblock__header {
+        font-size: 42px;
+        font-weight: 300;
+        line-height: 38px;
+    }
+    .v21 .tariff-section--topblock__subheader,
+    .v21 .tariff-section--topblock__date {
+        font-size: 26px;
+        font-weight: 300;
+        line-height: 31px;
+    }
+    .v21 .tariff-section--topblock__list--list {
+        margin-bottom: 12px;
+    }
+}
+@media screen and (max-width: 520px) {
+    .v21 .tariff-section--topblock__aside--wrap {
+        flex-wrap: wrap;
+    }
+    .v21 .tariff-section--topblock__list {
+        margin-top: 15px;
+    }
+}
+
+.v21 .v21-section.tariff-listing {
+    margin-top: 60px;
+    margin-bottom: 0;
+}
+.v21 .tariff-listing--block {
+    position: relative;
+}
+.v21 .tariff-listing--header {
+    margin: 0 0 42px 0;
+    font-family: RF Dewi;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: 0;
+    color: #202020;
+}
+.v21 .tariff-listing--wrap {
+    width: 100%;
+}
+.v21 .tariff-listing--box {
+    padding: 23px 20px 22px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: RF Dewi;
+    border-top: 1px solid #bbc5cd;
+}
+.v21 .tariff-listing--box:last-of-type {
+    border-bottom: 1px solid #bbc5cd;
+}
+.v21 .tariff-listing--box__title {
+    margin: 0;
+    max-width: 440px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+}
+.v21 .tariff-listing--box__info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.v21 .tariff-listing--box__main {
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 45px;
+    letter-spacing: 0;
+}
+.v21 .tariff-listing--box__dop {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+}
+.v21 .tariff-listing--details {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 51px;
+    font-family: RF Dewi;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0;
+    color: #00345e;
+    position: relative;
+    right: 14px;
+}
+.v21 .tariff-listing--details:hover span {
+    color: #a58a57;
+}
+.v21 .tariff-listing--details:hover svg path {
+    fill: #a58a57;
+}
+.v21 .tariff-listing--details svg:hover path {
+    fill: #a58a57;
+}
+.v21 .tariff-listing--details__arrow {
+    position: relative;
+    right: -14px;
+    top: 7px;
+}
+
+@media screen and (min-width: 1200px) {
+    .v21 .tariff-listing--block {
+        width: 1170px;
+    }
+    .v21 .v21-section.tariff-listing {
+        margin-top: 201px;
+        display: flex;
+        justify-content: center;
+    }
+    .v21 .tariff-listing--header {
+        text-align: center;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .v21 .tariff-listing--header {
+        margin-bottom: 102px;
+    }
+    .v21 .tariff-listing--box__title {
+        max-width: 680px;
+    }
+    .v21 .tariff-listing--block {
+        max-width: 1170px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .v21 .tariff-listing--header {
+        font-size: 30px;
+    }
+    .v21 .tariff-listing--box {
+        flex-wrap: wrap;
+    }
+    .v21 .tariff-listing--box__title {
+        width: 100%;
+        max-width: 100%;
+    }
+    .v21 .tariff-listing--box__info {
+        width: 100%;
+        margin-top: 20px;
+        align-items: flex-start;
+    }
+}

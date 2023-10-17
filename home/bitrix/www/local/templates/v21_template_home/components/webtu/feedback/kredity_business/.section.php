@@ -1,0 +1,3 @@
+<?
+$sSectionName="kredity_business";
+?>

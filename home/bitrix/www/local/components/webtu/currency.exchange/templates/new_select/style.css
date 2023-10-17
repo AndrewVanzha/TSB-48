@@ -1,0 +1,69 @@
+.v21 .currency {
+    font-family: RF Dewi;
+}
+.v21 .currency h4 {
+    margin: 0 0 21px 0;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 23px;
+    letter-spacing: 0;
+    color: #546770;
+}
+.v21 .currency-form {
+    margin: 0 0 103px 0;
+    width: 100%;
+}
+.v21 .currency-wrap {
+    position: relative;
+    width: 100%;
+}
+.v21 .currency-wrap .choices__inner {
+    background: linear-gradient(90deg, rgba(255,255,255,.58) 0, rgba(255,255,255,.0) 100%);
+    border: 1px solid #a58a57;
+    border-radius: 8px;
+}
+.v21 .currency-wrap select {
+    width: 100%;
+    /*-webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;*/
+    /*background: url("/images/arrow_down_gold.svg") no-repeat right center;*/
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-family: RF Dewi;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0;
+    color: #202020;
+    cursor: pointer;
+    position: relative;
+}
+.v21 .currency-wrap .choices__item--selectable {
+    font-family: RF Dewi;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0;
+    color: #202020;
+}
+.v21 .currency-wrap select .currency-option {
+    padding: 10px 20px 10px 44px;
+    color: #546770;
+    transition: background-color .3s;
+}
+
+@media screen and (max-width: 640px) {
+    .v21 .currency-form {
+        margin-bottom: 50px;
+    }
+    .v21 .currency-table--item {
+        padding: 20px 10px 40px 10px;
+    }
+    .v21 .currency-wrap .choices__item--selectable {
+        font-size: 19px;
+        line-height: 23px;
+    }
+}

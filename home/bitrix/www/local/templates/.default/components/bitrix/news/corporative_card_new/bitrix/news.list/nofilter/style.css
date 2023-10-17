@@ -1,0 +1,127 @@
+.card-section {
+    margin-bottom: 70px;
+}
+.card-section .card-section__wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 40px;
+    row-gap: 20px;
+}
+.card-section .card-section__left {
+    width: 100%;
+}
+.card-section .card-section__right {
+    width: 100%;
+    max-width: 670px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #00345e;
+}
+.card-section .card-section__right ul {
+    margin: 0;
+    padding-left: 0;
+    max-width: 455px;
+    list-style: none;
+}
+.card-section .card-section__right li:not(:last-of-type),
+.card-section .card-section__right div:not(:last-of-type) {
+    margin-bottom: 18px;
+}
+.card-section .card-section__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 38px 0 0 0;
+    width: 100%
+}
+.card-section .card-section__button--body {
+    padding: 16px 42px;
+}
+
+@media screen and (min-width: 1024px) {
+    .card-section .card-section__wrap {
+        flex-wrap: nowrap;
+    }
+    .card-section .card-section__left {
+        width: 67%;
+        display: flex;
+        justify-content: center;
+    }
+    .card-section .card-section__right {
+        width: 33%;
+        padding-left: 3px;
+    }
+}
+
+.card-section .card-props__wrap {
+    margin: 120px 0 0 0;
+}
+.card-section .v21-grid__item--item {
+    color: #202020;
+}
+.card-section .v21-grid__item--title {
+    font-size: 46px;
+    font-weight: 300;
+    color: #00345e;
+}
+.card-section .v21-grid__item--p1 {
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.v21 .v21-block-top {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.v21 .v21-grid__item--box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+.v21 .v21-grid__item--img {
+    width: 100px;
+    aspect-ratio: 91/90;
+}
+.v21 .v21-grid__item--text {
+    max-width: 350px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #202020;
+}
+.v21 .v21-block-top--mirpay {
+    margin-top: 40px;
+    width: 140px;
+}
+.v21 .v21-grid__item--link {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.v21 .v21-grid__item--href {
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-start;
+    font-family: RF Dewi;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    color: #00345e;
+}
+.v21 .v21-grid__item--href span:hover {
+    color: #a58a57;
+}
+.v21 .v21-grid__item--href:hover span {
+    color: #a58a57;
+}
+.v21 .v21-grid__item--href:hover svg path {
+    fill: #a58a57;
+}
+.v21 .v21-grid__item--href__arrow {
+    position: relative;
+    right: -4px;
+    top: 7px;
+}

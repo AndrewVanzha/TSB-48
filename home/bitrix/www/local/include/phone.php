@@ -1,0 +1,1 @@
+<a class="icon" href="tel:88005050476" title="Позвонить нам" onclick="ga('send','event','phone','clicked');yaCounter44820226.reachGoal('phone');">8 800 505 04 76</a>&nbsp;

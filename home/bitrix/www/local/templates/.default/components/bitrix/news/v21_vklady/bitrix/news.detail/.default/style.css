@@ -1,0 +1,33 @@
+.v21 .rko-doc__all {
+    display: flex;
+    position: relative;
+    color: #202020;
+}
+.v21 .rko-doc__all--link-button {
+    display: block;
+    margin: 0;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0;
+    color: #00345e;
+}
+.v21 .rko-doc__all--link-details {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    color: #00345e;
+}
+.v21 .rko-doc__all--link-details span:hover {
+    color: #a58a57;
+}
+.v21 .rko-doc__all--link-details:hover svg path {
+    fill: #a58a57;
+}
+.v21 .rko-doc__all--link-arrow {
+    position: relative;
+    right: -4px;
+    top: 7px;
+}

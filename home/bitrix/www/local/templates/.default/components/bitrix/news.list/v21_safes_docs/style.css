@@ -1,0 +1,23 @@
+.v21 .archive-section {
+    display: flex;
+    justify-content: flex-start;
+    font-family: RF Dewi;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    color: #00345e;
+}
+.v21 .archive-section span:hover {
+    color: #a58a57;
+}
+.v21 .archive-section:hover span {
+    color: #a58a57;
+}
+.v21 .archive-section:hover svg path {
+    fill: #a58a57;
+}
+.v21 .archive-section__arrow {
+    position: relative;
+    right: -4px;
+    top: 7px;
+}

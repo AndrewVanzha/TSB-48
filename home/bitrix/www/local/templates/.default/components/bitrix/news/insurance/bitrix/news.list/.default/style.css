@@ -1,0 +1,5 @@
+@media screen and (max-width: 630px) {
+    .product-item {
+        margin-right: 0 !important;
+    }
+}

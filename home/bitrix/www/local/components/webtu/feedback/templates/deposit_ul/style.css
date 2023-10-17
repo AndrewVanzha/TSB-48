@@ -1,0 +1,143 @@
+:root {
+    --time-stretch: .9s;
+}
+/*
+.v21 .safes-page__background-time {
+    transition: var(--time-stretch);
+}
+*/
+.v21 .form-block {
+    display: flex;
+    justify-content: space-between;
+}
+.v21 .form-block--right {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 15px 20px;
+    background-color: #e9ecee;
+    border-radius: 4px;
+    flex: 1 1 100%;
+    position: relative;
+    z-index: 10;
+}
+.v21 .form-block--img {
+    display: none;
+    position: absolute;
+    right: 3%;
+    top: -75px;
+    height: 214px;
+}
+.v21 .card-application--form {
+    color: #546770;
+    text-shadow: none;
+    transition: var(--time-stretch);
+}
+/*
+.v21 .js-color-switch .card-application--form {
+    color: #ffffff;
+    transition: var(--time-stretch);
+}
+*/
+.v21 .card-application--content {
+    padding: 0 0 68px 0;
+    font-family: RF Dewi;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 23px;
+    letter-spacing: 0.01em;
+}
+.v21 .v21-deposit-application .card-application--header {
+    margin: 35px 0 15px 0;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 34px;
+    transition: var(--time-stretch);
+}
+/*
+.v21 .js-color-switch .card-application--header {
+    color: #ffffff;
+    transition: var(--time-stretch);
+}
+*/
+.v21 .v21-deposit-application .card-application--subheader {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: #202020;
+    transition: var(--time-stretch);
+}
+.v21 .v21-deposit-application .grid-bottom {
+    margin-bottom: 20px;
+}
+.v21 .v21-input-group--empty {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.v21 .v21-grid__item.is-error .v21-input-group__warn {
+    display: block;
+    position: relative;
+    bottom: 0;
+}
+
+/*@media screen and (min-width: 480px) {
+    .v21 .safes-page__background-blue {
+        background: linear-gradient(164.58deg, #131b36 0, #0c2657 51.56%, #033d66 100%);
+    }
+}*/
+@media screen and (max-width: 640px) {
+    .v21 .v21-input-group--empty {
+        display: none!important;
+    }
+}
+@media screen and (min-width: 768px) {
+    /*.v21 .safes-page__background-blue {
+        background: linear-gradient(106.47deg, #131b36 6.96%, #0c2657 46.63%, #033d66 89.83%);
+    }*/
+    .v21 .form-block--right {
+        padding: 20px 70px;
+    }
+    .v21 .v21-deposit-application .card-application--header {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 40px;
+        line-height: 52px;
+    }
+    .v21 .v21-deposit-application .card-application--subheader {
+        margin-bottom: 30px;
+        font-size: 22px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
+@media screen and (min-width: 1024px) {
+    /*.v21 .safes-page__background-blue {
+        background: linear-gradient(109.75deg, #131b36 .33%, #0c2657 50.94%, #033d66 89.03%);
+    }*/
+    .v21 .form-block--right {
+        flex: 0 0 832px;
+    }
+    .v21 .form-block--img {
+        display: block;
+    }
+}
+@media screen and (min-width: 1194px) {
+    /*.v21 .safes-page__background-blue {
+        background: linear-gradient(97.51deg, #131b36 25.11%, #0c2657 55.5%, #033d66 95.16%);
+    }*/
+    .v21 .form-block--right {
+        flex-basis: 1020px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .v21 .v21-deposit-application .card-application--header {
+        margin-bottom: 25px;
+    }
+}
+@media screen and (min-width: 1440px) {
+    .v21 .form-block--right {
+        flex-basis: 1190px;
+    }
+}
