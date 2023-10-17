@@ -1,0 +1,78 @@
+h2.ls-form__title {
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    text-align: center;
+    color: #A58A57;
+}
+
+.ls-form__steps {
+    margin-top: 72px;
+    margin-bottom: 72px;
+    text-align: center;
+    color: black;
+}
+
+.ls-form__step-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ls-form__step-icon span {
+    position: absolute;
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 89px;
+    color: #A58A57;
+    text-shadow: 0 0 3px white;
+}
+
+.ls-form__step:nth-child(2) .ls-form__step-icon img {
+    transform: rotate(170deg);
+}
+
+.ls-form__step:nth-child(3) .ls-form__step-icon img {
+    transform: rotate(80deg);
+}
+
+.ls-form__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.ls-form__row.policy {
+    align-items: flex-start;
+}
+
+.ls-form__input {
+    width: 100%;
+    line-height: 48px;
+    border: 1px solid #62757E;
+    padding: 0 12px;
+	outline: none;
+}
+
+#ls-policy, #ls-policy-online {
+    margin-right: 8px;
+	margin-top: 7px
+}
+
+.ls-form__input::placeholder {
+    color: #62757E;
+}
+
+button.ls-form__button {
+    display: inline-block;
+    line-height: 48px;
+    background-color: #A58A57;
+    border: 1px solid #A08A57;
+    color: white;
+    padding: 0 48px;
+    cursor: pointer;
+	outline: none;
+}

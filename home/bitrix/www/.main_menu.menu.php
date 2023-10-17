@@ -1,0 +1,67 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Акции", 
+		"/katalog/aktsii/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Новый Год", 
+		"https://coins.tsbnk.ru/katalog/novyy-god/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Новинки", 
+		"https://coins.tsbnk.ru/katalog/novinki/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Российские", 
+		"/coins/russian/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Иностранные", 
+		"/coins/foreign/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Корпоративные подарки", 
+		"/katalog/korporativnye-podarki/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Юбилейные монеты и банкноты", 
+		"/katalog/yubileynye-i-pamyatnye-monety/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Контакты", 
+		"/kontakty/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Доставка и оплата", 
+		"/dostavka-i-oplata/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

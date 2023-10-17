@@ -1,0 +1,13 @@
+<?php
+$MESS["RESERVATION_RATE_OPTIONS_TAB_NAME"] = "Настройки";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_COMMON"] = "Общие";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_SWITCH_ON"] = "Модуль активирован:";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_OPEN_BANK"] = "Настройки эквайринга банка &laquo;Открытие&raquo;";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_OPEN_BANK_MODE"] = "Тестовый режим:";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_OPEN_BANK_LOGIN"] = "Логин магазина:";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_OPEN_BANK_PASS"] = "Пароль магазина:";
+$MESS["RESERVATION_RATE_OPTIONS_INPUT_APPLY"] = "Применить";
+$MESS["RESERVATION_RATE_OPTIONS_INPUT_DEFAULT"] = "По умолчанию";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_SMS"] = "Настройка SMS-информирования (ООО СМС-Трафик)";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_SMS_LOGIN"] = "Логин от сервиса:";
+$MESS["RESERVATION_RATE_OPTIONS_TAB_SMS_PASS"] = "Пароль от сервиса:";

@@ -1,0 +1,32 @@
+<?
+$MESS["AAL_NOT_INSTALLED_IBLOCK"] = "Модуль #ID# не установлен!";
+$MESS["AAL_NONE_MODULE_SETTINGS_AUCTIONS_IBLOCK_ID"] = "Не заполнено поле модуля аукциона IBLOCK_ID";
+$MESS["AAL_NONE_MODULE_SETTINGS_AUCTIONS_SECTION_ID_ACTIVE"] = "Не заполнено поле модуля аукциона SECTION_ID_ACTIVE";
+$MESS["AAL_NONE_MODULE_SETTINGS_AUCTIONS_SECTION_ID_PLAN"] = "Не заполнено поле модуля аукциона SECTION_ID_PLAN";
+$MESS["AAL_USER_NOT_AUTHORIZED"] = "Зарегисрийтесь для добавления лота";
+$MESS["AAL_USER_NONE_ADD_LOT"] = "У вас нет прав для добавления лота";
+$MESS["AAL_ERROR_NAME"] = "Вы не ввели название монеты";
+$MESS["AAL_ERROR_COUNTRY"] = "Вы не выбрали страну";
+$MESS["AAL_ERROR_METAL"] = "Вы не выбрали металл";
+$MESS["AAL_ERROR_PROBA"] = "Вы не выбрали пробу";
+$MESS["AAL_ERROR_RELEASE_YEAR"] = "Вы не ввели год выпуска";
+$MESS["AAL_ERROR_WEIGHT"] = "Вы не ввели вес монеты";
+$MESS["AAL_ERROR_MORE_PHOTO"] = "Вы не загрузили изображение";
+$MESS["AAL_ERROR_STEP_RATE"] = "Вы не ввели шаг хода аукциона (руб)";
+$MESS["AAL_ERROR_DATE_ACTIVE"] = "Вы не ввели дату начала аукциона ";
+$MESS["AAL_ERROR_DATE_COMPLETED"] = "Вы не ввели дату окончания аукциона";
+$MESS["AAL_ERROR_STARTING_PRICE"] = "Вы не ввели стартовую цену (руб)";
+$MESS["AAL_ERROR_PRIVACE_POLICE"] = "Вы не согласились с условиями участия в аукционе";
+$MESS["AAL_ERROR_RELEASE_YEAR_FORMAT_1"] = "Год выпуска должен быть в формате YYYY";
+$MESS["AAL_ERROR_RELEASE_YEAR_FORMAT_2"] = "Год выпуска не должен быть #YEAR#";
+$MESS["AAL_ERROR_STEP_RATE_FORMAT_1"] = "Вы не можете указать шаг ставки ниже #MIN_STEP#";
+$MESS["AAL_ERROR_DATE_ACTIVE_FORMAT_1"] = "Дата начала аукциона не может быть раньше #DATE#";
+$MESS["AAL_ERROR_DATE_COMPLETED_FORMAT_1"] = "Дата окончания аукциона должена быть больше #DATE#";
+$MESS["AAL_ERROR_DATE_COMPLETED_FORMAT_2"] = "Размещение аукциона возможно только на #INTERVAL# дн.";
+$MESS["AAL_ERROR_STARTING_PRICE_FORMAT"] = "Неверный формат стартовой цены";
+$MESS["AAL_ERROR_BLITZ_PRICE_FORMAT"] = "Неверный формат блиц цены";
+$MESS["AAL_ERROR_BLITZ_PRICE_FORMAT_2"] = "Блиц цена не может быть меньше стартовой";
+$MESS["AAL_SEND_SAVE"] = "Ваш лот добавлен на модерацию";
+$MESS["AAL_SEND_SAVE_ADMIN"] = "Ваш лот успешно добавлен";
+$MESS["AAL_ERROR_ADD_ELEMENT"] = "Ошибка при добавлении аукциона";
+?>

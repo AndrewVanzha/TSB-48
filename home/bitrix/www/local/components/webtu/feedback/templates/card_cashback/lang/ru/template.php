@@ -1,0 +1,30 @@
+<?php
+$MESS["WEBTU_FEEDBACK_4_HEADER"]        = "ЗАЯВКА НА БАНКОВСКУЮ КАРТУ";
+$MESS["WEBTU_FEEDBACK_4_CARD_TYPE_1"]   = "Дебетовая";
+$MESS["WEBTU_FEEDBACK_4_CARD_TYPE_2"]   = "Зарплатная";
+$MESS["WEBTU_FEEDBACK_4_CARD_TYPE_3"]   = "Кредитная";
+$MESS["WEBTU_FEEDBACK_4_CARD_TYPE_4"]   = "Премиальная";
+$MESS["WEBTU_FEEDBACK_4_LAST_NAME"]     = "Фамилия";
+$MESS["WEBTU_FEEDBACK_4_FIRST_NAME"]    = "Имя";
+$MESS["WEBTU_FEEDBACK_4_SECOND_NAME"]   = "Отчество";
+$MESS["WEBTU_FEEDBACK_4_SEX"]           = "Пол";
+$MESS["WEBTU_FEEDBACK_4_SEX_MALE"]      = "Мужской";
+$MESS["WEBTU_FEEDBACK_4_SEX_FEMALE"]    = "Женский";
+$MESS["WEBTU_FEEDBACK_4_BIRTHDATE"]     = "Дата рождения";
+$MESS["WEBTU_FEEDBACK_4_PHONE"]         = "Моб.телефон";
+$MESS["WEBTU_FEEDBACK_4_PHONE_LINE"]    = "На этот номер вы получите SMS с решением банка";
+$MESS["WEBTU_FEEDBACK_4_EMAIL"]         = "Эл. почта";
+$MESS["WEBTU_FEEDBACK_4_EMAIL_LINE"]    = "На этот адрес вы получите письмо с информацией о заявке";
+$MESS["WEBTU_FEEDBACK_4_CARD_SUMM"]     = "Кредитный лимит по карте";
+$MESS["WEBTU_FEEDBACK_4_CURRENCY_RUB"]  = "Рубль";
+$MESS["WEBTU_FEEDBACK_4_CURRENCY_EUR"]  = "Евро";
+$MESS["WEBTU_FEEDBACK_4_CURRENCY_USD"]  = "Доллар США";
+$MESS["WEBTU_FEEDBACK_4_CITIZENSHIP"]   = "Я гражданин РФ";
+$MESS["WEBTU_FEEDBACK_4_POLITICS"]      = "Настоящим подтверждаю, что я ознакомлен и согласен с %s и даю свое %s";
+$MESS["WEBTU_FEEDBACK_4_POLITICS_1"]    = "Правилами оформления онлайн заявки";
+$MESS["WEBTU_FEEDBACK_4_POLITICS_2"]    = "Согласие на обработку персональных данных";
+$MESS["WEBTU_FEEDBACK_CAPTCHA"]         = "Код с картинки";
+$MESS["WEBTU_FEEDBACK_4_BUTTON"]        = "Подать заявку на карту";
+$MESS["WEBTU_FEEDBACK_4_CITY"]          = "Ваш город";
+$MESS["WEBTU_FEEDBACK_4_TYPE"]          = "Тип карты";
+?>

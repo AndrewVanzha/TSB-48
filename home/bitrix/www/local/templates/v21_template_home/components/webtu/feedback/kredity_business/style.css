@@ -1,0 +1,65 @@
+:root {
+    --time-stretch: .8s;
+}
+
+.v21 .v21-credit-application--top {
+    height: 106px;
+}
+.v21 .v21-credit-application--bg {
+    background: transparent url(/local/templates/v21_template_home/img/v21_v21-service-form.png) right 90px top -5px no-repeat;
+    padding: 100px;
+    position: relative;
+    top: 40px;
+}
+.v21 .v21-credit-application--form {
+    padding: 72px 123px 88px 119px;
+    background-color: #e9ecee;
+    border-radius: 4px;
+}
+.v21 .v21-credit-application--content {}
+.v21 .v21-credit-application .v21-credit-application--header {
+    margin: 0 0 44px 0;
+    font-weight: 400;
+    line-height: 52px;
+}
+.v21 .v21-credit-application--form__section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 47px 0 0;
+}
+.v21 .v21-input-group__label {
+    font-weight: 300;
+}
+.v21 .v21-grid__item .v21-input-group,
+.v21 .v21-grid__item-2 .v21-input-group {
+    position: relative;
+}
+.v21 .v21-grid__item .v21-input-group__add,
+.v21 .v21-grid__item-2 .v21-input-group__add {
+    position: absolute;
+    bottom: 16px;
+    right: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #a58a57;
+}
+.v21 .v21-credit-application--form__section .captcha_input {
+    height: 43px;
+}
+.v21 .v21-credit-application--form__section .v21-input-captcha {
+    height: 100%;
+}
+
+.v21 .v21-grid__item.is-error .v21-input-group__warn {
+    display: block;
+    position: relative;
+    bottom: 0;
+    left: 225px;
+}
+
+@media screen and (max-width: 880px) {
+    .v21 .v21-credit-application--form {
+        padding: 80px 40px 35px 40px;
+    }
+}

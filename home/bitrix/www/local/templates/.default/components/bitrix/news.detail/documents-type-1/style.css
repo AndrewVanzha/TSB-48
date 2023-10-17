@@ -1,0 +1,22 @@
+.ls-documents__item {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+}
+
+.ls-documents__link {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.ls-documents__link span {
+    margin-right: 10px;
+    color: #00345E;
+    border-bottom: 1px solid transparent;
+    transition: .5s;
+}
+
+.ls-documents__link span:hover {
+    border-bottom: 1px dashed #00345E;
+}

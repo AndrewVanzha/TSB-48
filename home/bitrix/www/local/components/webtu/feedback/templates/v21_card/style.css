@@ -1,0 +1,7 @@
+#orderCard .special-height {
+    height: 70px;
+}
+.special-height .choices__list--dropdown {
+    top: auto;
+    bottom: 100%;
+}

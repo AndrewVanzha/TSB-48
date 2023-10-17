@@ -1,0 +1,493 @@
+.page-title--1 {
+    display: none;
+}
+
+.oms-main {
+    text-align: center;
+    margin: 96px 0 48px;
+}
+
+.oms-main__description {
+    font-size: 21px;
+    line-height: 28px;
+    padding: 0 50px;
+}
+
+.oms-main__image {
+    margin: 72px 0;
+}
+
+.oms-main__image img {
+    max-width: 100%;
+    height: auto;
+}
+
+h2.oms-main__title {
+    font-weight: normal;
+    font-size: 54px;
+    line-height: 67px;
+    color: #A58A57;
+    margin: 0 0 24px;
+}
+
+.oms-how {
+    border: 3px solid #A58A57;
+    border-top: none;
+    background-image: url("../img-drag/how_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.oms-how__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -23px;
+    left: -3px;
+    width: calc(100% + 6px);
+}
+
+.oms-how__header-after, .oms-how__header-before {
+    width: 100%;
+    height: 3px;
+    background-color: #A58A57;
+}
+
+.oms-how__title {
+    white-space: nowrap;
+    margin: 0 24px;
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    color: #00345E;
+}
+
+.oms-how__wrapper {
+    padding: 72px 32px 0;
+}
+
+.oms-how__block {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 48px;
+}
+
+.oms-how__icon {
+    text-align: right;
+    min-width: 64px;
+    max-width: 64px;
+}
+
+.oms-how__info {
+    margin-left: 12px;
+    color: #000000;
+}
+
+.oms-how__name {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    margin-bottom: 32px;
+}
+
+.oms-how__desc p {
+    margin-bottom: 12px;
+}
+
+.oms-advantages {
+    margin: 120px 0 72px;
+}
+
+.oms-advantages__title {
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    color: #00345E;
+    margin: 0 0 24px;
+}
+
+.oms-advantages__description {
+    font-size: 21px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.oms-advantages__description p {
+    margin-bottom: 12px;
+}
+
+.oms-advantages__item {
+    margin-bottom: 48px;
+    padding-right: 60px;
+}
+
+.oms-advantages__name {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 24px;
+    margin: 12px 0;
+}
+
+.oms-price__image {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 195px;
+    margin: 48px 0;
+}
+
+.oms-price__image-back {
+    position: absolute;
+    bottom: -15px;
+}
+
+.oms-price__item:nth-child(2) .oms-price__image-back {
+    bottom: 5px;
+}
+
+.oms-price__item:nth-child(3) .oms-price__image-back {
+    bottom: -60px;
+}
+
+.oms-price__item:nth-child(4) .oms-price__image-back {
+    left: 50px;
+}
+
+.oms-price__name {
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 32px;
+}
+
+.oms-price__value {
+    margin: 24px 0 36px;
+}
+
+.oms-price__value-difference {
+	display: none;
+}
+
+.oms-price__value-title {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #546770;
+    margin-bottom: 8px;
+}
+
+.oms-price__value-price {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 33px;
+    color: #00345E;
+}
+
+.oms-price__sell .oms-price__value-price {
+    color: #A58A57;
+}
+
+.oms-price__desc {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #546770;
+}
+
+.oms-price__image-n {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 32px;
+    color: #202020;
+}
+
+.oms-price__image-stone {
+    position: relative;
+}
+
+.oms-coins {
+    margin: 144px 0;
+}
+
+.oms-coins__image img {
+    max-width: 100%;
+}
+
+.oms-coins__title {
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+}
+
+.oms-coins__description {
+    font-size: 21px;
+    line-height: 28px;
+    padding-right: 72px;
+}
+
+.oms-coins__button {
+    display: inline-block;
+    margin-top: 36px;
+    color: #A58A57;
+    border: 1px solid #A58A57;
+    line-height: 48px;
+    padding: 0 40px;
+    transition: .5s;
+}
+
+.oms-coins__button:hover {
+    background-color: #A58A57;
+    color: white;
+}
+
+h2.oms-form__title {
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    text-align: center;
+    color: #A58A57;
+}
+
+.oms-form__steps {
+    margin-top: 72px;
+    margin-bottom: 72px;
+    text-align: center;
+    color: black;
+}
+
+.oms-form__step-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.oms-form__step-icon span {
+    position: absolute;
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 89px;
+    color: #A58A57;
+    text-shadow: 0 0 3px white;
+}
+
+.oms-form__step:nth-child(2) .oms-form__step-icon img {
+    transform: rotate(170deg);
+}
+
+.oms-form__step:nth-child(3) .oms-form__step-icon img {
+    transform: rotate(80deg);
+}
+
+.oms-form__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.oms-form__input {
+    width: 100%;
+    line-height: 48px;
+    border: 1px solid #62757E;
+    padding: 0 12px;
+}
+
+#oms-policy {
+    margin-right: 8px;
+}
+
+.oms-form__input::placeholder {
+    color: #62757E;
+}
+
+.oms-form__button {
+    display: inline-block;
+    line-height: 48px;
+    background-color: #A58A57;
+    border: 1px solid #A08A57;
+    color: white;
+    padding: 0 48px;
+    cursor: pointer;
+}
+
+.oms-gk {
+    position: relative;
+    border: 1px solid #546770;
+    font-size: 17px;
+    line-height: 24px;
+    color: #546770;
+    padding: 32px;
+    margin: 120px 0 0;
+}
+
+.oms-gk__info {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.oms-docs {
+    background-color: #ECF0F3;
+    padding: 48px 24px;
+    margin: 48px 0 120px;
+}
+
+h2.oms-docs__title.page-title {
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 26px;
+    color: #00345E;
+    margin: 0 0 44px;
+}
+
+.oms-docs__item {
+	margin-bottom: 16px;
+}
+
+@media all and (max-width: 929px) {
+    .oms-main {
+        margin: 48px 0;
+    }
+
+    h2.oms-main__title {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    .oms-advantages__list {
+        margin-top: 48px;
+    }
+
+    .oms-coins__image {
+        text-align: center;
+    }
+
+    .oms-coins__description {
+        padding-right: 0;
+    }
+
+    .oms-docs__item {
+        margin-bottom: 24px;
+    }
+
+    .oms-docs__item:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media all and (max-width: 629px) {
+    .oms-main {
+        margin: 48px 0 24px;
+    }
+
+    h2.oms-main__title,
+    .oms-advantages__title,
+    .oms-coins__title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .oms-main__description {
+        padding: 0;
+    }
+
+    .oms-main__image {
+        margin: 48px 0 120px;
+    }
+
+    .oms-how__title {
+        margin: -60px 0 0;
+        font-size: 24px;
+        line-height: 32px;
+        white-space: normal;
+    }
+
+    .oms-how {
+        border-top: 3px solid #A58A57;
+    }
+
+    .oms-how__header-after, .oms-how__header-before {
+        display: none;
+    }
+
+    .oms-how__icon {
+        display: none;
+    }
+
+    .oms-how__wrapper {
+        padding: 24px 24px 0;
+    }
+
+    .oms-how__info {
+        margin-left: 0;
+    }
+
+    .oms-how__name {
+        font-size: 17px;
+        line-height: 24px;
+        margin-bottom: 24px;
+    }
+
+    .oms-advantages__description {
+        font-size: 17px;
+        line-height: 24px;
+    }
+
+    h2.oms-form__title {
+        font-size: 21px;
+        line-height: 28px;
+    }
+
+    .oms-how__block {
+        margin-bottom: 24px;
+    }
+
+    .oms-advantages {
+        margin: 48px 0;
+    }
+
+    .oms-advantages__item {
+        padding-right: 15px;
+    }
+
+    .oms-coins__image {
+        display: none;
+    }
+
+    .oms-coins {
+        margin: 48px 0;
+    }
+
+    .oms-form__steps {
+        margin-top: 24px;
+        margin-bottom: 48px;
+    }
+
+    .oms-coins__description {
+        font-size: 17px;
+        line-height: 24px;
+    }
+
+    .oms-form__step {
+        margin-bottom: 39px;
+    }
+
+    .oms-form__step:last-child {
+        margin-bottom: 0;
+    }
+
+    .oms-form__step:last-child {
+        margin-bottom: 0;
+    }
+}

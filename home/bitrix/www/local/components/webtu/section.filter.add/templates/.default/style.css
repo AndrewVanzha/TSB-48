@@ -1,0 +1,6 @@
+/*----------------------------------------------------- */
+/* WARNINGS */
+/*----------------------------------------------------- */
+.message_send { border: none;border-radius: 1px;font-size: 14px;padding: 15px;margin:10px 0 10px 0; color: #61a942;background-color: #dff2de;border-color: #ebccd1;}
+.message_err {border: none;border-radius: 1px;font-size: 14px;padding: 15px;margin:10px 0 10px 0; color: #a94442;background-color: #f2dede;border-color: #ebccd1;}
+.section-add-form  input{ width: 90%!important; margin: 10px auto 0 auto; }

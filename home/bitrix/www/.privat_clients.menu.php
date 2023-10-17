@@ -1,0 +1,60 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Ипотека", 
+		"/chastnym-klientam/kredity/ipoteka/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Кредиты", 
+		"/chastnym-klientam/kredity/potrebitelskoe-kreditovanie/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	/*Array(
+		"Вклады и инвестиции", 
+		"/chastnym-klientam/vklady-i-investitsii/", 
+		Array(), 
+		Array(), 
+		"" 
+	)*/
+	Array(
+		"Вклады", 
+		"/chastnym-klientam/vklady/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Инвестиции", 
+		"/chastnym-klientam/investitsii/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Карты", 
+		"/chastnym-klientam/bankovskie-karty/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Платежи и переводы", 
+		"/chastnym-klientam/platezhi-i-perevody/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Обмен валют", 
+		"/chastnym-klientam/konvertor-valyut/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+);
+?>
