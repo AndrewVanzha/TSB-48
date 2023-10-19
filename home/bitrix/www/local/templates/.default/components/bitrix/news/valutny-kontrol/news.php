@@ -12,50 +12,10 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<?/*?>
-<?if($arParams["USE_RSS"]=="Y"):?>
-	<?
-	if(method_exists($APPLICATION, 'addheadstring'))
-		$APPLICATION->AddHeadString('<link rel="alternate" type="application/rss+xml" title="'.$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["rss"].'" href="'.$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["rss"].'" />');
-	?>
-	<a href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["rss"]?>" title="rss" target="_self"><img alt="RSS" src="<?=$templateFolder?>/images/gif-light/feed-icon-16x16.gif" border="0" align="right" /></a>
-<?endif?>
-
-<?if($arParams["USE_SEARCH"]=="Y"):?>
-<?=GetMessage("SEARCH_LABEL")?><?$APPLICATION->IncludeComponent(
-	"bitrix:search.form",
-	"flat",
-	Array(
-		"PAGE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["search"]
-	),
-	$component
-);?>
-<br />
-<?endif?>
-<?if($arParams["USE_FILTER"]=="Y"):?>
-<?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.filter",
-	"",
-	Array(
-		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-		"FILTER_NAME" => $arParams["FILTER_NAME"],
-		"FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-		"PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
-		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-		"CACHE_TIME" => $arParams["CACHE_TIME"],
-		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-	),
-	$component
-);
-?>
-<?endif?>
-
-<?
+<?/*
 Включен API инфоблока Валютный контроль ValutnyKontrol
 */?>
-<? $parent_section = 593;  // Валютный контроль - вариант октября 2023
+<? $parent_section = 598;  // Валютный контроль - вариант октября 2023
 $APPLICATION->IncludeComponent(
 	"bitrix:news.list",
 	"valutny-kontrol_top",
@@ -118,7 +78,7 @@ $APPLICATION->IncludeComponent(
 <div class="v21-section">
     <div class="v21-wide-container v21-account-services-container">
         <div class="v21-container">
-            <? $services_block = [10644]; // Новые возможности для вашего бизнеса
+            <? $services_block = [12029]; // Новые возможности для вашего бизнеса
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "business_possibilities",
@@ -182,7 +142,7 @@ $APPLICATION->IncludeComponent(
 
 <div class="v21-section">
     <div class="v21-container">
-        <? $services_block = [10645]; // Персональный валютный контроль
+        <? $services_block = [12030]; // Персональный валютный контроль
         $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "personal_vkontrol",
@@ -246,7 +206,7 @@ $APPLICATION->IncludeComponent(
 <div class="v21-section">
     <div class="v21-wide-container v21-account-services-container">
         <div class="v21-container">
-            <? $services_block = [10646]; // Бесплатные консультации по ВЭД
+            <? $services_block = [12031]; // Бесплатные консультации по ВЭД
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "ved_consultations2",
@@ -314,7 +274,7 @@ $APPLICATION->IncludeComponent(
             <h3 class="v21-ved-consultation-header">Закажите бесплатную консультацию по валютному законодательству</h3>
         </div>
         <div class="v21-container v21-ved-consultations-wrap">
-            <? $services_block = [10647]; // Закажите бесплатную консультацию по валютному законодательству
+            <? $services_block = [12032]; // Закажите бесплатную консультацию по валютному законодательству
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "ved_consultations",
@@ -376,7 +336,6 @@ $APPLICATION->IncludeComponent(
                 <? $APPLICATION->IncludeComponent(
                     "webtu:feedback",
                     "v21_consult_form",
-                    //"VED_consult_new",
                     array(
                         "AJAX_MODE" => "Y",
                         "COMPONENT_TEMPLATE" => "VED_consult",
@@ -415,7 +374,7 @@ $APPLICATION->IncludeComponent(
 <div class="v21-section">
     <div class="v21-wide-container v21-fast-transactions-container">
         <div class="v21-container">
-            <? $services_block = [10648]; // Быстрые переводы контрагентам
+            <? $services_block = [12033]; // Быстрые переводы контрагентам
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "fast-transactions",
@@ -479,7 +438,7 @@ $APPLICATION->IncludeComponent(
 
 <div class="v21-section">
     <div class="v21-container">
-        <? $services_block = [10649]; // Открываем счета в разных валютах
+        <? $services_block = [12034]; // Открываем счета в разных валютах
         $APPLICATION->IncludeComponent(
             "bitrix:news.list",
             "accounts-in-currencies",
@@ -544,7 +503,7 @@ $APPLICATION->IncludeComponent(
     <div class="v21-wide-container v21-account-application-container">
         <div class="v21-container">
             <div class="v21-card-application" id="fBusinessAccountForm">
-                <? $iblock_id = "215";  // Заявка на открытие счета
+                <? $iblock_id = "215";  // Запрос на открытие счета
                 $APPLICATION->IncludeComponent(
                     "webtu:feedback",
                     "account_application_new",
@@ -557,7 +516,7 @@ $APPLICATION->IncludeComponent(
                         "AJAX_OPTION_STYLE" => "Y",
                         "COMPONENT_TEMPLATE" => "account_application_new",
                         "EVENT_CALLBACK" => function($post){$post['RECOURSE']='Уважаемый(ая)';return$post;},
-                        "IBLOCK_ID" => $iblock_id,  // Заявка на открытие счета
+                        "IBLOCK_ID" => $iblock_id,  // Запрос на открытие счета
                         "PROPERTIES" => array("PHONE","COMPANY_NAME","ORGANIZATION","COMPANY_INN","CURRENCY","FIO","NAME","EMAIL","CITY","FOLDER","REQ_URI","FROM_WHERE","UTM_SOURCE","UTM_MEDIUM","UTM_CAMPAIGN","UTM_TERM","UTM_CONTENT"),
                         "FORM_HEADER" => "Запрос на открытие счета",
                         "SITES" => array(0=>"s1",),
@@ -573,7 +532,7 @@ $APPLICATION->IncludeComponent(
 <div class="v21-section">
     <div class="v21-wide-container v21-risk-hedge-container">
         <div class="v21-container">
-            <? $services_block = [10650]; // Хеджирование валютных рисков
+            <? $services_block = [12035]; // Хеджирование валютных рисков
             $APPLICATION->IncludeComponent(
                 "bitrix:news.list",
                 "risk_hedge",
