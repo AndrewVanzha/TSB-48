@@ -26,20 +26,12 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
         margin-top: 0;
         overflow: visible;
     }
-    /*.v21 .js-color-switch .v21-block-interests--left,
-    .v21 .js-color-switch .v21-block-interests--right {
-        background-color: transparent;
-        box-shadow: none;
-    }
-    .v21 .js-color-switch .v21-block-interests--right::before,
-    .v21 .js-color-switch .v21-block-interests--left::before {
-        content: none;
-    }*/
 </style>
-<? $iblock_id = "222";  // Валютный контроль
+<? $iblock_id = "219";  // Валютный контроль
+$wtemplate = "valutny-kontrol";  // Валютный контроль
 $APPLICATION->IncludeComponent(
     "bitrix:news",
-    "valutny-kontrol",
+    $wtemplate,
     Array(
         "ADD_ELEMENT_CHAIN" => "N",	// Включать название элемента в цепочку навигации
         "ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
@@ -121,8 +113,7 @@ $APPLICATION->IncludeComponent(
         "USE_RSS" => "N",	// Разрешить RSS
         "USE_SEARCH" => "N",	// Разрешить поиск
         "USE_SHARE" => "N",	// Отображать панель соц. закладок
-        "COMPONENT_TEMPLATE" => "account-in-yuans",
-        //"COMPONENT_TEMPLATE" => ".default",
+        "COMPONENT_TEMPLATE" => $wtemplate,
         "VARIABLE_ALIASES" => array(
             "SECTION_ID" => "SECTION_ID",
             "ELEMENT_ID" => "ELEMENT_ID",
@@ -142,7 +133,7 @@ $APPLICATION->IncludeComponent(
                 Array(
                     "CACHE_TIME" => "36000000",
                     "CACHE_TYPE" => "A",
-                    "HIGHLOAD_IBLOCK_ID" => "10"  // Highload-блоки / ValutnyKontrolFAQ
+                    "HIGHLOAD_IBLOCK_ID" => "9"  // Highload-блоки / ValutnyKontrolFAQ
                 )
             );?>
         </div>
@@ -196,7 +187,6 @@ $APPLICATION->IncludeComponent(
                         ),
                         "FILTER_NAME" => "",
                         "HIDE_LINK_WHEN_NO_DETAIL" => "N",
-                        //"IBLOCK_ID" => "207", - и-блок не нужен
                         "IBLOCK_ID" => "83",
                         "IBLOCK_TYPE" => "-",
                         "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
@@ -241,193 +231,6 @@ $APPLICATION->IncludeComponent(
                     false
                 ); ?>
 
-                <?/*?>
-                <div class="row">
-                    <div class="rko-doc__block rko-doc__rate col-md-4">
-                        <header class="rko-doc__header">
-                            <div class="rko-doc__title">Тарифы</div>
-                        </header>
-                        <div class="rko-doc__items">
-                            <? $iblock_id = "189";  //
-                            $element_id = "8888"; //
-                            $APPLICATION->IncludeComponent(
-                                "bitrix:news.detail",
-                                "documents-type-1",
-                                Array(
-                                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                                    "ADD_ELEMENT_CHAIN" => "N",
-                                    "ADD_SECTIONS_CHAIN" => "N",
-                                    "AJAX_MODE" => "N",
-                                    "AJAX_OPTION_ADDITIONAL" => "",
-                                    "AJAX_OPTION_HISTORY" => "N",
-                                    "AJAX_OPTION_JUMP" => "N",
-                                    "AJAX_OPTION_STYLE" => "Y",
-                                    "BROWSER_TITLE" => "-",
-                                    "CACHE_GROUPS" => "Y",
-                                    "CACHE_TIME" => "36000000",
-                                    "CACHE_TYPE" => "A",
-                                    "CHECK_DATES" => "Y",
-                                    "DETAIL_URL" => "",
-                                    "DISPLAY_BOTTOM_PAGER" => "N",
-                                    "DISPLAY_DATE" => "Y",
-                                    "DISPLAY_NAME" => "Y",
-                                    "DISPLAY_PICTURE" => "Y",
-                                    "DISPLAY_PREVIEW_TEXT" => "Y",
-                                    "DISPLAY_TOP_PAGER" => "N",
-                                    "ELEMENT_CODE" => "",
-                                    "ELEMENT_ID" => $element_id,
-                                    "FIELD_CODE" => array("", ""),
-                                    "IBLOCK_ID" => $iblock_id,
-                                    "IBLOCK_TYPE" => "ls_documents",
-                                    "IBLOCK_URL" => "",
-                                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                                    "MESSAGE_404" => "",
-                                    "META_DESCRIPTION" => "-",
-                                    "META_KEYWORDS" => "-",
-                                    "PAGER_BASE_LINK_ENABLE" => "N",
-                                    "PAGER_SHOW_ALL" => "N",
-                                    "PAGER_TEMPLATE" => ".default",
-                                    "PAGER_TITLE" => "Страница",
-                                    "PROPERTY_CODE" => array("", "DOCUMENTS", "CLASSES"),
-                                    "SET_BROWSER_TITLE" => "N",
-                                    "SET_CANONICAL_URL" => "N",
-                                    "SET_LAST_MODIFIED" => "N",
-                                    "SET_META_DESCRIPTION" => "N",
-                                    "SET_META_KEYWORDS" => "N",
-                                    "SET_STATUS_404" => "N",
-                                    "SET_TITLE" => "N",
-                                    "SHOW_404" => "N",
-                                    "STRICT_SECTION_CHECK" => "N",
-                                    "USE_PERMISSIONS" => "N",
-                                    "USE_SHARE" => "N"
-                                )
-                            );?>
-                        </div>
-                    </div>
-                    <div class="rko-doc__block rko-doc__contract offset-md-1 col-md-4">
-                        <header class="rko-doc__header">
-                            <div class="rko-doc__title">Договоры</div>
-                        </header>
-                        <div class="rko-doc__items">
-                            <? $iblock_id = "189";  //
-                            $element_id = "8888"; //
-                            $APPLICATION->IncludeComponent(
-                                "bitrix:news.detail",
-                                "documents-type-1",
-                                Array(
-                                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                                    "ADD_ELEMENT_CHAIN" => "N",
-                                    "ADD_SECTIONS_CHAIN" => "N",
-                                    "AJAX_MODE" => "N",
-                                    "AJAX_OPTION_ADDITIONAL" => "",
-                                    "AJAX_OPTION_HISTORY" => "N",
-                                    "AJAX_OPTION_JUMP" => "N",
-                                    "AJAX_OPTION_STYLE" => "Y",
-                                    "BROWSER_TITLE" => "-",
-                                    "CACHE_GROUPS" => "Y",
-                                    "CACHE_TIME" => "36000000",
-                                    "CACHE_TYPE" => "A",
-                                    "CHECK_DATES" => "Y",
-                                    "DETAIL_URL" => "",
-                                    "DISPLAY_BOTTOM_PAGER" => "N",
-                                    "DISPLAY_DATE" => "Y",
-                                    "DISPLAY_NAME" => "Y",
-                                    "DISPLAY_PICTURE" => "Y",
-                                    "DISPLAY_PREVIEW_TEXT" => "Y",
-                                    "DISPLAY_TOP_PAGER" => "N",
-                                    "ELEMENT_CODE" => "",
-                                    "ELEMENT_ID" => $element_id,
-                                    "FIELD_CODE" => array("", ""),
-                                    "IBLOCK_ID" => $iblock_id,
-                                    "IBLOCK_TYPE" => "ls_documents",
-                                    "IBLOCK_URL" => "",
-                                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                                    "MESSAGE_404" => "",
-                                    "META_DESCRIPTION" => "-",
-                                    "META_KEYWORDS" => "-",
-                                    "PAGER_BASE_LINK_ENABLE" => "N",
-                                    "PAGER_SHOW_ALL" => "N",
-                                    "PAGER_TEMPLATE" => ".default",
-                                    "PAGER_TITLE" => "Страница",
-                                    "PROPERTY_CODE" => array("", "DOCUMENTS", "CLASSES"),
-                                    "SET_BROWSER_TITLE" => "N",
-                                    "SET_CANONICAL_URL" => "N",
-                                    "SET_LAST_MODIFIED" => "N",
-                                    "SET_META_DESCRIPTION" => "N",
-                                    "SET_META_KEYWORDS" => "N",
-                                    "SET_STATUS_404" => "N",
-                                    "SET_TITLE" => "N",
-                                    "SHOW_404" => "N",
-                                    "STRICT_SECTION_CHECK" => "N",
-                                    "USE_PERMISSIONS" => "N",
-                                    "USE_SHARE" => "N"
-                                )
-                            );?>
-                        </div>
-                    </div>
-                    <div class="rko-doc__block rko-doc__push-bank col-12">
-                        <header class="rko-doc__header">
-                            <div class="rko-doc__title">Документы для предоставления в Банк</div>
-                        </header>
-                        <div class="rko-doc__items row">
-                            <?  $iblock_id = "189";  //
-                            $element_id = "8889"; //
-                            $APPLICATION->IncludeComponent(
-                                "bitrix:news.detail",
-                                "documents-type-1",
-                                Array(
-                                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
-                                    "ADD_ELEMENT_CHAIN" => "N",
-                                    "ADD_SECTIONS_CHAIN" => "N",
-                                    "AJAX_MODE" => "N",
-                                    "AJAX_OPTION_ADDITIONAL" => "",
-                                    "AJAX_OPTION_HISTORY" => "N",
-                                    "AJAX_OPTION_JUMP" => "N",
-                                    "AJAX_OPTION_STYLE" => "Y",
-                                    "BROWSER_TITLE" => "-",
-                                    "CACHE_GROUPS" => "Y",
-                                    "CACHE_TIME" => "36000000",
-                                    "CACHE_TYPE" => "A",
-                                    "CHECK_DATES" => "Y",
-                                    "DETAIL_URL" => "",
-                                    "DISPLAY_BOTTOM_PAGER" => "N",
-                                    "DISPLAY_DATE" => "Y",
-                                    "DISPLAY_NAME" => "Y",
-                                    "DISPLAY_PICTURE" => "Y",
-                                    "DISPLAY_PREVIEW_TEXT" => "Y",
-                                    "DISPLAY_TOP_PAGER" => "N",
-                                    "ELEMENT_CODE" => "",
-                                    "ELEMENT_ID" => $element_id,
-                                    "FIELD_CODE" => array("", ""),
-                                    "IBLOCK_ID" => $iblock_id,
-                                    "IBLOCK_TYPE" => "ls_documents",
-                                    "IBLOCK_URL" => "",
-                                    "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
-                                    "MESSAGE_404" => "",
-                                    "META_DESCRIPTION" => "-",
-                                    "META_KEYWORDS" => "-",
-                                    "PAGER_BASE_LINK_ENABLE" => "N",
-                                    "PAGER_SHOW_ALL" => "N",
-                                    "PAGER_TEMPLATE" => ".default",
-                                    "PAGER_TITLE" => "Страница",
-                                    "PROPERTY_CODE" => array("", "DOCUMENTS", "CLASSES"),
-                                    "SET_BROWSER_TITLE" => "N",
-                                    "SET_CANONICAL_URL" => "N",
-                                    "SET_LAST_MODIFIED" => "N",
-                                    "SET_META_DESCRIPTION" => "N",
-                                    "SET_META_KEYWORDS" => "N",
-                                    "SET_STATUS_404" => "N",
-                                    "SET_TITLE" => "N",
-                                    "SHOW_404" => "N",
-                                    "STRICT_SECTION_CHECK" => "N",
-                                    "USE_PERMISSIONS" => "N",
-                                    "USE_SHARE" => "N"
-                                )
-                            );?>
-                        </div>
-                    </div>
-                </div>
-                <?*/?>
                 <div class="rko-doc__all">
                     <a href="/arkhiv-tarifov-i-dokumentov/" class="rko-doc__all--link-button">
                         <span>Архив тарифов и документов</span>
@@ -447,19 +250,5 @@ $APPLICATION->IncludeComponent(
 
 <div class="">
 <div class="">
-
-<?/*?>
-<div class="v21-container">
-    <?$APPLICATION->IncludeComponent(
-        "bitrix:main.include",
-        "",
-        Array(
-            "AREA_FILE_SHOW" => "page",
-            "AREA_FILE_SUFFIX" => "block_footnote",
-            "EDIT_TEMPLATE" => ""
-        )
-    );?>
-</div>
-<?*/?>
 
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

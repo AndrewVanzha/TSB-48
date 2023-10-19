@@ -16,10 +16,10 @@
                     </div>
                 </div>
                 <div class="v21-section-interests--imgbox">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_left_102.png" class="v21-section-interests--imgbox-img1" alt="картинка">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_left_176.png" class="v21-section-interests--imgbox-img2" alt="картинка">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_left_210.png" class="v21-section-interests--imgbox-img3" alt="картинка">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_left_250.png" class="v21-section-interests--imgbox-img4" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_left_102.png" class="v21-section-interests--imgbox-img1" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_left_176.png" class="v21-section-interests--imgbox-img2" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_left_210.png" class="v21-section-interests--imgbox-img3" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_left_250.png" class="v21-section-interests--imgbox-img4" alt="картинка">
                 </div>
             </div>
             <div class="v21-section-interests--right">
@@ -37,10 +37,10 @@
                     <?/*?><button><a href="tel:88005053773" class="">Позвоните 8 (800) 505-37-73</a></button><?*/?>
                 </div>
                 <div class="v21-section-interests--imgbox">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_right_102.png" class="v21-section-interests--imgbox-img1" alt="картинка">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_right_176.png" class="v21-section-interests--imgbox-img2" alt="картинка">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_right_210.png" class="v21-section-interests--imgbox-img3" alt="картинка">
-                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/popprod_right_250.png" class="v21-section-interests--imgbox-img4" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_right_102.png" class="v21-section-interests--imgbox-img1" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_right_176.png" class="v21-section-interests--imgbox-img2" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_right_210.png" class="v21-section-interests--imgbox-img3" alt="картинка">
+                    <img src="/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/images/popprod_right_250.png" class="v21-section-interests--imgbox-img4" alt="картинка">
                 </div>
             </div>
         </div>
