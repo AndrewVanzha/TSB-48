@@ -1076,7 +1076,7 @@ Redirect 301 /site/vklady http://www.transstroybank.ru/chastnym-klientam/vklady-
 Redirect 301 /site/westernunion http://www.transstroybank.ru/chastnym-klientam/platezhi-i-perevody/perevody-po-sisteme-western-union/
 Redirect 301 /site/atmp2p http://www.transstroybank.ru/chastnym-klientam/drugie-uslugi/onlayn-servisy/perevody-s-kartu-na-kartu-v-bankomate/
 Redirect 301 /site/mc_priv http://www.transstroybank.ru/chastnym-klientam/bankovskie-karty/
-#Redirect 301 /#private https://www.transstroybank.ru/chastnym-klientam/
+Redirect 301 /#private https://www.transstroybank.ru/chastnym-klientam/
 Redirect 301 /chastnym-klientam/kredity/ipoteka/ http://transstroybank.ru/chastnym-klientam/ipoteka/
 Redirect 301 /chastnym-klientam/bankovskie-karty/ http://transstroybank.ru/chastnym-klientam/debit-cards/
 Redirect 301 /chastnym-klientam/investitsii/investitsii/zolotye-slitki/ https://transstroybank.ru/chastnym-klientam/investitsii/
@@ -1097,13 +1097,6 @@ RedirectMatch 301 ^/corporative\-clients/kredity\-i\-garantii/kredity\-dlya\-biz
 RedirectMatch 301 ^/corporative\-clients/bankovskoe\-obsluzhivanie/bankovskie\-karty/$ /bankovskie-karty/$1
 Redirect 301 /chastnym-klientam/ipoteka/ https://www.transstroybank.ru/404.php
 Redirect 301 /chastnym-klientam/cashback/ https://www.transstroybank.ru/404.php
-
-Redirect 301 /chastnym-klientam/vklady/perm/vklad-udobnyy-prm/ https://www.transstroybank.ru/chastnym-klientam/vklady/
-Redirect 301 /chastnym-klientam/vklady/kazan/vklad-udobnyy-kzn/ https://www.transstroybank.ru/chastnym-klientam/vklady/
-Redirect 301 /chastnym-klientam/vklady/kaliningrad/vklad-udobnyy-klgr/ https://www.transstroybank.ru/chastnym-klientam/vklady/
-Redirect 301 /chastnym-klientam/vklady/tuapse/vklad-udobnyy-tuapse/ https://www.transstroybank.ru/chastnym-klientam/vklady/
-Redirect 301 /chastnym-klientam/vklady/lipetsk/vklad-udobnyy-lipeck/ https://www.transstroybank.ru/chastnym-klientam/vklady/
-Redirect 301 /chastnym-klientam/vklady/nizhny-novgorod/vklad-udobnyy-nn/ https://www.transstroybank.ru/chastnym-klientam/vklady/
 
 Redirect 302 /corporative-clients/bankovskoe-obsluzhivanie/vneshneekonomicheskaya-deyatelnost/ https://www.transstroybank.ru/
 Redirect 302 /o-banke/blog/chto-takoe-vneshneekonomicheskaya-deyatelnost-ved/ https://www.transstroybank.ru/
