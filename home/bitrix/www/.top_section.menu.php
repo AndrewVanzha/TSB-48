@@ -94,6 +94,16 @@ $aMenuLinks = Array( // меню для corporative_clients
         ""
     ),
     Array(
+        "Валютный контроль",
+        "/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/",
+        Array(),
+        Array(
+            'subheader' => false,
+            'subgroup' => 2,
+        ),
+        ""
+    ),
+    Array(
         "Аренда сейфов",
         "/corporative-clients/arenda-seyfov/",
         Array(),
