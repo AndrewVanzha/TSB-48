@@ -1,0 +1,661 @@
+
+.page-title--1 {
+    display: none;
+}
+
+.zp-main {
+    margin: 96px 0 0;
+}
+
+.zp-main__header {
+    text-align: center;
+}
+
+.zp-main .row {
+    align-items: center;
+}
+
+.zp-main__description {
+    font-size: 21px;
+    line-height: 28px;
+}
+
+.zp-main__image {
+    margin: 72px 0;
+}
+
+.zp-main__image img {
+    position: relative;
+    top: -48px;
+    right: -24px;
+    max-width: 100%;
+    height: auto;
+}
+
+.zp-main__title {
+    /*font-weight: normal;
+    font-size: 54px;
+    line-height: 67px;
+    color: #A58A57;*/
+    margin: 0 0 24px;
+}
+
+.zp-main__row {
+    margin-bottom: 36px;
+}
+
+.zp-main__row:last-child {
+    margin-bottom: 0;
+}
+
+.zp-main__label {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 28px;
+    margin-bottom: 12px;
+}
+
+.zp-advantages {
+    margin: 72px 0 72px;
+}
+
+.zp-advantages__info {
+    width: 100%;
+}
+
+.zp-advantages__title {
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    color: #00345E;
+    margin: 0 0 96px;
+    text-align: center;
+}
+
+.zp-advantages__icon {
+    display: flex;
+    height: 65px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.zp-advantages__item {
+    margin-bottom: 48px;
+}
+
+.zp-advantages__name {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 24px;
+    margin: 12px 0;
+}
+.zp-advantages__name--index {
+    display: block;
+    position: absolute;
+    /*left: 240px;*/
+    top: 70px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+
+.zp-advantages__item--popup {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 320px;
+    padding: 30px 20px;
+    background-color: #d8dada;
+    border: 1px solid #00345e;
+    border-radius: 8px;
+    opacity: 0;
+    z-index: 100;
+}
+.zp-advantages__item--popup__show {
+    display: block;
+}
+.zp-advantages__item--popup-detail {
+    font-size: 20px;
+}
+.zp-advantages__item--popup-detail ul {
+    margin: 0 0 20px 0;
+    padding-left: 20px;
+}
+.zp-advantages__item--popup-detail ul span {
+    position: relative;
+    left: -20px;
+    display: inline-block;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.zp-advantages__item--popup-detail li {
+    margin-bottom: 10px;
+}
+.zp-advantages__item--popup-detail a,
+.zp-advantages__item--popup-detail p {
+    margin: 0 0 20px 0;
+    font-size: 18px;
+}
+.zp-advantages__item--popup-detail a:last-child,
+.zp-advantages__item--popup-detail p:last-child {
+    margin-bottom: 0;
+}
+.zp-advantages__item--popup-close {
+    color: #202020;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+    /*z-index: 9;*/
+}
+
+
+.zp-advantages__desc a {
+    color: #A58A57;
+}
+
+.zp-advantages__desc a:hover {
+    text-decoration: underline;
+}
+
+.zp-cards {
+    margin: 144px 0 192px;
+    font-size: 21px;
+    line-height: 28px;
+}
+
+.zp-cards__header {
+    margin-bottom: 72px;
+}
+
+.zp-cards__image {
+    position: relative;
+}
+
+.zp-cards__image img {
+    max-width: 100%;
+}
+
+img.zp-cards__background {
+    position: absolute;
+    top: -130px;
+    right: 30px;
+    width: 110%;
+    max-width: 110%;
+}
+
+.zp-cards__header {
+    text-align: center;
+}
+
+.zp-cards__title {
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 33px;
+}
+
+.zp-cards__tabs {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.zp-cards__tab {
+    font-family: OpiumNewC, sans-serif;
+    color: #546770;
+    font-weight: normal;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.zp-cards__tab:last-child {
+    margin-right: 0;
+}
+
+.zp-cards__tab--active {
+    color: #A58A57;
+    font-weight: bold;
+    cursor: default;
+}
+
+.zp-cards__table {
+    border-top: 1px solid #546770;
+}
+
+[data-zp-card-active="true"] {
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.7s linear;
+}
+
+[data-zp-card-active="false"] {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.zp-cards__row {
+    position: relative;
+    border-bottom: 1px solid #546770;
+    padding: 7px 0 15px;
+}
+
+.zp-cards__label {
+    font-family: OpiumNewC, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    color: #546770;
+}
+
+.zp-cards__text {
+    padding-left: 14px;
+    padding-right: 36px;
+}
+
+.zp-cards__link {
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.zp-online {
+    padding: 48px 0;
+    background-color: #F5F5F5;
+    margin-bottom: 240px;
+}
+
+.zp-online__title {
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    color: #00345E;
+    margin: 0;
+}
+
+.zp-online__description {
+    margin: 24px 0;
+    font-size: 21px;
+    line-height: 28px;
+}
+
+.zp-online__image {
+    position: relative;
+}
+
+.zp-online__image img {
+    width: 120%;
+    max-width: 120%;
+    position: absolute;
+    top: -170px;
+}
+
+.zp-online__buttons {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.zp-online__button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #546770;
+    text-decoration: none;
+    transition: .5s;
+}
+
+.zp-online__button:hover {
+    color: #A58A57;
+}
+
+.zp-delivery {
+    text-align: center;
+    margin: 96px 0;
+}
+
+h2.zp-delivery__title {
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    color: #00345E;
+}
+
+.zp-delivery__images img {
+    max-width: 100%;
+}
+
+#zp-policy {
+    margin-right: 8px;
+    margin-top: 7px;
+}
+
+.zp-form__policy {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+h2.zp-form__title {
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 42px;
+    text-align: center;
+    color: #A58A57;
+}
+
+.zp-form__subtitle {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 33px;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 36px;
+}
+
+.zp-form__steps {
+    margin-top: 72px;
+    margin-bottom: 72px;
+    text-align: center;
+    color: black;
+}
+
+.zp-form__step-desc {
+    padding: 0 12px;
+}
+
+.zp-form__step-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zp-form__step-icon span {
+    position: absolute;
+    font-family: OpiumNewC, sans-serif;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 89px;
+    color: #A58A57;
+    text-shadow: 0 0 3px white;
+}
+
+.zp-form__step:nth-child(2) .zp-form__step-icon img {
+    transform: rotate(170deg);
+}
+
+.zp-form__step:nth-child(3) .zp-form__step-icon img {
+    transform: rotate(80deg);
+}
+
+.zp-form__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.zp-form__input {
+    width: 100%;
+    line-height: 48px;
+    border: 1px solid #62757E;
+    padding: 0 12px;
+}
+
+.zp-form__input::placeholder {
+    color: #62757E;
+}
+
+.zp-form__button {
+    display: inline-block;
+    line-height: 48px;
+    background-color: #A58A57;
+    border: 1px solid #A08A57;
+    color: white;
+    padding: 0 48px;
+    cursor: pointer;
+}
+
+.zp-docs {
+    background-color: #ECF0F3;
+    padding: 48px 24px;
+    margin: 120px 0;
+}
+
+h2.zp-docs__title {
+    font-weight: bold;
+    font-size: 21px;
+    line-height: 26px;
+    color: #00345E;
+    margin: 0 0 44px;
+}
+
+.zp-docs__item {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+}
+
+.zp-docs__link {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.zp-docs__link span {
+    margin-right: 10px;
+    color: #00345E;
+    border-bottom: 1px solid transparent;
+    transition: .5s;
+}
+
+.zp-docs__link span:hover {
+    border-bottom: 1px dashed #00345E;
+}
+
+.zp-docs__all {
+	margin-top: 48px;
+	font-size: 14px;
+    text-align: center;
+}
+
+.zp-docs__all a {
+    color: #00345E;
+    text-decoration: underline;
+}
+
+@media all and (max-width: 1229px) {
+    .zp-main__image img {
+        top: -48px;
+        right: 0;
+    }
+
+    .zp-online__image img {
+        top: -50px;
+    }
+
+    .zp-online {
+        margin-bottom: 120px;
+    }
+}
+
+@media all and (max-width: 929px) {
+    .zp-main {
+        margin: 48px 0;
+        text-align: center;
+    }
+
+    h2.zp-main__title {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    .zp-main__image img {
+        top: -40px;
+        margin-bottom: -80px;
+        max-width: 60%;
+    }
+
+    .zp-advantages__title {
+        margin: 0 0 24px;
+    }
+
+    .zp-advantages__list {
+        margin-top: 48px;
+    }
+
+    .zp-cards {
+        margin: 72px 0;
+    }
+
+    .zp-cards__image {
+        text-align: center;
+    }
+
+    .zp-cards__description {
+        padding-right: 0;
+    }
+
+    .zp-online {
+        margin-bottom: 72px;
+    }
+
+    .zp-docs__item {
+        margin-bottom: 24px;
+    }
+
+    .zp-docs__item:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media all and (max-width: 629px) {
+    .zp-main {
+        margin: 48px 0 24px;
+    }
+
+    .zp-main__image img {
+        top: 0;
+        margin-bottom: -80px;
+        max-width: 100%;
+    }
+
+    .zp-main__label {
+        font-size: 17px;
+        line-height: 24px;
+        margin-bottom: 8px;
+    }
+
+    h2.zp-main__title,
+    .zp-advantages__title,
+    .zp-online__title,
+    h2.zp-delivery__title,
+    .zp-cards__title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .zp-main__description {
+        padding: 0;
+    }
+
+    .zp-main__image {
+        margin: 48px 0 120px;
+    }
+
+    .zp-advantages__list {
+        margin-top: 24px;
+        text-align: center;
+    }
+
+    .zp-advantages__icon {
+        justify-content: center;
+    }
+
+    .zp-cards {
+        font-size: 17px;
+        line-height: 24px;
+    }
+
+    .zp-cards__header {
+        margin-bottom: 24px;
+    }
+
+    .zp-cards__tabs {
+        margin-bottom: 16px;
+    }
+
+    h2.zp-form__title {
+        font-size: 21px;
+        line-height: 28px;
+    }
+
+    .zp-advantages {
+        margin: 48px 0;
+    }
+
+    .zp-advantages__item {
+        padding-right: 15px;
+    }
+
+    .zp-cards {
+        margin: 48px 0;
+    }
+
+    .zp-form__steps {
+        margin-top: 24px;
+        margin-bottom: 48px;
+    }
+
+    .zp-cards__description {
+        font-size: 17px;
+        line-height: 24px;
+    }
+
+    img.zp-cards__background {
+        position: absolute;
+        top: -85px;
+        right: 10px;
+    }
+
+    .zp-delivery {
+        margin: 48px 0;
+    }
+
+    .zp-online__description {
+        font-size: 17px;
+        line-height: 24px;
+    }
+
+    .zp-online__buttons {
+        gap: 15px;
+        justify-content: space-between;
+    }
+
+    .zp-online__button {
+        font-size: 14px;
+    }
+
+    .zp-form__step {
+        margin-bottom: 39px;
+    }
+
+    .zp-form__step:last-child {
+        margin-bottom: 0;
+    }
+
+    .zp-form__step:last-child {
+        margin-bottom: 0;
+    }
+
+    .zp-docs {
+        margin: 48px 0;
+    }
+}
