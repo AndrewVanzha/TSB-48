@@ -1,0 +1,14 @@
+<?
+$PERM["ipoteka"]["*"]="D";
+$PERM["rezervirovanie-kursa"]["*"]="R";
+$PERM["brokerskoe-obsluzhivanie"]["2"]="D";
+$PERM["brokerskoe-obsluzhivanie"]["3"]="D";
+$PERM["brokerskoe-obsluzhivanie"]["4"]="D";
+$PERM["brokerskoe-obsluzhivanie"]["7"]="D";
+$PERM["brokerskoe-obsluzhivanie"]["5"]="D";
+$PERM["depozitarnoe-obsluzhivanie"]["2"]="D";
+$PERM["depozitarnoe-obsluzhivanie"]["3"]="D";
+$PERM["depozitarnoe-obsluzhivanie"]["4"]="D";
+$PERM["depozitarnoe-obsluzhivanie"]["7"]="D";
+$PERM["depozitarnoe-obsluzhivanie"]["5"]="D";
+?>
