@@ -1,0 +1,127 @@
+.v21 .v21-ved-consultations-container {
+    padding: 32px 0;
+    /*outline: 1px solid darkblue;*/
+}
+.v21 .v21-section .ved-consultation-tileblock {
+    flex: 1 1 100%;
+    font-family: Canela Deck LC;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0em;
+    color: #000000;
+}
+.v21 .ved-consultation-tileblock__header {
+    margin: 0 0 32px 0;
+    font-family: Canela Deck LC;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 50px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+.v21 .ved-consultation-tileblock__grid {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    position: relative;
+}
+.v21 .ved-consultation-tileblock__grid--item {
+    /*flex: 0 0 100%;*/
+    width: 100%;
+    padding: 0;
+    display: flex;
+    column-gap: 12px;
+    position: relative;
+}
+/*.v21 .ved-consultation-tileblock__grid--item::before {
+    content: url("/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/vector.svg");
+    width: 16px;
+    height: 12px;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+}*/
+.v21 .ved-consultation-tileblock__grid--bird {
+    flex: 0 0 16px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.v21 .ved-consultation-tileblock__grid--title {
+    flex: 1 1 100%;
+    padding: 0;
+    margin: 0;
+    font-family: RF Dewi;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+}
+.v21 .base-account-tileblock__grid--subtitle {
+    flex: 1 0 100%;
+    margin: 0;
+}
+/*.v21 .ved-consultation-tileblock__grid--horline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+}
+.v21 .ved-consultation-tileblock__grid--horline.horline-1 {
+    top: 0;
+    background: linear-gradient(90deg, transparent 0%, transparent 10%, #cedcdc 30%, transparent 80%, transparent 100%) no-repeat center;
+}
+.v21 .ved-consultation-tileblock__grid--horline.horline-2 {
+    bottom: 0;
+    background: linear-gradient(270deg, transparent 0%, transparent 10%, #cedcdc 30%, transparent 80%, transparent 100%) no-repeat center;
+}*/
+
+
+@media screen and (min-width: 768px) {
+    .v21 .v21-ved-consultations-container {
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+    .v21 .v21-section .ved-consultation-tileblock {
+        font-size: 24px;
+        line-height: 31px;
+    }
+    .v21 .v21 .ved-consultation-tileblock__header {
+        margin-bottom: 64px;
+    }
+    .v21 .ved-consultation-tileblock__grid--item {
+        width: 50%;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .v21 .v21-section .ved-consultation-tileblock {
+        flex-basis: 40.4%;
+        font-size: 30px;
+        line-height: 39px;
+    }
+    .v21 .ved-consultation-tileblock__grid--title {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .v21 .ved-consultation-tileblock__grid--item {
+        width: 100%;
+    }
+}
+@media screen and (min-width: 1366px) {
+    .v21 .v21-ved-consultations-container {
+        padding: 120px 0;
+    }
+    .v21 .v21-section .ved-consultation-tileblock {
+    }
+    .v21 .v21 .ved-consultation-tileblock__header {
+        margin-bottom: 120px;
+    }
+    /*.v21 .ved-consultation-tileblock__grid--verline {
+        display: block;
+    }*/
+}
+@media screen and (min-width: 1440px) {
+}
