@@ -23,7 +23,7 @@
     </div><?*/?>
 
     <?/*?><div class="ved-consult--form"><?*/?>
-        <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" class="ved-consult--form" id="consultForm">
+        <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" class="ved-consult--form" id="fValutnyKontrolConsultForm">
 
             <input type="hidden" name="FORM_ID" value="<?= $arResult['FORM_ID'] ?>">
             <input type="hidden" name="SESSION_ID" value="<?= bitrix_sessid() ?>">

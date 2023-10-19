@@ -9,7 +9,7 @@
                         <p>Виртуальная карта для оплаты таможенных пошлин 24/7</p>
                     </div>
                     <div class="v21-section-interests--button">
-                        <a href="/corporative-clients/bankovskoe-obsluzhivanie/zarplatnyy-proekt/" class="v21-section-interests--textbox-link">Подробнее</a>
+                        <a href="/corporative-clients/bankovskoe-obsluzhivanie/bankovskie-karty/tamozhennaya-karta-mir/" class="v21-section-interests--textbox-link">Подробнее</a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.26051 14L12.2174 3.04314V10.2501H14V0H3.74986V1.78263H10.9569L0 12.7395L1.26051 14Z" fill="white"/>
                         </svg>
@@ -29,7 +29,7 @@
                         <p>Покупка/продажа иностранной валюты по курсу близкому к биржевому, возможность хеджирования</p>
                     </div>
                     <div class="v21-section-interests--button">
-                        <a href="/corporative-clients/bankovskoe-obsluzhivanie/ekvayring/" class="v21-section-interests--textbox-link">Подробнее</a>
+                        <a href="/corporative-clients/bankovskoe-obsluzhivanie/konversionnye-sdelki/" class="v21-section-interests--textbox-link">Подробнее</a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.26051 14L12.2174 3.04314V10.2501H14V0H3.74986V1.78263H10.9569L0 12.7395L1.26051 14Z" fill="white"/>
                         </svg>
