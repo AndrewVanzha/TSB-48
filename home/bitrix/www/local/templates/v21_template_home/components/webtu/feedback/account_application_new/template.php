@@ -121,9 +121,9 @@
             </div>
             <?*/?>
             <div class="form-block--image">
-                <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/airplane_250.png" class="form-block--image-768" alt="самолетик">
-                <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/airplane_400.png" class="form-block--image-1024" alt="самолетик">
-                <img src="/corporative-clients/bankovskoe-obsluzhivanie/accounts-in-yuans/images/airplane_539.png" class="form-block--image-1366" alt="самолетик">
+                <img src="images/airplane_250.png" class="form-block--image-768" alt="самолетик">
+                <img src="images/airplane_400.png" class="form-block--image-1024" alt="самолетик">
+                <img src="images/airplane_539.png" class="form-block--image-1366" alt="самолетик">
             </div>
             <!--p class="form-block--thank">Спасибо <i>за&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;обращение</i></p-->
         </div>

@@ -503,7 +503,7 @@ $APPLICATION->IncludeComponent(
     <div class="v21-wide-container v21-account-application-container">
         <div class="v21-container">
             <div class="v21-card-application" id="fBusinessAccountForm">
-                <? $iblock_id = "215";  // Запрос на открытие счета
+                <? $iblock_id = "213";  // Запрос / Заявка на открытие счета
                 $APPLICATION->IncludeComponent(
                     "webtu:feedback",
                     "account_application_new",
