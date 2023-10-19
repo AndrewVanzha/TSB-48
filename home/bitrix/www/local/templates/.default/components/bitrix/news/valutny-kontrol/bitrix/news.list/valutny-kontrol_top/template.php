@@ -27,7 +27,7 @@ $this->setFrameMode(true);
 
                 <h3 class="template-topblock__content"><?echo $arResult["~DESCRIPTION"]; ?></h3>
                 <div class="template-topblock__buttons">
-                    <a href="#fValutnyKontrolForm" class="v21-button-2022 template-topblock__button button-1 js-valutny-kontrol__button">
+                    <a href="#fValutnyKontrolConsultForm" class="v21-button-2022 template-topblock__button button-1 js-valutny-kontrol__button">
                         <span>Получить консультацию</span>
                     </a>
                 </div>
@@ -95,8 +95,9 @@ $this->setFrameMode(true);
         $(document).ready(function () {
             $('.js-valutny-kontrol__button').on('click', function() {
                 let href = $(this).attr('href');
+				console.log($(href).offset().top - 270);
                 $('html, body').animate({
-                    scrollTop: $(href).offset().top - 120
+                    scrollTop: $(href).offset().top - 270
                 }, {
                     duration: 800,   // по умолчанию «400»
                     easing: "linear" // по умолчанию «swing»

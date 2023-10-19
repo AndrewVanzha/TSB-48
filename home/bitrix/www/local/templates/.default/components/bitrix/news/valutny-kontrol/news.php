@@ -340,7 +340,7 @@ $APPLICATION->IncludeComponent(
                         "AJAX_MODE" => "Y",
                         "COMPONENT_TEMPLATE" => "VED_consult",
                         //"IBLOCK_ID" => "6", // вместо него
-                        "IBLOCK_ID" => "205", // Заявка на консультации в области ВЭД
+                        "IBLOCK_ID" => "202", // Заявка на консультации в области ВЭД
                         "PROPERTIES" => array(
                             0 => "NAME",
                             1 => "PHONE",
@@ -521,7 +521,7 @@ $APPLICATION->IncludeComponent(
                         "FORM_HEADER" => "Запрос на открытие счета",
                         "SITES" => array(0=>"s1",),
                         "USER_EVENT" => "WEBTU_FEEDBACK_ACCOUNTS_USER",
-                        "UTM" => "150",
+                        "UTM" => "152",
                     )
                 );?>
             </div>
