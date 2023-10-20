@@ -264,7 +264,7 @@
         return (countErr > 0) ? false : true;
     }
 
-    $('#consultForm').submit(function (e) {
+    $('#fValutnyKontrolConsultForm').submit(function (e) {
         e.preventDefault();
         console.log('1');
         if ($("#politics3").prop("checked")) {
