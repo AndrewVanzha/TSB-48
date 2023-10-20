@@ -93,7 +93,7 @@ $aMenuLinks = Array( // меню для corporative_clients
         ),
         ""
     ),
-    Array(
+    /*Array(
         "Валютный контроль",
         "/corporative-clients/bankovskoe-obsluzhivanie/valutny-kontrol/",
         Array(),
@@ -102,7 +102,7 @@ $aMenuLinks = Array( // меню для corporative_clients
             'subgroup' => 2,
         ),
         ""
-    ),
+    ),*/
     Array(
         "Аренда сейфов",
         "/corporative-clients/arenda-seyfov/",
