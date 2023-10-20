@@ -175,7 +175,7 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/sche
 
     <section class="rko-doc">
         <div class="row">
-            <div class="rko-doc__block rko-doc__rate col-md-4">
+            <div class="rko-doc__block rko-doc__rate col-md-4" id="scheta-section-documents">
                 <header class="rko-doc__header">
                     <div class="rko-doc__title">Тарифы</div>
                 </header>
