@@ -170,6 +170,7 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/sche
     )
 );?>
     </div>
+	<div id="scheta-section-documents"></div>
     <div class="v21-section v21-scheta-section-documents">
     <div class="v21-container">
 
