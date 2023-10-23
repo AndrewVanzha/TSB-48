@@ -243,7 +243,7 @@
 }
 .v21 .v21-newheader__container .v21-button--new {
     height: 24px;
-    padding: 0 45px 0 0;
+    padding: 0 34px 0 0;
     margin-top: 16px;
     min-width: fit-content;
     background: transparent;
@@ -260,7 +260,7 @@
     content: url("/images/signal_to_right.svg");
     position: absolute;
     top: 1px;
-    right: 28px;
+    right: 16px;
 }
 
 .v21 .v21-newheader__container .v21-menu_special--appendix {
@@ -327,7 +327,7 @@
 .v21 .v21-menu_special {
     display: flex;
     flex-grow: 1;
-    padding: 0 0 0 30px;
+    padding: 0 0 0 16px;
     height: 56px;  /* firefox */
 }
 .v21 .v21-menu_special .v21-header__mid-nav {
