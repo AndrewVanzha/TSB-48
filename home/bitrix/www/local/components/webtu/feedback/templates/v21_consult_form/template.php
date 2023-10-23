@@ -10,17 +10,6 @@
         <img class="ved-consult--img__266" src="images/airplane_226_226.png" alt="самолетик">
         <img class="ved-consult--img__277" src="images/airplane_277_277.png" alt="самолетик">
     </div>
-    <?/*?><div class="ved-consult--text">
-        <h2 class="ved-consult--text_title">
-            <span>Консультации</span> по валютному законодательству
-        </h2>
-        <ul class="ved-consult--box"><span>Бесплатно проконсультируем по вопросам:</span>
-            <li>валютного законодательства</li>
-            <li>внешнеэкономической деятельности компании</li>
-            <li>проведения сложных форм платежей согласно международной практике</li>
-            <li>заполнения документов по валютному регулированию и контролю</li>
-        </ul>
-    </div><?*/?>
 
     <?/*?><div class="ved-consult--form"><?*/?>
         <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" class="ved-consult--form" id="fValutnyKontrolConsultForm">
@@ -54,11 +43,14 @@
                 <div class="ved-consult--form__section">
                     <div class="grid__item-1">
                         <label class="input-group">
-                            <input type="text" name="NAME" placeholder="ФИО" class="input-group__field input_1"
+                            <input type="text" name="NAME" placeholder="ФИО" class="input-group__field input_name"
                                 <? if (isset($arResult['POST']['NAME'])) { ?> value="<?=$arResult['POST']['NAME']?>" <? } ?>
                             >
                             <?/*?><span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_2_NAME")?></span><?*/?>
-                            <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
+                            <?/*?><span class="v21-input-group__warn">Обязательное поле к заполнению</span><?*/?>
+                            <div class="input-group--attention">
+                                <span class="input-group--warn2">Обязательное поле к заполнению</span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -66,11 +58,14 @@
                 <div class="ved-consult--form__section">
                     <div class="grid__item-1">
                         <label class="input-group">
-                            <input type="tel" name="PHONE" placeholder="+7 (___) ___-__-__" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field input_2"
+                            <input type="tel" name="PHONE" placeholder="Мобильный телефон" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field input_phone"
                                 <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
                             >
                             <?/*?><span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_2_PHONE")?></span><?*/?>
-                            <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
+                            <?/*?><span class="v21-input-group__warn">Обязательное поле к заполнению</span><?*/?>
+                            <div class="input-group--attention">
+                                <span class="input-group--warn2">Обязательное поле к заполнению</span>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -85,7 +80,7 @@
                     <div class="grid__item-1">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics3">
+                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics3">
                                 <div class="v21-checkbox__text"><?= $politics_output ?></div>
                             </label>
                             <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -129,68 +124,6 @@
                         </button>
                     <?/*?></div><?*/?>
                 </div>
-
-                <?/*?>
-                <label class="ved-consult--form_input-group">
-                    <span class="caption">
-                        <span class="aligner">
-                            <?=GetMessage("WEBTU_FEEDBACK_2_NAME")?>
-                        </span>
-                    </span>
-                    <span class="content">
-                        <input type="text" name="NAME" class="input-field" required
-                            <? if (isset($arResult['POST']['NAME'])) { ?> value="<?=$arResult['POST']['NAME']?>" <? } ?>
-                        >
-                    </span>
-                </label>
-
-                <label class="ved-consult--form_input-group">
-                    <span class="caption">
-                        <span class="aligner">
-                            <?=GetMessage("WEBTU_FEEDBACK_2_PHONE")?>
-                        </span>
-                    </span>
-                    <span class="content">
-                        <input type="tel" name="PHONE" data-mask="phone" class="input-field" required placeholder="+7 (___) ___-__-__"
-                            <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
-                        >
-                    </span>
-                </label>
-                <?*/?>
-
-                <?/*?>
-                <label class="ved-consult--form_agreement check-box">
-                    <input type="checkbox" name="" checked required="">
-                    <span class="check-box_caption"><?=$politics_output?></span>
-                </label>
-                <?*/?>
-
-                <?/*?>
-                <!--div class="v21-checkbox"-->
-                    <label class="v21-checkbox__content ved-consult--form_agreement">
-                        <input type="checkbox" checked name="" class="v21-checkbox__input">
-                        <span class="check-box_captionn v21-checkbox__text"><?= $politics_output ?></span>
-                        <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span><?// не работает?>
-                    </label>
-                <!--/div-->
-
-                <div class="ved-consult--form_captcha">
-                    <div class="captcha_image">
-                        <input type="hidden" id="captchaSidVEDConsult2" name="CAPTCHA_ID" value="<?=$arResult['CAPTCHA']?>" />
-                        <img id="captchaImgVEDConsult2" src="/bitrix/tools/captcha.php?captcha_sid=<?=$arResult['CAPTCHA']?>" alt="">
-                    </div>
-                    <a id="reloadCaptchaConsult" title="Обновить капчу"></a>
-
-                    <div class="captcha_input">
-                        <input type="text" name="CAPTCHA_WORD" placeholder="<?=GetMessage('WEBTU_FEEDBACK_CAPTCHA')?>" class="input-field">
-                        <span class="v21-input-group__warn">Неверно введен код с картинки</span>
-                    </div>
-                </div>
-
-                <button class="v21-ved-contracts__button v21-button ved-consult--form_button" name="WEBTU_FEEDBACK">
-                    <?=GetMessage("WEBTU_FEEDBACK_2_BUTTON")?>
-                </button>
-                <?*/?>
 
                 <?/* if (!empty($arResult['SUCCESS'])) {
                     LocalRedirect('/thanks/');
@@ -239,14 +172,13 @@
     });*/
 
     function requiredFields2() {
-        let arFields = [
-            '.input_1', //'input[name="NAME"]',
-            '.input_2', //'input[name="PHONE"]',
-        ];
-
+		let arCheckFields = [
+			'.input_name', //'input[name="NAME"]',
+			'.input_phone', //'input[name="PHONE"]',
+		];
         let countErr = 0;
 
-        arFields.forEach(function (value) {
+        arCheckFields.forEach(function (value) {
             if ($(value).val() == '') {
                 $(value).parent().addClass("is-error");
                 countErr += 1;
@@ -266,9 +198,9 @@
 
     $('#fValutnyKontrolConsultForm').submit(function (e) {
         e.preventDefault();
-        console.log('1');
-        if ($("#politics3").prop("checked")) {
-            $('#politics3').parent().parent().removeClass("is-error");
+        console.log('ConsultForm');
+        //if ($("#politics3").prop("checked")) {
+            //$('#politics3').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields2()) {
                 //console.log('3');
@@ -297,9 +229,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics3').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics3').parent().parent().addClass("is-error");
+        //}
     });
 
     /*$('.input-group input[required]').change(function () {

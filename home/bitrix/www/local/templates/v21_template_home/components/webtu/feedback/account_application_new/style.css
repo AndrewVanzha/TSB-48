@@ -259,7 +259,7 @@
 .v21 .input-group--achtung {
     display: none;
     position: absolute;
-    top: 8px;
+    top: 7px;
     right: 10px;
     width: 20px;
     height: 20px;
@@ -282,8 +282,8 @@
 .v21 .input-group--warn {
     display: none;
     position: absolute;
-    right: 5px;
-    top: 19px;
+    right: 20px;
+    top: -2px;
     width: 210px;
     height: fit-content;
     padding: 5px 7px;
