@@ -128,7 +128,7 @@
                 <div class="v21-grid__item">
                     <div class="v21-checkbox">
                         <label class="v21-checkbox__content">
-                            <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics2">
+                            <input type="checkbox" name="" class="v21-checkbox__input" id="politics2">
                             <span class="v21-checkbox__text"><?= $politics_output ?></span>
                         </label>
                         <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -182,7 +182,7 @@
     });*/
 
     function requiredFields() {
-        let arFields = [
+        let arCheckFields = [
             'input[name="ORGANIZATION"]',
             'input[name="CREDIT_SUMM"]',
             'input[name="NAME"]',
@@ -193,7 +193,7 @@
 
         let countErr = 0;
 
-        arFields.forEach(function (value) {
+        arCheckFields.forEach(function (value) {
             if ($(value).val() == '') {
                 $(value).parent().addClass("is-error");
                 countErr += 1;
@@ -213,9 +213,9 @@
 
     $('#fBusinessCreditForm').submit(function (e) {
         e.preventDefault();
-        //console.log('1');
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
+        console.log('form');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields()) {
                 //console.log('3');
@@ -234,7 +234,7 @@
                             $('input[name="CAPTCHA_WORD"]').css('border-color', 'rgba(32, 32, 32, 0.12)');
                             document.location.href = "/thanks/";
                         } else {
-                            //console.log('not OK');
+                            console.log('not OK');
                             if (!data.captcha){
                                 $('input[name="CAPTCHA_WORD"]').parent().parent().addClass("is-error");
                                 $('input[name="CAPTCHA_WORD"]').css('border-color', '#aa0000');
@@ -246,9 +246,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 </script>
 
