@@ -43,7 +43,7 @@ $ix = 0;
                         />
                     </div>
                     <? endforeach; ?>
-                    <h4 class="accounts-currencies-tileblock__grid--title"><?= $arItem["main"]; ?></h4>
+                    <h4 class="accounts-currencies-tileblock__grid--title"><p><?= $arItem["main"]; ?></p></h4>
                 </div>
             </div>
         <? endforeach; ?>
