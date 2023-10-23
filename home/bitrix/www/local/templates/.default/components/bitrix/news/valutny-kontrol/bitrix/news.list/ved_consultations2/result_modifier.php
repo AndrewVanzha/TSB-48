@@ -1,30 +1,5 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-/*
-debugg($arParams['PARENT_SECTION']);
-debugg($arParams["IBLOCK_ID"]);
-
-$arSelect = array(
-    'NAME',
-    'DESCRIPTION',
-    'PICTURE',
-    'UF_*' // все пользовательские поля, можно перечислять конкретные
-);
-$secRes = CIBlockSection::GetList(
-    false,
-    array(
-        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-        "ID" => $arParams["PARENT_SECTION"]
-    ),
-    false,
-    $arSelect
-);
-while ($sectionProp = $secRes->GetNext()) {
-    $arSection[] = $sectionProp;
-}
-
-debugg($arSection);
-*/
 //debugg($arParams);
 //debugg($arResult);
 
@@ -39,7 +14,7 @@ foreach ($arResult["ITEMS"] as $arItem) {
         //debugg($arItem);
         $arResult['PROPERTY_HEADER'] = $arItem['~NAME'];
         if ($arItem['PROPERTIES']['ATT_SERVICES']['VALUE']) {
-            foreach ($arItem['PROPERTIES']['ATT_SERVICES']['VALUE'] as $item) {
+            foreach ($arItem['PROPERTIES']['ATT_SERVICES']['~VALUE'] as $item) {
                 $main_items[] = $item;
             }
         }

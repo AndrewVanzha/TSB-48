@@ -55,7 +55,7 @@
     background-color: #F9FBFB;
 }*/
 .v21 .faq-questions--block__item {
-    padding: 10px 16px 12px 16px;
+    padding: 25px 16px 11px 16px;
     border-radius: 8px;
 }
 .v21 .faq-questions--block__item:hover {}
@@ -85,7 +85,7 @@
     height: 6px;
     position: absolute;
     right: 16px;
-    top: 30px;
+    top: 41px;
     cursor: pointer;
 }
 .v21 .faq-questions .faq-questions--block__item-mark::before {
