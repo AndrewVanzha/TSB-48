@@ -103,7 +103,7 @@
 }
 .v21 .creditlist-item__buttons-ask a {
     display: block;
-    padding: 17px 45px 19px 45px;
+    /*padding: 17px 45px 19px 45px;*/
     width: 100%;
     line-height: 24px;
 }
