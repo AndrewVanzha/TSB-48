@@ -54,7 +54,7 @@
 	?>
 
 	<div class="eq-form__row policy">
-		<input type="checkbox" id="eq-policy-online" checked required>
+		<input type="checkbox" id="eq-policy-online" required>
 		<label for="eq-policy-online"><?=$politics_output?></label>
 	</div>
 	
