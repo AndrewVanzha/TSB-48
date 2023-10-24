@@ -34,7 +34,7 @@
 	?>
 
 	<div class="zp-form__row policy">
-		<input type="checkbox" id="zp-policy" checked required>
+		<input type="checkbox" id="zp-policy" required>
 		<label for="zp-policy" class="zp-form__policy"><?=$politics_output?></label>
 	</div>
 	
