@@ -156,7 +156,7 @@
                     <div class="grid__item-1">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics2" checked>
+                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics2">
                                 <div class="v21-checkbox__text"><?= $politics_output ?></div>
                             </label>
                             <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -233,21 +233,8 @@
         let fixLevel2 = formBlockTop + $('.card-application--form').height() * .6 - opacityOffset; // уровень второго переключения
         let fixLevel3 = formBlockTop - inversionOffset + classOffset; // не нужен
         let fixLevel = (fixLevel1 - scrollTop) / opacityOffset; // диапазон смены прозрачности - не нужен
-        //console.log('scrollTop=' + scrollTop);
-        //console.log('formBlockTop=' + formBlockTop);
-        //console.log('fixLevel1=' + fixLevel1);
-        //console.log('fixLevel2=' + fixLevel2);
-        //console.log('windowInnerWidth=' + windowInnerWidth);
 
         if(scrollTop > fixLevel2) {
-            //console.log('scrollTop=' + scrollTop);
-            /*if(fixLevel < 0) {
-                opacityLevel = 1;
-            } else if(fixLevel >= 1) {
-                opacityLevel = 0;
-            } else {
-                opacityLevel = 1 - fixLevel;
-            }*/
             //$('.v21-card-application').css('background', 'linear-gradient(106.11deg, '+param1+' 27.82%, '+param2+' 100%)');
             $('.safes-page__background-blue').css('opacity', '0');
             $('.v21 .v21-card-application').removeClass('js-color-switch');
@@ -265,20 +252,6 @@
             $('.v21 .v21-safe-info').removeClass('js-color-switch');
             $('.v21 .v21-safes-advantages').removeClass('js-color-switch');
         }
-
-        /*if(scrollTop > (fixLevel2+200)) {
-            $('.safes-page__background-blue').css('position', 'unset'); // для нижний блоков отработать стилем z-index
-        } else if(scrollTop > (fixLevel1-200)) {
-            $('.safes-page__background-blue').css('position', 'fixed');
-        } else {
-            $('.safes-page__background-blue').css('position', 'unset');
-        }*/
-
-        /*if(scrollTop > fixLevel3) {
-            $('.v21-card-application').addClass('js-color-switch');
-        } else {
-            $('.v21-card-application').removeClass('js-color-switch');
-        }*/
     }
     changeColors($(window).scrollTop());
 
@@ -342,9 +315,9 @@
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        //console.log('1');
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
+        console.log('form');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields()) {
                 //console.log('3');
@@ -362,7 +335,7 @@
                             $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
                             document.location.href = "/thanks/";
                         } else {
-                            //console.log('not OK');
+                            console.log('not OK');
                             if (!data.captcha){
                                 $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
                             } else {
@@ -372,9 +345,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 
 </script>
