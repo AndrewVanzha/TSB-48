@@ -145,7 +145,7 @@ if ($arResult['POST']['OPERATION']) {
                     <div class="v21-grid__item">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input id="politics2" type="checkbox" checked name="politics" class="v21-checkbox__input" >
+                                <input id="politics2" type="checkbox" name="politics" class="v21-checkbox__input" >
                                 <span class="v21-checkbox__text">
                                     <?= $politics_output ?>
                                 </span>
@@ -296,12 +296,12 @@ if ($arResult['POST']['OPERATION']) {
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        console.log('1');
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
-            console.log('2');
+        console.log('form');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
+            //console.log('2');
             if (requiredFields()) {
-                console.log('3');
+                //console.log('3');
                 $.ajax({
                     type: "POST",
                     url: '/ajax_scripts/ajax.customer.php',
@@ -310,7 +310,7 @@ if ($arResult['POST']['OPERATION']) {
                     },
                     dataType: "json",
                     success: function (data) {
-                        console.log('**');
+                        //console.log('**');
                         if (data.status) {
                             clearFields ();
                             $('input[name="CAPTCHA_WORD"]').parent().parent().removeClass("is-error");
@@ -329,9 +329,9 @@ if ($arResult['POST']['OPERATION']) {
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 
 </script>
