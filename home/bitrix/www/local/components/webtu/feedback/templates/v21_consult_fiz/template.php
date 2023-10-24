@@ -47,8 +47,8 @@
                 <div class="consult-block--form__section">
                     <div class="grid__item-2">
                         <label class="input-box">
-                            <input type="tel" name="PHONE" placeholder="+7 ___ ___ __ __" data-inputmask="'mask': '+7 999 999 99 99'" class="input-box__field input_PHONE"
-                                <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
+                            <input type="tel" name="PHONE2" placeholder="+7 ___ ___ __ __" data-inputmask="'mask': '+7 999 999 99 99'" class="input-box__field input_PHONE"
+                                <? if (isset($arResult['POST']['PHONE2'])) { ?> value="<?=$arResult['POST']['PHONE2']?>" <? } ?>
                             >
                             <span class="input-box__label"><?= GetMessage("WEBTU_FEEDBACK_2_PHONE") ?></span>
                             <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
@@ -57,8 +57,8 @@
 
                     <div class="grid__item-2">
                         <label class="input-box">
-                            <input type="email" name="EMAIL" placeholder="email@mail.com" class="input-box__field input_EMAIL"
-                                <? if (isset($arResult['POST']['EMAIL'])) { ?> value="<?=$arResult['POST']['EMAIL']?>" <? } ?>
+                            <input type="email" name="EMAIL2" placeholder="email@mail.com" class="input-box__field input_EMAIL"
+                                <? if (isset($arResult['POST']['EMAIL2'])) { ?> value="<?=$arResult['POST']['EMAIL2']?>" <? } ?>
                             >
                             <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
                             <span class="input-box__label"><?= GetMessage("WEBTU_FEEDBACK_2_EMAIL") ?></span>
@@ -86,7 +86,7 @@
                     <div class="grid__item-1">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input type="checkbox" checked name="" class="v21-checkbox__input" id="politics3">
+                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics3">
                                 <div class="v21-checkbox__text"><?= $politics_output ?></div>
                             </label>
                             <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -171,8 +171,8 @@
     function requiredFields2() {
         let arFields = [
             '.input_NAME', // 'input[name="NAME"]',
-            '.input_PHONE', // 'input[name="PHONE"]',
-            '.input_EMAIL', // 'input[name="EMAIL"]',
+            '.input_PHONE', // 'input[name="PHONE2"]',
+            '.input_EMAIL', // 'input[name="EMAIL2"]',
             '.input_PREVIEW_TEXT', // 'textarea[name="PREVIEW_TEXT"]',
         ];
 
@@ -198,9 +198,9 @@
 
     $('#consultForm').submit(function (e) {
         e.preventDefault();
-        //console.log('1');
-        if ($("#politics3").prop("checked")) {
-            $('#politics3').parent().parent().removeClass("is-error");
+        console.log('form2');
+        //if ($("#politics3").prop("checked")) {
+            //$('#politics3').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields2()) {
                 //console.log('3');
@@ -218,7 +218,7 @@
                             $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
                             document.location.href = "/thanks/";
                         } else {
-                            //console.log('not OK');
+                            console.log('not OK');
                             if (!data.captcha){
                                 $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
                             } else {
@@ -228,9 +228,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics3').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics3').parent().parent().addClass("is-error");
+        //}
     });
 
     /*$('.input-box input[required]').change(function () {
