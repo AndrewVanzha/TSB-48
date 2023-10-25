@@ -34,7 +34,7 @@
 	?>
 
 	<div class="ls-form__row policy">
-		<input type="checkbox" id="ls-policy-online" checked required>
+		<input type="checkbox" id="ls-policy-online" required>
 		<label for="ls-policy-online"><?=$politics_output?></label>
 	</div>
 	

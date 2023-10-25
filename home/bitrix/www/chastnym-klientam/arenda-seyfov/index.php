@@ -205,8 +205,8 @@ Asset::getInstance()->addCss("/chastnym-klientam/arenda-seyfov/style.css");
             "COMPONENT_TEMPLATE" => "v21_consult_fiz",
             "IBLOCK_ID" => "5",
             "PROPERTIES" => array(
-                "PHONE",
-                "EMAIL",
+                "PHONE2",
+                "EMAIL2",
                 "FOLDER",
                 "NAME",
                 "REQ_URI",
