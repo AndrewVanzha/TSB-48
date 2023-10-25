@@ -483,7 +483,7 @@ IncludeTemplateLangFile(__FILE__);
                     <div class="v21-grid__item v21-grid__item--1x2@lg">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input id="politics" type="checkbox" checked name="politics" class="v21-checkbox__input">
+                                <input id="politics" type="checkbox" name="politics" class="v21-checkbox__input">
                                 <span class="v21-checkbox__text">
                                     <?= $politics_output ?>
                                 </span>
