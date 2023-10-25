@@ -139,7 +139,7 @@
                     <div class="grid__item-1">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input type="checkbox" name="CITYZENSHIP" class="v21-checkbox__input" checked>
+                                <input type="checkbox" name="CITYZENSHIP" class="v21-checkbox__input">
                                 <div class="v21-checkbox__text"><?=GetMessage("WEBTU_FEEDBACK_3_CITIZENSHIP")?></div>
                             </label>
                         </div>
@@ -156,7 +156,7 @@
                     <div class="grid__item-1">
                         <div class="v21-checkbox">
                             <label class="v21-checkbox__content">
-                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics2" checked>
+                                <input type="checkbox" name="" class="v21-checkbox__input" id="politics2">
                                 <div class="v21-checkbox__text"><?= $politics_output ?></div>
                             </label>
                             <span class="v21-checkbox__warn">Для подачи заявки необходимо подтвердить свое ознакомление и соглашение с правилами</span>
@@ -318,8 +318,9 @@
 
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        if ($("#politics2").prop("checked")) {
-            $('#politics2').parent().parent().removeClass("is-error");
+        console.log('form');
+        //if ($("#politics2").prop("checked")) {
+            //$('#politics2').parent().parent().removeClass("is-error");
             if (requiredFields()) {
                 $.ajax({
                     type: "POST",
@@ -335,6 +336,7 @@
                             document.location.href = "/thanks/";
                         } else {
                             if (!data.captcha){
+                            console.log('not OK');
                                 $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
                             } else {
                                 $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
@@ -343,9 +345,9 @@
                     }
                 });
             }
-        } else {
-            $('#politics2').parent().parent().addClass("is-error");
-        }
+        //} else {
+        //    $('#politics2').parent().parent().addClass("is-error");
+        //}
     });
 
 </script>
