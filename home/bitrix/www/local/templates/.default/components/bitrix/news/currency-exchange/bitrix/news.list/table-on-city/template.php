@@ -63,7 +63,7 @@ $currencyCode = $arParams["CURRENCY"];
                                         <?
                                         if (!isset($arResult['COURSES']['tsb'][$arOffice['PROPERTY_ATT_CODE_VALUE']]['currency'][$currencyCode][1])) {
                                             if ($arResult['TSB_CURRENCIES'][$currencyCode]['UF_CURR_TEXT_RU2'] == 'Фунт стерлингов' && $arOffice['NAME'] == 'ДО «Братиславская»') { // костыль ДО «Братиславская»
-                                                echo $arResult['TSB_CURRENCIES'][$currencyCode]['UF_CURR_TEXT_RU2'].', в т.ч. шотландский';
+                                                echo $arResult['TSB_CURRENCIES'][$currencyCode]['UF_CURR_TEXT_RU2'].', в т.ч. шотландский и североирландский';
                                             } else {
                                                 echo $arResult['TSB_CURRENCIES'][$currencyCode]['UF_CURR_TEXT_RU2'];
                                             }

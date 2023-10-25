@@ -124,7 +124,7 @@ $APPLICATION->SetPageProperty("title", "Обмен валют в " . $title_h1 .
                             <div class="grid-cell grid-cell--currency">
                                 <div class="grid-cell--title">
                                     <? if ($arResult['TSB_CURRENCIES'][$curr_code]['UF_CURR_TEXT_RU2'] == 'Фунт стерлингов' && $officeCode == 10907) : // Костыль для ДО «Братиславская» ?>
-                                        <div><?= $arResult['TSB_CURRENCIES'][$curr_code]['UF_CURR_TEXT_RU2'].', в т.ч. шотландский' ?></div>
+                                        <div><?= $arResult['TSB_CURRENCIES'][$curr_code]['UF_CURR_TEXT_RU2'].', в т.ч. шотландский и североирландский' ?></div>
                                     <? else: ?>
                                         <div><?= $arResult['TSB_CURRENCIES'][$curr_code]['UF_CURR_TEXT_RU2'] ?></div>
                                     <? endif; ?>
