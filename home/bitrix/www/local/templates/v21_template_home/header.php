@@ -17,6 +17,7 @@ IncludeTemplateLangFile(__FILE__);
 	<?/*?><meta name="yandex-verification" content="3219059ecde97a2a" />
 	<meta name="yandex-verification" content="b7c6465398515c12" /> <!--www--><?*/?>
     <meta name="yandex-verification" content="81dd76454248a759" />
+	<meta name="robots" content="max-image-preview:large">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <? $assets = Asset::getInstance(); ?>
     <? $assets->addCss("/local/templates/.default/css/normalize.min.css"); ?>
