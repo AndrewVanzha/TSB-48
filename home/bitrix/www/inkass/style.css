@@ -26,7 +26,16 @@
     line-height: 19px;
     letter-spacing: 0em;
     justify-content: center;
+    position: relative;
 }
+.v21 .verification-error {
+    position: absolute;
+    top: -22px;
+    left: 42%;
+    color: #ee7700;
+    opacity: 1;
+}
+
 .v21 .form-contacts .title {
     display: none;
 }
@@ -78,4 +87,8 @@
     line-height: 16px;
     letter-spacing: 0em;
     text-align: center;
+}
+
+.v21 div.bx-auth {
+    margin: 0 auto;
 }
