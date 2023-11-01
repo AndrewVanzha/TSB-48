@@ -105,11 +105,21 @@
                         <div class="v21-input-group">
                             <span class="v21-input-group__label"><?= GetMessage("WEBTU_FEEDBACK_8_SEX") ?></span>
                             <div class="v21-switch">
+                                <label for="v21_genderMale" class="v21-switch__label">
+                                    <?= GetMessage("WEBTU_FEEDBACK_8_SEX_MALE") ?>
+                                    <input type="radio" name="SEX" id="v21_genderMale" value="Мужской" class="v21-switch__input v21-switch__input--left" <?/* if (!isset($arResult['POST']['SEX'])) { ?> checked <? } */?> <? if (isset($arResult['POST']['SEX'])) { ?> <? if ($arResult['POST']['SEX'] == 'Мужской') { ?> checked <? } ?> <? } ?>>
+                                </label>
+                                <label for="v21_genderFemale" class="v21-switch__label">
+                                    <?= GetMessage("WEBTU_FEEDBACK_8_SEX_FEMALE") ?>
+                                    <input type="radio" name="SEX" id="v21_genderFemale" value="Женский" class="v21-switch__input v21-switch__input--right" <? if (isset($arResult['POST']['SEX'])) { ?> <? if ($arResult['POST']['SEX'] == 'Женский') { ?> checked <? } ?> <? } ?>>
+                                </label>
+								<?/*?>
                                 <input type="radio" name="SEX" id="v21_genderMale" value="Мужской" checked class="v21-switch__input">
                                 <label for="v21_genderMale" class="v21-switch__label"><?= GetMessage("WEBTU_FEEDBACK_8_SEX_MALE") ?></label>
                                 <input type="radio" name="SEX" id="v21_genderFemale" value="Женский" class="v21-switch__input">
                                 <label for="v21_genderFemale" class="v21-switch__label"><?= GetMessage("WEBTU_FEEDBACK_8_SEX_FEMALE") ?></label>
                                 <div class="v21-switch__handle"></div>
+								<?*/?>
                             </div>
                         </div>
                     </div><!-- /.v21-grid__item -->
