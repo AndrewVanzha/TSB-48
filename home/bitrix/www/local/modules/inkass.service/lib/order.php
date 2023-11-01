@@ -60,12 +60,12 @@ class Order
         if (empty($data['question_6'])) {
             return ['data' => $data, 'error' => 'Не указан ответ на доп.вопрос №6'];
         }
-        if (empty($data['question_7'])) {
-            return ['data' => $data, 'error' => 'Не указан ответ на доп.вопрос №7'];
-        }
-        if (empty($data['question_8'])) {
-            return ['data' => $data, 'error' => 'Не указан ответ на доп.вопрос №8'];
-        }
+        //if (empty($data['question_7'])) {
+        //    return ['data' => $data, 'error' => 'Не указан ответ на доп.вопрос №7'];
+        //}
+        //if (empty($data['question_8'])) {
+        //    return ['data' => $data, 'error' => 'Не указан ответ на доп.вопрос №8'];
+        //}
 
         $date_time = new DateTime();
         $operation_time = new DateTime($data['finish_time']);
@@ -80,21 +80,35 @@ class Order
             'start_time' => new DateTime($data['start_time']),
             'finish_time' => new DateTime($data['finish_time']),
             'question_1' => $data['question_1'],
+            'question_1_ask' => $data['question_1_ask'],
             'question_1_comment' => $data['question_1_comment'],
             'question_2' => $data['question_2'],
+            'question_2_ask' => $data['question_2_ask'],
             'question_2_comment' => $data['question_2_comment'],
             'question_3' => $data['question_3'],
+            'question_3_ask' => $data['question_3_ask'],
             'question_3_comment' => $data['question_3_comment'],
             'question_4' => $data['question_4'],
+            'question_4_ask' => $data['question_4_ask'],
             'question_4_comment' => $data['question_4_comment'],
             'question_5' => $data['question_5'],
+            'question_5_ask' => $data['question_5_ask'],
             'question_5_comment' => $data['question_5_comment'],
             'question_6' => $data['question_6'],
+            'question_6_ask' => $data['question_6_ask'],
             'question_6_comment' => $data['question_6_comment'],
             'question_7' => $data['question_7'],
+            'question_7_ask' => $data['question_7_ask'],
             'question_7_comment' => $data['question_7_comment'],
             'question_8' => $data['question_8'],
+            'question_8_ask' => $data['question_8_ask'],
             'question_8_comment' => $data['question_8_comment'],
+            'question_9' => $data['question_9'],
+            'question_9_ask' => $data['question_9_ask'],
+            'question_9_comment' => $data['question_9_comment'],
+            'question_10' => $data['question_10'],
+            'question_10_ask' => $data['question_10_ask'],
+            'question_10_comment' => $data['question_10_comment'],
             'dop_comment' => $data['dop_comment'],
         ];
         //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_inkass_create_order.json', json_encode($data));
