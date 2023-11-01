@@ -14,8 +14,8 @@ $(document).ready(function () {
             'input[name="check_question_4"]',
             'input[name="check_question_5"]',
             'input[name="check_question_6"]',
-            'input[name="check_question_7"]',
-            'input[name="check_question_8"]',
+            //'input[name="check_question_7"]',
+            //'input[name="check_question_8"]',
         ];
 
         let countErr = 0;

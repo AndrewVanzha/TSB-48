@@ -4,7 +4,6 @@ $(document).ready(function () {
             'input[name="check_date"]',
             'input[name="check_start_time"]',
             'input[name="check_finish_time"]',
-            //'input[name="check_office"]',
             'select[name="check_office"]',
             'input[name="check_fio"]',
         ];
@@ -15,13 +14,12 @@ $(document).ready(function () {
             'input[name="check_question_4"]',
             'input[name="check_question_5"]',
             'input[name="check_question_6"]',
-            'input[name="check_question_7"]',
-            'input[name="check_question_8"]',
+            //'input[name="check_question_7"]',
+            //'input[name="check_question_8"]',
         ];
 
         let countErr = 0;
         let error_list = [];
-        //console.log('(value).val()=');
         arFields.forEach(function (value) {
             if ($(value).val() == '' || $(value).val() == 'Дополнительный офис') {  // myString.replace(/[^\w\s!?]/g,'');
                 $(value).parent().addClass("vs-form__error");
@@ -63,7 +61,6 @@ $(document).ready(function () {
     }
 
     function badTimeString(snode) {
-        //console.log('time');
         let stime = $(snode).val();
         if(stime == '') {
             return true;
@@ -115,6 +112,7 @@ $(document).ready(function () {
                 data: $(this).serialize(),
                 dataType: "json",
                 success: function (response) {
+                    //console.log(response);
                     document.location.href = "/inkass/finish.php?check_id=" + response['check_id'];
                 },
                 error: function (jqXHR, exception) {
