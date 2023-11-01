@@ -37,7 +37,16 @@ foreach ($offices as $office) {
     }
 }
 //debugg($arOffices);
-$arQuestionsList = General::get_questions_list();
+$ar_questions = General::get_questions_list();
+$arQuestionsLimit = 10;  //                            максимум записей в БД
+if (count($ar_questions) > $arQuestionsLimit) {
+	for ($ix=0; $ix<$arQuestionsLimit; $ix++) {
+		$arQuestionsList[$ix] = $ar_questions[$ix];
+	}
+}
+else {
+	$arQuestionsList = $ar_questions;
+}
 //debugg($arQuestionsList);
 ?>
 <h2 class="vs-orders__title">Чек-лист</h2>
@@ -128,261 +137,42 @@ $arQuestionsList = General::get_questions_list();
 
             <h3 class="vs-orders__doptitle">Проверяемые вопросы</h3>
 
-            <div class="vs-form__label"><?= $arQuestionsList[0] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_1_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_1"
+            <? for ($ix=0; $ix<count($arQuestionsList); $ix++) { ?>
+				<div class="vs-form__label"><?= $arQuestionsList[$ix] ?></div>
+				<div class="vs-form__row vs-form__row_flex">
+					<div class="vs-form__radio js-vs-form__warn">
+						<label for="type_question_<?=$ix+1?>_yes" class="vs-form__radio-label">
+							<span>Да</span>
+							<input
+								type="radio"
+                                name="check_question_<?=$ix+1?>"
                                 value="Да"
-                                id="type_question_1_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_1_no" class="vs-form__radio-label">
-                        <input
+                                id="type_question_<?=$ix+1?>_yes"
+							>
+						</label>
+						<label for="type_question_<?=$ix+1?>_no" class="vs-form__radio-label">
+							<input
                                 type="radio"
-                                name="check_question_1"
+                                name="check_question_<?=$ix+1?>"
                                 value="Нет"
-                                id="type_question_1_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_1_comment"
+                                id="type_question_<?=$ix+1?>_no"
+							>
+							<span>Нет</span>
+						</labeL>
+						<span class="vs-form__warn">Обязательное поле к заполнению</span>
+					</div>
+					<? $q_ask = 'check_question_' . ($ix + 1) . '_ask'; ?>
+					<? $q_comment = 'check_question_' . ($ix + 1) . '_comment'; ?>
+					<input type="hidden" name="<?=$q_ask?>" value="<?= $arQuestionsList[$ix] ?>">
+					<div class="vs-form__comment">
+						<textarea rows="1"
+                              name=<?=$q_comment?>
                               class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
                               placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_1_comment']) ? $result['data']['check_question_1_comment'] : '' ?></textarea>
-                </div>
-            </div>
-
-            <div class="vs-form__label"><?= $arQuestionsList[1] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_2_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_2"
-                                value="Да"
-                                id="type_question_2_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_2_no" class="vs-form__radio-label">
-                        <input
-                                type="radio"
-                                name="check_question_2"
-                                value="Нет"
-                                id="type_question_2_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_2_comment"
-                              class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
-                              placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_2_comment']) ? $result['data']['check_question_2_comment'] : '' ?></textarea>
-                </div>
-            </div>
-
-            <div class="vs-form__label"><?= $arQuestionsList[2] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_3_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_3"
-                                value="Да"
-                                id="type_question_3_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_3_no" class="vs-form__radio-label">
-                        <input
-                                type="radio"
-                                name="check_question_3"
-                                value="Нет"
-                                id="type_question_3_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_3_comment"
-                              class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
-                              placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_3_comment']) ? $result['data']['check_question_3_comment'] : '' ?></textarea>
-                </div>
-            </div>
-
-            <div class="vs-form__label"><?= $arQuestionsList[3] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_4_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_4"
-                                value="Да"
-                                id="type_question_4_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_4_no" class="vs-form__radio-label">
-                        <input
-                                type="radio"
-                                name="check_question_4"
-                                value="Нет"
-                                id="type_question_4_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_4_comment"
-                              class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
-                              placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_4_comment']) ? $result['data']['check_question_4_comment'] : '' ?></textarea>
-                </div>
-            </div>
-
-            <div class="vs-form__label"><?= $arQuestionsList[4] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_4_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_5"
-                                value="Да"
-                                id="type_question_5_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_5_no" class="vs-form__radio-label">
-                        <input
-                                type="radio"
-                                name="check_question_5"
-                                value="Нет"
-                                id="type_question_5_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_5_comment"
-                              class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
-                              placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_5_comment']) ? $result['data']['check_question_5_comment'] : '' ?></textarea>
-                </div>
-            </div>
-
-            <div class="vs-form__label"><?= $arQuestionsList[5] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_6_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_6"
-                                value="Да"
-                                id="type_question_6_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_6_no" class="vs-form__radio-label">
-                        <input
-                                type="radio"
-                                name="check_question_6"
-                                value="Нет"
-                                id="type_question_6_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_6_comment"
-                              class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
-                              placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_6_comment']) ? $result['data']['check_question_6_comment'] : '' ?></textarea>
-                </div>
-            </div>
-
-            <div class="vs-form__label"><?= $arQuestionsList[6] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_7_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_7"
-                                value="Да"
-                                id="type_question_7_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_7_no" class="vs-form__radio-label">
-                        <input
-                                type="radio"
-                                name="check_question_7"
-                                value="Нет"
-                                id="type_question_7_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_7_comment"
-                              class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
-                              placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_7_comment']) ? $result['data']['check_question_7_comment'] : '' ?></textarea>
-                </div>
-            </div>
-
-            <div class="vs-form__label"><?= $arQuestionsList[7] ?></div>
-            <div class="vs-form__row vs-form__row_flex">
-                <div class="vs-form__radio js-vs-form__warn">
-                    <label for="type_question_8_yes" class="vs-form__radio-label">
-                        <span>Да</span>
-                        <input
-                                type="radio"
-                                name="check_question_8"
-                                value="Да"
-                                id="type_question_8_yes"
-                        >
-                    </labeL>
-                    <label for="type_question_8_no" class="vs-form__radio-label">
-                        <input
-                                type="radio"
-                                name="check_question_8"
-                                value="Нет"
-                                id="type_question_8_no"
-                        >
-                        <span>Нет</span>
-                    </labeL>
-                    <span class="vs-form__warn">Обязательное поле к заполнению</span>
-                </div>
-                <div class="vs-form__comment">
-                    <textarea rows="1"
-                              name="check_question_8_comment"
-                              class="vs-form__comment-textarea <?= $result['text'] ? ' tsb-feedback-form__textarea_error' : '' ?>"
-                              placeholder="Комментарий"
-                              ><?= ($result['data']['check_question_8_comment']) ? $result['data']['check_question_8_comment'] : '' ?></textarea>
-                </div>
-            </div>
+                              ><?= ($result['data'][$q_comment]) ? $result['data'][$q_comment] : '' ?></textarea>
+					</div>
+				</div>
+            <? } ?>
 
             <div class="vs-form__comment vs-form__dop-comment">
                     <textarea rows="5"

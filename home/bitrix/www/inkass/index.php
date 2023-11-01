@@ -45,6 +45,9 @@ if ($_GET['check_id']) : ?>
                         )
                     );
                     ?>
+                    <?php if(!$USER->IsAuthorized()) : ?>
+                        <div class="verification-error verification-error-anim">Ошибка логина или пароля</div>
+                    <? endif; ?>
                 </div>
             </div>
 
