@@ -24,7 +24,7 @@ $currencyCode = $arParams["CURRENCY"];
         </div>
         <div class="currency-table--wrap">
             <? foreach ($arResult['OFFICES'] as $key=>$arOffice) : ?>
-                <?//debugg($arOffice)?>
+                <?//debugg($arOffice) ?>
                 <?//debugg($arResult['COURSES']['tsb'])?>
                 <? if(isset($arResult['COURSES']['tsb'][$arOffice['PROPERTY_ATT_CODE_VALUE']])) : ?>
                     <div class="currency-table--item">
