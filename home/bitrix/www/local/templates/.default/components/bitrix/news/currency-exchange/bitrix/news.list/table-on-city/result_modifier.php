@@ -317,5 +317,11 @@ foreach ($arResult["ITEMS"] as $arItem) {
         }
     }
 }
-
+// компонент не выводит ДО Некрасовка, сделал костыль
+for ($ii=0; $ii<count($arResult["OFFICES"]); $ii++) {
+	//debugg($arResult["OFFICES"][$ii]);
+	if ($arResult["OFFICES"][$ii]['ID'] == '12014' && empty($arResult["OFFICES"][$ii]['DETAIL_PAGE_URL'])) {
+		$arResult["OFFICES"][$ii]['DETAIL_PAGE_URL'] = '/chastnym-klientam/currency-exchange/moskva/do-nekrasovka/';
+	}
+}
 //debugg($arResult['OFFICES']);
