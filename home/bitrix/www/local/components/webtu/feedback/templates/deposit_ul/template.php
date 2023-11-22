@@ -322,7 +322,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             'PRODUCT_ID': 0,
             'NAME': 'form',
             'PRICE': 11,
-            'DETAIL_PAGE_URL': '/corporative-clients/razmeshchenie-sredstv/depozity/',
+            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
             'QUANTITY': 1,
             'XML_ID': 'xml'
         };
