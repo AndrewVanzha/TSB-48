@@ -2,6 +2,14 @@
     <? die(); ?>
 <? } ?>
 <? IncludeTemplateLangFile(__FILE__); ?>
+<?php
+$postTemplateID = 0;
+$rs_mess = CEventMessage::GetList($by="id", $order="desc", Array("TYPE_ID" => array($arParams['ADMIN_EVENT'])));
+while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового шаблона
+    $postTemplateID = $arMess['ID'];
+}
+//debugg($postTemplateID);
+?>
 
 <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST">
 
@@ -125,7 +133,6 @@
 </form>
 
 <script type="text/javascript">
-
    $(document).ready(function(){
       $('#reloadCaptchaCallback').click(function(){
         $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function(data) {
@@ -134,43 +141,111 @@
         });
         return false;
       });
+
+       $('input[data-mask="phone"]').mask('+7 (999) 999-99-99');
+
+       function clearFields () {
+           $('textarea').val('').css('box-shadow', 'none');
+           $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
+           $('textarea').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+           $('input').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+       }
+
+       if ($('.alert-success').length > 0) {
+           clearFields ();
+       }
+
+       $('.feedback_form .button').click(function () {
+           $(".alert").remove();
+       });
+
+       $('.agreement input[required]').change(function () {
+           if ( $(this).is(':checked') ) {
+               $(this).closest('.agreement').css('box-shadow', '');
+           } else {
+               $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
+           }
+       });
+
+       // https://osipenkov.ru/tracking-fileds-yandex-metrika-gtm/
+       // https://blog.targeting.school/kakie-byvayut-tseli-v-ya-metrike-i-kak-rabotaet-novaya-tsel-otpravka-formy/
+       // https://www.yandex.ru/video/preview/17446571467160561628
+       function yandexMetrikaForm() {
+           //yaCounter49389685
+           //yaCounter315345643.reachGoal('applicationForm'); // ошика
+           //ym(315345643, 'reachGoal', 'applicationForm');
+
+           let formFields = {
+               'Отправка формы':
+                   {
+                       //'Имя получателя': {{Поле JS - Имя получателя}},
+                       'Имя получателя': 'Имя получателя',
+                       //'Email получателя': {{Поле JS - Email получателя}},
+                       'Email получателя': 'Email получателя',
+                       //'Ваше имя': {{Поле JS - Ваше имя}},
+                       'Ваше имя': 'Ваше имя',
+                       //'Ваш Email': {{Поле JS - Ваш email}},
+                       'Ваш Email': 'Поле JS - Ваш email',
+                       //'Тема подарочного сертификата': {{Поле JS - Тема подарочного сертификат}},
+                       'Тема подарочного сертификата': 'Поле JS - Тема подарочного сертификат',
+                       //'Сообщение': {{Поле JS - Сообщение}},
+                       'Сообщение': 'Поле JS - Сообщение',
+                       //'Сумма': {{Поле JS - Сумма}},
+                       'Сумма': 'Поле JS - Сумма',
+                   }
+           };
+           //ym(955, 'reachGoal', 'applicationForm', formFields);
+
+           let entry = {
+               'PRODUCT_ID': 0,
+               'NAME': 'form',
+               'PRICE': 11,
+               'DETAIL_PAGE_URL': '/corporative-clients/bankovskoe-obsluzhivanie/scheta-dlya-biznesa/',
+               'QUANTITY': 1,
+               'XML_ID': 'xml'
+           };
+           let postTemplateID = <?= $postTemplateID; ?>
+           if(postTemplateID) {
+               entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
+           }
+           //console.log('postTemplateID');
+           //console.log(postTemplateID);
+           let pos = 1;
+           let ar_product = [];
+           ar_product.push(
+               {
+                   "id": entry.PRODUCT_ID,
+                   "name": entry.NAME,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           makeDataLayer(1, ar_product);
+           //console.log(window.dataLayer);
+
+           return true;
+       }
+
+       function makeDataLayer(id, ar_product) {
+           window.dataLayer.push({
+               //local_dataLayer.push({
+               "ecommerce": {
+                   "currencyCode": "RUB",
+                   "purchase": {
+                       "actionField": {
+                           "id" : id
+                       },
+                       "products": ar_product,
+                   }
+               }
+           });
+       }
    });
-   
-</script>
-
-<script>
-
-    $('input[data-mask="phone"]').mask('+7 (999) 999-99-99');
-
-
-
-    function clearFields () {
-        $('textarea').val('').css('box-shadow', 'none');
-        $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
-        $('textarea').focusout(function () {   
-            $(this).css('box-shadow', '');
-        });
-        $('input').focusout(function () {
-            $(this).css('box-shadow', '');
-        });
-    }
-
-    if ($('.alert-success').length > 0) {
-        clearFields ();
-    }
-
-    $('.feedback_form .button').click(function () {
-        $(".alert").remove();
-    });
-
-
-
-    $('.agreement input[required]').change(function () {
-        if ( $(this).is(':checked') ) {
-            $(this).closest('.agreement').css('box-shadow', '');
-        } else {
-            $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
-        }
-    });
-
 </script>
