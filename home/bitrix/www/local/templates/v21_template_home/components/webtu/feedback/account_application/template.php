@@ -5,10 +5,8 @@
 <?php
 //debugg($arParams['ADMIN_EVENT']);
 $postTemplateID = 0;
-$arFilter = Array("TYPE_ID" => array($arParams['ADMIN_EVENT']));
-$rs_mess = CEventMessage::GetList($by="id", $order="desc", $arFilter);
-while($arMess = $rs_mess->GetNext()) {
-    //debugg($arMess);
+$rs_mess = CEventMessage::GetList($by="id", $order="desc", Array("TYPE_ID" => array($arParams['ADMIN_EVENT'])));
+while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового шаблона
     $postTemplateID = $arMess['ID'];
 }
 //debugg($postTemplateID);
@@ -356,7 +354,7 @@ while($arMess = $rs_mess->GetNext()) {
         };
         let postTemplateID = <?= $postTemplateID; ?>
         if(postTemplateID) {
-            entry.PRODUCT_ID = postTemplateID;
+            entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
         }
         console.log('postTemplateID');
         console.log(postTemplateID);
