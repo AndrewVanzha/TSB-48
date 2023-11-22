@@ -79,7 +79,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                             <span class="v21-input-group__label">Откуда Вы узнали о нас</span>
                             <input type="text" name="FROM_WHERE" placeholder=""
                                 <? if (isset($arResult['POST']['FROM_WHERE'])) { ?> value="<?=$arResult['POST']['FROM_WHERE']?>" <? } ?>
-                                class="v21-input-group__field v21-field" required
+                                class="v21-input-group__field v21-field"
                             >
                         </label>
                     </div><!-- /.v21-grid__item -->
@@ -295,5 +295,5 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 }
             });
         }
-    }
+    });
 </script>
