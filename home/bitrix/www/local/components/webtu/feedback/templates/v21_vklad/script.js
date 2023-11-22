@@ -3,6 +3,7 @@ $(document).ready(function () {
         var arFields = [
             'input[name="PHONE"]',
             'input[name="EMAIL"]',
+            'input[name="FROM_WHERE"]',
             'input[name="LAST_NAME"]',
             'input[name="FIRST_NAME"]',
             'input[name="BIRTHDATE"]'

@@ -1,0 +1,9 @@
+.v21 .v21-debitcards--header {
+    margin: 0 0 30px 0;
+}
+
+@media all and (min-width: 768px) {
+    .v21 .v21-debitcards--header {
+        margin-bottom: 70px;
+    }
+}
