@@ -3,7 +3,6 @@
 <? } ?>
 <? IncludeTemplateLangFile(__FILE__); ?>
 <?php
-//debugg($arParams['ADMIN_EVENT']);
 $postTemplateID = 0;
 $rs_mess = CEventMessage::GetList($by="id", $order="desc", Array("TYPE_ID" => array($arParams['ADMIN_EVENT'])));
 while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового шаблона
@@ -356,8 +355,8 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         if(postTemplateID) {
             entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
         }
-        console.log('postTemplateID');
-        console.log(postTemplateID);
+        //console.log('postTemplateID');
+        //console.log(postTemplateID);
         let pos = 1;
         let ar_product = [];
         ar_product.push(
@@ -372,8 +371,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             },
         );
         makeDataLayer(1, ar_product);
-        //console.log(local_dataLayer);
-        console.log(window.dataLayer);
+        //console.log(window.dataLayer);
 
         return true;
     }
