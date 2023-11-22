@@ -648,11 +648,11 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 'PRODUCT_ID': 0,
                 'NAME': 'form',
                 'PRICE': 11,
-                'DETAIL_PAGE_URL': '/corporative-clients/bankovskoe-obsluzhivanie/scheta-dlya-biznesa/',
+                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
                 'QUANTITY': 1,
                 'XML_ID': 'xml'
             };
-            let postTemplateID = <?= $postTemplateID; ?>
+            let postTemplateID = <?= $postTemplateID; ?>;
             if(postTemplateID) {
                 entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
             }
