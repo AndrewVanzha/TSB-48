@@ -247,6 +247,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         });
     }
 
+    let pos = 1;
     $('#consultForm').submit(function (e) {
         e.preventDefault();
         let entry = {
