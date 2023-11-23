@@ -301,239 +301,203 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         });
         return false;
       });
+
+       $('.button[data-fancybox=""]').on('click', function () {
+
+           if ($(this).closest('.product-item').length > 0) {
+               cardType = $(this).closest('.product-item').attr('data-type');
+               cardName = $(this).closest('.product-item').find('.page-title').text().trim();
+           } else {
+               cardType = $('#CARD_TYPE').val();
+               cardName = $('#CARD_NAME').val();
+           }
+           filterCards ();
+       });
+
+       function filterCards () {
+           $('.select-box-type li').each(function () {
+               $(this).removeClass('is-active');
+               let currentCardName = cardName.split(' ');
+               currentCardName = currentCardName[0] + ' ' + currentCardName[1];
+               if ($(this).text() === currentCardName) {
+                   $(this).addClass('is-active');
+                   $('.select-box-type .cs-box_selected').text($(this).text());
+               }
+           });
+       }
+
+       function setSwitchBoxLever(obj) {
+           if ( obj.find('input[type="radio"]:checked').parent().next().length ) {
+               obj.find('.switch-box_lever').addClass('is-active-left').removeClass('is-active-right');
+           } else if ( obj.find('input[type="radio"]:checked').parent().prev().length ) {
+               obj.find('.switch-box_lever').addClass('is-active-right').removeClass('is-active-left');
+           }
+       }
+
+       $('.switch-box').each( function() {
+           setSwitchBoxLever( $(this) );
+       } );
+
+       $('.switch-box input[type="radio"]').change( function() {
+           setSwitchBoxLever( $(this).parents('.switch-box') );
+       } );
+
+       $('.switch-box_lever').click( function() {
+
+           if ( $(this).siblings().find('input[type="radio"]').length ) {
+               if ( $(this).hasClass('is-active-left') ) {
+
+                   $(this).removeClass('is-active-left').addClass('is-active-right');
+                   $(this).prev().find('input[type="radio"]').prop('checked', false);
+                   $(this).next().find('input[type="radio"]').prop('checked', true);
+               } else {
+                   $(this).removeClass('is-active-right').addClass('is-active-left');
+                   $(this).prev().find('input[type="radio"]').prop('checked', true);
+                   $(this).next().find('input[type="radio"]').prop('checked', false);
+
+               }
+
+               $(this).siblings().find('input[type="radio"]').change();
+
+           }
+
+       } );
+
+       function clearFields () {
+           $('textarea').val('').css('box-shadow', 'none');
+           $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
+
+           $('textarea').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+           $('input').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+       }
+
+       if ($('.alert-success').length > 0) {
+           clearFields ();
+           //document.location.href = "/thanks/";
+       }
+
+       /*$('.feedback_form .button').click(function () {
+           $(".alert").remove();
+       });*/
+
+       function requiredFields() {
+           let arFields = [
+               'input[name="LAST_NAME"]',
+               'input[name="FIRST_NAME"]',
+               'input[name="BIRTHDATE"]',
+               'input[name="PHONE"]',
+               'input[name="EMAIL"]',
+               'input[name="FROM_WHERE"]',
+           ];
+
+           let countErr = 0;
+
+           arFields.forEach(function (value) {
+               if ($(value).val() == '') {
+                   $(value).parent().addClass("is-error");
+                   countErr += 1;
+               } else {
+                   $(value).parent().removeClass("is-error");
+               }
+           });
+           if($('#politics2').is(':checked')) {
+               $('#politics2').parent().parent().removeClass("is-error");
+           } else {
+               countErr += 1;
+               $('#politics2').parent().parent().addClass("is-error");
+           }
+
+           return (countErr > 0) ? false : true;
+       }
+
+       function makeDataLayer(id, ar_product) {
+           window.dataLayer.push({
+               //local_dataLayer.push({
+               "ecommerce": {
+                   "currencyCode": "RUB",
+                   "purchase": {
+                       "actionField": {
+                           "id" : id
+                       },
+                       "products": ar_product,
+                   }
+               }
+           });
+       }
+
+       let pos = 1;
+       $('#applicationForm').submit(function (e) {
+           let entry = {
+               'PRODUCT_ID': 0,
+               'NAME': 'form',
+               'PRICE': 1,
+               'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+               'QUANTITY': 1,
+               'XML_ID': 'xml'
+           };
+           let ar_product = [];
+           let postTemplateID = <?= $postTemplateID; ?>;
+           if(postTemplateID) {
+               entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
+           }
+           ar_product.push(
+               {
+                   "id": entry.PRODUCT_ID,
+                   "name": entry.NAME,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": 1,
+                   "xml": entry.XML_ID,
+               },
+           );
+           makeDataLayer(pos++, ar_product);
+           console.log(window.dataLayer);
+           //yandexMetrikaForm();
+
+           e.preventDefault();
+           console.log('insurance');
+           //if ($("#politics2").prop("checked")) {
+           //$('#politics2').parent().parent().removeClass("is-error");
+           //console.log('2');
+           if (requiredFields()) {
+               //console.log('3');
+               $.ajax({
+                   type: "POST",
+                   url: '/ajax_scripts/ajax.customer.php',
+                   data: {
+                       'fields': $(this).serialize(),
+                   },
+                   dataType: "json",
+                   success: function (data) {
+                       //console.log('**');
+                       if (data.status) {
+                           clearFields ();
+                           $('input[name="CAPTCHA_WORD"]').parent().parent().removeClass("is-error");
+                           $('input[name="CAPTCHA_WORD"]').css('border-color', 'rgba(32, 32, 32, 0.12)');
+                           document.location.href = "/thanks/";
+                       } else {
+                           console.log('not OK');
+                           if (!data.captcha){
+                               $('input[name="CAPTCHA_WORD"]').parent().parent().addClass("is-error");
+                               $('input[name="CAPTCHA_WORD"]').css('border-color', '#aa0000');
+                           } else {
+                               $('input[name="CAPTCHA_WORD"]').parent().parent().removeClass("is-error");
+                               $('input[name="CAPTCHA_WORD"]').css('border-color', 'rgba(32, 32, 32, 0.12)');
+                           }
+                       }
+                   }
+               });
+           }
+           //} else {
+           //    $('#politics2').parent().parent().addClass("is-error");
+           //}
+       });
    });
-
-</script>
-
-<script>
-    $('.button[data-fancybox=""]').on('click', function () {
-
-        if ($(this).closest('.product-item').length > 0) {
-            cardType = $(this).closest('.product-item').attr('data-type');
-            cardName = $(this).closest('.product-item').find('.page-title').text().trim();
-        } else {
-            cardType = $('#CARD_TYPE').val();
-            cardName = $('#CARD_NAME').val();
-        }
-        filterCards ();
-    });
-
-    function filterCards () {
-        $('.select-box-type li').each(function () {
-            $(this).removeClass('is-active');
-            let currentCardName = cardName.split(' ');
-            currentCardName = currentCardName[0] + ' ' + currentCardName[1];
-            if ($(this).text() === currentCardName) {
-                $(this).addClass('is-active');
-                $('.select-box-type .cs-box_selected').text($(this).text());
-            }
-        });
-    }
-
-    function setSwitchBoxLever(obj) {
-        if ( obj.find('input[type="radio"]:checked').parent().next().length ) {
-            obj.find('.switch-box_lever').addClass('is-active-left').removeClass('is-active-right');
-        } else if ( obj.find('input[type="radio"]:checked').parent().prev().length ) {
-            obj.find('.switch-box_lever').addClass('is-active-right').removeClass('is-active-left');
-        }
-    }
-
-    $('.switch-box').each( function() {
-        setSwitchBoxLever( $(this) );
-    } );
-
-    $('.switch-box input[type="radio"]').change( function() {
-        setSwitchBoxLever( $(this).parents('.switch-box') );
-    } );
-
-    $('.switch-box_lever').click( function() {
-
-        if ( $(this).siblings().find('input[type="radio"]').length ) {
-            if ( $(this).hasClass('is-active-left') ) {
-
-                $(this).removeClass('is-active-left').addClass('is-active-right');
-                $(this).prev().find('input[type="radio"]').prop('checked', false);
-                $(this).next().find('input[type="radio"]').prop('checked', true);
-            } else {
-                $(this).removeClass('is-active-right').addClass('is-active-left');
-                $(this).prev().find('input[type="radio"]').prop('checked', true);
-                $(this).next().find('input[type="radio"]').prop('checked', false);
-
-            }
-
-            $(this).siblings().find('input[type="radio"]').change();
-
-        }
-
-    } );
-
-    function clearFields () {
-        $('textarea').val('').css('box-shadow', 'none');
-        $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
-
-        $('textarea').focusout(function () {   
-            $(this).css('box-shadow', '');
-        });
-        $('input').focusout(function () {
-            $(this).css('box-shadow', '');
-        });
-    }
-
-    if ($('.alert-success').length > 0) {
-        clearFields ();
-        //document.location.href = "/thanks/";
-    }
-
-    /*$('.feedback_form .button').click(function () {
-        $(".alert").remove();
-    });*/
-
-    function requiredFields() {
-        let arFields = [
-            'input[name="LAST_NAME"]',
-            'input[name="FIRST_NAME"]',
-            'input[name="BIRTHDATE"]',
-            'input[name="PHONE"]',
-            'input[name="EMAIL"]',
-            'input[name="FROM_WHERE"]',
-        ];
-
-        let countErr = 0;
-
-        arFields.forEach(function (value) {
-            if ($(value).val() == '') {
-                $(value).parent().addClass("is-error");
-                countErr += 1;
-            } else {
-                $(value).parent().removeClass("is-error");
-            }
-        });
-        if($('#politics2').is(':checked')) {
-            $('#politics2').parent().parent().removeClass("is-error");
-        } else {
-            countErr += 1;
-            $('#politics2').parent().parent().addClass("is-error");
-        }
-
-        return (countErr > 0) ? false : true;
-    }
-
-    // https://osipenkov.ru/tracking-fileds-yandex-metrika-gtm/
-    // https://blog.targeting.school/kakie-byvayut-tseli-v-ya-metrike-i-kak-rabotaet-novaya-tsel-otpravka-formy/
-    // https://www.yandex.ru/video/preview/17446571467160561628
-    function yandexMetrikaForm() {
-        //yaCounter49389685
-        //yaCounter315345643.reachGoal('applicationForm'); // ошика
-        //ym(315345643, 'reachGoal', 'applicationForm');
-
-        let formFields = {
-            'Отправка формы':
-                {
-                    //'Имя получателя': {{Поле JS - Имя получателя}},
-                    'Имя получателя': 'Имя получателя',
-                    //'Email получателя': {{Поле JS - Email получателя}},
-                    'Email получателя': 'Email получателя',
-                    //'Ваше имя': {{Поле JS - Ваше имя}},
-                    'Ваше имя': 'Ваше имя',
-                    //'Ваш Email': {{Поле JS - Ваш email}},
-                    'Ваш Email': 'Поле JS - Ваш email',
-                    //'Тема подарочного сертификата': {{Поле JS - Тема подарочного сертификат}},
-                    'Тема подарочного сертификата': 'Поле JS - Тема подарочного сертификат',
-                    //'Сообщение': {{Поле JS - Сообщение}},
-                    'Сообщение': 'Поле JS - Сообщение',
-                    //'Сумма': {{Поле JS - Сумма}},
-                    'Сумма': 'Поле JS - Сумма',
-                }
-        };
-        //ym(955, 'reachGoal', 'applicationForm', formFields);
-
-        let entry = {
-            'PRODUCT_ID': 0,
-            'NAME': 'form',
-            'PRICE': 11,
-            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
-            'QUANTITY': 1,
-            'XML_ID': 'xml'
-        };
-        let postTemplateID = '<?= $postTemplateID; ?>';
-        if(postTemplateID) {
-            entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-        }
-        //console.log('postTemplateID');
-        //console.log(postTemplateID);
-        let pos = 1;
-        let ar_product = [];
-        ar_product.push(
-            {
-                "id": entry.PRODUCT_ID,
-                "name": entry.NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        makeDataLayer(1, ar_product);
-        //console.log(window.dataLayer);
-
-        return true;
-    }
-
-    function makeDataLayer(id, ar_product) {
-        window.dataLayer.push({
-            //local_dataLayer.push({
-            "ecommerce": {
-                "currencyCode": "RUB",
-                "purchase": {
-                    "actionField": {
-                        "id" : id
-                    },
-                    "products": ar_product,
-                }
-            }
-        });
-    }
-
-    $('#applicationForm').submit(function (e) {
-        e.preventDefault();
-        console.log('form');
-        //if ($("#politics2").prop("checked")) {
-            //$('#politics2').parent().parent().removeClass("is-error");
-            //console.log('2');
-            if (requiredFields()) {
-                //console.log('3');
-                $.ajax({
-                    type: "POST",
-                    url: '/ajax_scripts/ajax.customer.php',
-                    data: {
-                        'fields': $(this).serialize(),
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        //console.log('**');
-                        if (data.status) {
-                            clearFields ();
-                            $('input[name="CAPTCHA_WORD"]').parent().parent().removeClass("is-error");
-                            $('input[name="CAPTCHA_WORD"]').css('border-color', 'rgba(32, 32, 32, 0.12)');
-                            document.location.href = "/thanks/";
-                        } else {
-                            console.log('not OK');
-                            if (!data.captcha){
-                                $('input[name="CAPTCHA_WORD"]').parent().parent().addClass("is-error");
-                                $('input[name="CAPTCHA_WORD"]').css('border-color', '#aa0000');
-                            } else {
-                                $('input[name="CAPTCHA_WORD"]').parent().parent().removeClass("is-error");
-                                $('input[name="CAPTCHA_WORD"]').css('border-color', 'rgba(32, 32, 32, 0.12)');
-                            }
-                        }
-                    }
-                });
-            }
-        //} else {
-        //    $('#politics2').parent().parent().addClass("is-error");
-        //}
-    });
 
 </script>
 

@@ -228,55 +228,21 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             //ym(315345643, 'reachGoal', 'applicationForm');
 
             let formFields = {
-                'Отправка формы':
+                'Поля формы':
                     {
-                        //'Имя получателя': {{Поле JS - Имя получателя}},
-                        'Имя получателя': 'Имя получателя',
-                        //'Email получателя': {{Поле JS - Email получателя}},
-                        'Email получателя': 'Email получателя',
-                        //'Ваше имя': {{Поле JS - Ваше имя}},
-                        'Ваше имя': 'Ваше имя',
-                        //'Ваш Email': {{Поле JS - Ваш email}},
-                        'Ваш Email': 'Поле JS - Ваш email',
-                        //'Тема подарочного сертификата': {{Поле JS - Тема подарочного сертификат}},
-                        'Тема подарочного сертификата': 'Поле JS - Тема подарочного сертификат',
-                        //'Сообщение': {{Поле JS - Сообщение}},
-                        'Сообщение': 'Поле JS - Сообщение',
-                        //'Сумма': {{Поле JS - Сумма}},
-                        'Сумма': 'Поле JS - Сумма',
+                        'LAST_NAME': $('input[name="LAST_NAME"]').val(),
+                        'FIRST_NAME': $('input[name="FIRST_NAME"]').val(),
+                        'SECOND_NAME': $('input[name="SECOND_NAME"]').val(),
+                        'PHONE': $('input[name="PHONE"]').val(),
+                        'EMAIL': $('input[name="EMAIL"]').val(),
+                        'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
+                        'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
+                        'SUM': $('input[name="SUM"]').val(),
+                        'CITY': $('select[name="CITY"] option:selected').val(),
                     }
             };
-            //ym(955, 'reachGoal', 'applicationForm', formFields);
-
-            let entry = {
-                'PRODUCT_ID': 0,
-                'NAME': 'form',
-                'PRICE': 11,
-                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
-                'QUANTITY': 1,
-                'XML_ID': 'xml'
-            };
-            let postTemplateID = <?= $postTemplateID; ?>;
-            if(postTemplateID) {
-                entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-            }
-            //console.log('postTemplateID');
-            //console.log(postTemplateID);
-            let pos = 1;
-            let ar_product = [];
-            ar_product.push(
-                {
-                    "id": entry.PRODUCT_ID,
-                    "name": entry.NAME,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    "position": pos++,
-                    "xml": entry.XML_ID,
-                },
-            );
-            makeDataLayer(1, ar_product);
-            //console.log(window.dataLayer);
+            //console.log(formFields);
+            ym(316212751, 'reachGoal', 'depositOrder', formFields);
 
             return true;
         }
@@ -295,5 +261,122 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 }
             });
         }
+
+        function requiredFields() {
+            let arFields = [
+                'input[name="PHONE"]',
+                'input[name="EMAIL"]',
+                'input[name="FROM_WHERE"]',
+                'input[name="LAST_NAME"]',
+                'input[name="FIRST_NAME"]',
+                'input[name="BIRTHDATE"]'
+            ];
+
+            let countErr = 0;
+            arFields.forEach(function (value) {
+                if ($(value).val() == '') {
+                    $(value).parent().addClass("is-error");
+                    countErr++;
+                } else {
+                    $(value).parent().removeClass("is-error");
+                }
+            });
+
+            if ($('input[name="SUM"]').val() == '') {
+                $('input[name="SUM"]').parent().parent().addClass("is-error");
+                countErr++;
+            } else {
+                $('input[name="SUM"]').parent().parent().removeClass("is-error");
+            }
+
+            return (countErr > 0) ? false : true;
+        }
+
+        let pos = 1;
+        $('#depositOrder').submit(function (e) {
+            e.preventDefault();
+            let entry = {
+                'PRODUCT_ID': 0,
+                'NAME': 'form',
+                'PRICE': 1,
+                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+                'QUANTITY': 1,
+                'XML_ID': 'xml'
+            };
+            let ar_product = [];
+            let postTemplateID = <?= $postTemplateID; ?>;
+            if(postTemplateID) {
+                entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
+            }
+            ar_product.push(
+                {
+                    "id": entry.PRODUCT_ID,
+                    "name": entry.NAME,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": 1,
+                    "xml": entry.XML_ID,
+                },
+            );
+            makeDataLayer(pos++, ar_product);
+            console.log(window.dataLayer);
+            yandexMetrikaForm();
+
+            if ($("#politics").prop("checked")) {
+                console.log('form');
+                $('#politics').parent().parent().removeClass("is-error");
+                if (requiredFields()) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/local/components/webtu/feedback/templates/v21_vklad/ajax.customer.php',
+                        data: {
+                            'fields': $(this).serialize(),
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            $('#reloadCaptcha').click();
+
+                            if (data.message && data.message.length > 0) {
+                                $(".v21_alert_depositOrder_item").remove()
+                                $.each(data.message, function (key, field) {
+                                    $('#v21_alert_depositOrder .v21-modal__window').append(
+                                        '<div class="v21-grid__item v21_alert_depositOrder_item" style="font-size: 20px; padding: 0; text-align: center;">' + field.text + '</div>'
+                                    );
+
+                                    if (!field.type) {
+                                        $('.v21_alert_depositOrder_item').css("color", "red");
+                                    }
+                                });
+                            }
+                            if (data.status) {
+                                $("#depositOrder")[0].reset();
+                            }
+
+                            if (!data.captcha){
+                                $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                            } else {
+                                $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                                tsb21.modal.toggleModal('v21_alert_depositOrder');
+                            }
+                        }
+                    });
+                }
+            } else {
+                $('#politics').parent().parent().addClass("is-error");
+            }
+        });
+
+        $('a[href="#v21_depositOrder"].open').click(function () {
+            $('input#CREDIT_NAME').val($(this).data('name'));
+        });
+
+        $('#reloadCaptcha').click(function () {
+            $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function (data) {
+                $('#captchaImg').attr('src', '/bitrix/tools/captcha.php?captcha_sid=' + data);
+                $('#captchaSid').val(data);
+            });
+            return false;
+        });
     });
 </script>
