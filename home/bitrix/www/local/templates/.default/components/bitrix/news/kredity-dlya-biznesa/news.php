@@ -59,7 +59,7 @@ $this->setFrameMode(true);
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",	// Скрывать ссылку, если нет детального описания
             "IBLOCK_ID" => "59",	// Код информационного блока
             "PARENT_SECTION" => "567",	// ID раздела
-            "IBLOCK_TYPE" => "corporative_clients",	// Тип информационного блока (используется только для проверки)
+            "IBLOCK_TYPE" => "corporative-clients",	// Тип информационного блока (используется только для проверки)
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",	// Включать инфоблок в цепочку навигации
             "INCLUDE_SUBSECTIONS" => "Y",	// Показывать элементы подразделов раздела
             "MESSAGE_404" => "",	// Сообщение для показа (по умолчанию из компонента)
@@ -167,7 +167,7 @@ $this->setFrameMode(true);
             "FILTER_VIEW_MODE" => "horizontal",
             "HIDE_NOT_AVAILABLE" => "N",
             "IBLOCK_ID" => "60",
-            "IBLOCK_TYPE" => "corporative_clients",
+            "IBLOCK_TYPE" => "corporative-clients",
             "PAGER_PARAMS_NAME" => "arrPager",
             "POPUP_POSITION" => "left",
             "PREFILTER_NAME" => "smartPreFilter",

@@ -35,7 +35,7 @@ $APPLICATION->SetTitle("Кредиты и гарантии");
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "57",
-		"IBLOCK_TYPE" => "corporative_clients",
+		"IBLOCK_TYPE" => "corporative-clients",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"MESSAGE_404" => "",

@@ -80,7 +80,7 @@ Asset::getInstance()->addCss("/corporative-clients/bankovskoe-obsluzhivanie/bank
             "FILE_404" => "",
             "HIDE_LINK_WHEN_NO_DETAIL" => "N",
             "IBLOCK_ID" => "24",
-            "IBLOCK_TYPE" => "corporative_clients",
+            "IBLOCK_TYPE" => "corporative-clients",
             "INCLUDE_IBLOCK_INTO_CHAIN" => "N",
             "LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
             "LIST_FIELD_CODE" => array(

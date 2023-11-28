@@ -350,7 +350,7 @@ if(CSite::InDir('/en/')){
                                 "MENU_CACHE_TIME" => "3600",
                                 "MENU_CACHE_TYPE" => "N",
                                 "MENU_CACHE_USE_GROUPS" => "Y",
-                                "ROOT_MENU_TYPE" => "corporative_clients",
+                                "ROOT_MENU_TYPE" => "corporative-clients",
                                 "USE_EXT" => "N"
                             )
                         );?>
@@ -368,7 +368,8 @@ if(CSite::InDir('/en/')){
                                 "MENU_CACHE_TIME" => "3600",
                                 "MENU_CACHE_TYPE" => "N",
                                 "MENU_CACHE_USE_GROUPS" => "Y",
-                                "ROOT_MENU_TYPE" => "privat_clients",
+                                //"ROOT_MENU_TYPE" => "privat_clients",
+                                "ROOT_MENU_TYPE" => "chastnym-klientam",
                                 "USE_EXT" => "N"
                             )
                         );?>
