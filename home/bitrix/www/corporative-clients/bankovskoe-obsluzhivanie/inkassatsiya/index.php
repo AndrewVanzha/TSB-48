@@ -45,7 +45,7 @@ $APPLICATION->SetTitle("Инкассация");
 			1 => "",
 		),
 		"IBLOCK_ID" => "76",
-		"IBLOCK_TYPE" => "corporative_clients",
+		"IBLOCK_TYPE" => "corporative-clients",
 		"IBLOCK_URL" => "",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
 		"MESSAGE_404" => "",
