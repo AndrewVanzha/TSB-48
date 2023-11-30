@@ -46,10 +46,11 @@ if(CModule::IncludeModule("iblock")) {
         ];
     }
     //debugg($sectionTransfer);
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_$sectionTransfer.json', json_encode($sectionTransfer));
+    //file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_$sectionTransfer.json', json_encode($sectionTransfer));
     LocalRedirect($sectionTransfer[0]['SECTION_PAGE_URL']);
 
-    $rsList = CIBlockElement::GetList(
+    /*
+    $rsList = CIBlockElement::GetList(  // ненужно сложный заход
         array("SORT" => "ASC"),
         array("IBLOCK_ID" => 114, "ID" => $cityID),
         false,
@@ -70,7 +71,7 @@ if(CModule::IncludeModule("iblock")) {
 
     while($arSect = $res->GetNext()) {
         //LocalRedirect($arSect["SECTION_PAGE_URL"]);
-    }
+    }*/
 }
 ?>
 <?// global $arrFilter; ?>
