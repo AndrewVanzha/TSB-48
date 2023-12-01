@@ -325,19 +325,17 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         let formFields = {
             'Поля формы':
                 {
-                    'LAST_NAME': $('input[name="LAST_NAME"]').val(),
-                    'FIRST_NAME': $('input[name="FIRST_NAME"]').val(),
-                    'SECOND_NAME': $('input[name="SECOND_NAME"]').val(),
+                    'COMPANY_NAME': $('input[name="COMPANY_NAME"]').val(),
+                    'COMPANY_INN': $('input[name="COMPANY_INN"]').val(),
+                    'FIO': $('input[name="FIO"]').val(),
                     'PHONE': $('input[name="PHONE"]').val(),
                     'EMAIL': $('input[name="EMAIL"]').val(),
                     'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
-                    'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
-                    'SUM': $('input[name="SUM"]').val(),
                     'CITY': $('select[name="CITY"] option:selected').val(),
                 }
         };
         //console.log(formFields);
-        //ym(316212751, 'reachGoal', 'depositOrder', formFields);
+        ym(317315342, 'reachGoal', 'applicationForm', formFields);
 
         return true;
     }
