@@ -342,7 +342,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
     function makeDataLayer(id, ar_product) {
         window.dataLayer.push({
-            //local_dataLayer.push({
             "ecommerce": {
                 "currencyCode": "RUB",
                 "purchase": {
