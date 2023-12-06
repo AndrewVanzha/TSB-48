@@ -491,39 +491,16 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         return ar_product;
     }
 
-    //let pos = 1;
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        /*let entry = {
-            'PRODUCT_ID': 0,
-            'NAME': 'form',
-            'PRICE': 1,
-            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
-            'QUANTITY': 1,
-            'XML_ID': 'xml'
-        };*/
         let ar_product = [];
         let postTemplateID = <?= $postTemplateID; ?>;
-        /*if(postTemplateID) {
-            entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-        }
-        ar_product.push(
-            {
-                "id": entry.PRODUCT_ID,
-                "name": entry.NAME,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": 1,
-                "xml": entry.XML_ID,
-            },
-        );*/
 
-        //console.log('form');
         //if ($("#politics2").prop("checked")) {
             //$('#politics2').parent().parent().removeClass("is-error");
             //console.log('2');
             if (requiredFields()) {
+                console.log('form');
                 //console.log('3');
                 $.ajax({
                     type: "POST",
@@ -538,13 +515,10 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                             let response = data.message[0];
                             //console.log('data.message');
                             if(response.type) {
-                                console.log(response.data.APPLICATION_ID);
+                                //console.log(response.data.APPLICATION_ID);
                                 ar_product = makeArProduct(response.data);
-                                //console.log('ar_product');
-                                //console.log(ar_product);
                                 makeDataLayer(response.data.APPLICATION_ID, ar_product);
-                                //console.log('window.dataLayer');
-                                console.log(window.dataLayer);
+                                //console.log(window.dataLayer);
                                 yandexMetrikaForm();
                             }
 

@@ -428,34 +428,11 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             return ar_product;
         }
 
-        //let pos = 1;
         $('#depositOrder').submit(function (e) {
             e.preventDefault();
             let pos = 0;
-            /*let entry = {
-                'PRODUCT_ID': 0,
-                'NAME': 'form',
-                'PRICE': 1,
-                'DETAIL_PAGE_URL': '<?//= $_SERVER['REQUEST_URI'] ?>',
-                'QUANTITY': 1,
-                'XML_ID': 'xml'
-            };*/
             let ar_product = [];
             let postTemplateID = <?= $postTemplateID; ?>;
-            /*if(postTemplateID) {
-                entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-            }
-            ar_product.push(
-                {
-                    "id": entry.PRODUCT_ID,
-                    "name": entry.NAME,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    "position": 1,
-                    "xml": entry.XML_ID,
-                },
-            );*/
 
             if ($("#politics").prop("checked")) {
                 console.log('form');
@@ -472,10 +449,10 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                             $('#reloadCaptcha').click();
                             let response = data.message[0];
                             if(response.type) {
-                                console.log(response.data.APPLICATION_ID);
+                                //console.log(response.data.APPLICATION_ID);
                                 ar_product = makeArProduct(response.data);
                                 makeDataLayer(response.data.APPLICATION_ID, ar_product);
-                                console.log(window.dataLayer);
+                                //console.log(window.dataLayer);
                                 yandexMetrikaForm();
                             }
 
