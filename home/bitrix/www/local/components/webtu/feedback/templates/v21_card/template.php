@@ -776,17 +776,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
             ar_product.push(
                 {
-                    "id": 'NAME',
-                    "name": data.NAME,
-                    "price": entry.PRICE,
-                    "category": entry.DETAIL_PAGE_URL,
-                    "quantity": entry.QUANTITY,
-                    "position": pos++,
-                    "xml": entry.XML_ID,
-                },
-            );
-            ar_product.push(
-                {
                     "id": 'TYPE',
                     "name": data.TYPE,
                     "price": entry.PRICE,
