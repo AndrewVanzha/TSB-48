@@ -30,7 +30,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 <input type="hidden" name="SESSION_ID" value="<?=bitrix_sessid()?>">
                 <input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'>
                 <input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'>
-                <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
                 <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
                 <?
                 if (isset($_POST['CREDIT_NAME'])) { $creditName = $_POST['CREDIT_NAME']; } else { $creditName = 'MIR'; }
@@ -342,7 +342,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
     function makeDataLayer(id, ar_product) {
         window.dataLayer.push({
-            //local_dataLayer.push({
             "ecommerce": {
                 "currencyCode": "RUB",
                 "purchase": {
@@ -355,20 +354,157 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         });
     }
 
-    let pos = 1;
+    function makeArProduct(data) {
+        let pos = 0;
+        let ar_product = [];
+        let entry = {
+            'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+            'PRICE': 1,
+            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+            'QUANTITY': 1,
+            'XML_ID': 'xml'
+        };
+
+        ar_product.push(
+            {
+                "id": 'FIO',
+                "name": data.FIO,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'NAME',
+                "name": data.NAME,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'COMPANY_INN',
+                "name": data.COMPANY_INN,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'CITY',
+                "name": data.CITY,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'FROM_WHERE',
+                "name": data.FROM_WHERE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'REQ_URI',
+                "name": data.REQ_URI,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_CAMPAIGN',
+                "name": data.UTM_CAMPAIGN,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_CONTENT',
+                "name": data.UTM_CONTENT,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_MEDIUM',
+                "name": data.UTM_MEDIUM,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_SOURCE',
+                "name": data.UTM_SOURCE,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+        ar_product.push(
+            {
+                "id": 'UTM_TERM',
+                "name": data.UTM_TERM,
+                "price": entry.PRICE,
+                "category": entry.DETAIL_PAGE_URL,
+                "quantity": entry.QUANTITY,
+                "position": pos++,
+                "xml": entry.XML_ID,
+            },
+        );
+
+        return ar_product;
+    }
+
+    //let pos = 1;
     $('#applicationForm').submit(function (e) {
         e.preventDefault();
-        let entry = {
+        /*let entry = {
             'PRODUCT_ID': 0,
             'NAME': 'form',
             'PRICE': 1,
             'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
             'QUANTITY': 1,
             'XML_ID': 'xml'
-        };
+        };*/
         let ar_product = [];
         let postTemplateID = <?= $postTemplateID; ?>;
-        if(postTemplateID) {
+        /*if(postTemplateID) {
             entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
         }
         ar_product.push(
@@ -381,10 +517,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 "position": 1,
                 "xml": entry.XML_ID,
             },
-        );
-        makeDataLayer(pos++, ar_product);
-        console.log(window.dataLayer);
-        //yandexMetrikaForm();
+        );*/
 
         //console.log('form');
         //if ($("#politics2").prop("checked")) {
@@ -402,6 +535,19 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     success: function (data) {
                         //console.log('**');
                         if (data.status) {
+                            let response = data.message[0];
+                            //console.log('data.message');
+                            if(response.type) {
+                                console.log(response.data.APPLICATION_ID);
+                                ar_product = makeArProduct(response.data);
+                                //console.log('ar_product');
+                                //console.log(ar_product);
+                                makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                //console.log('window.dataLayer');
+                                console.log(window.dataLayer);
+                                yandexMetrikaForm();
+                            }
+
                             clearFields ();
                             $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
                             document.location.href = "/thanks/";
