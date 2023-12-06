@@ -131,15 +131,15 @@ if ($elementFields["PROPERTY_VALUES"][799] == 'не принимаю') {
 $propertiesPost["DATE_CREATE"] = date('d.m.Y H:i:s', time());
 
 if ($id = $element->Add($elementFields)) {
+    $postFields = array_merge($fields, $propertiesPost);
+    $postFields['APPLICATION_ID'] = $id;
+    $postFields = getSex($postFields);
+
     $arResult["message"][] = [
+        "data" => $postFields,
         "text" => $success_message,
         "type" => true,
     ];
-
-    $postFields = array_merge($fields, $propertiesPost);
-    $postFields['APPLICATION_ID'] = $id;
-
-    $postFields = getSex($postFields);
 
     if ($arParams["ADMIN_EVENT"] != 'NONE') {
         CEvent::Send($arParams["ADMIN_EVENT"], $arParams["SITES"], $postFields);
