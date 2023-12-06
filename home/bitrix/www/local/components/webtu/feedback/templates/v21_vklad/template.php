@@ -26,7 +26,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
             <input type="hidden" id="PROPERTIES" name="PROPERTIES" value='<?= json_encode($arParams["PROPERTIES"]) ?>'>
             <?/*?><input type="hidden" name="email2" value=""><?*/?>
-            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+            <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
             <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
             <??><input type="hidden" name="PARAMS" value='<?= json_encode($arParams) ?>'><??>
 
@@ -247,21 +247,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             return true;
         }
 
-        function makeDataLayer(id, ar_product) {
-            window.dataLayer.push({
-                //local_dataLayer.push({
-                "ecommerce": {
-                    "currencyCode": "RUB",
-                    "purchase": {
-                        "actionField": {
-                            "id" : id
-                        },
-                        "products": ar_product,
-                    }
-                }
-            });
-        }
-
         function requiredFields() {
             let arFields = [
                 'input[name="PHONE"]',
@@ -292,20 +277,172 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             return (countErr > 0) ? false : true;
         }
 
-        let pos = 1;
-        $('#depositOrder').submit(function (e) {
-            e.preventDefault();
+        function makeDataLayer(id, ar_product) {
+            window.dataLayer.push({
+                "ecommerce": {
+                    "currencyCode": "RUB",
+                    "purchase": {
+                        "actionField": {
+                            "id" : id
+                        },
+                        "products": ar_product,
+                    }
+                }
+            });
+        }
+
+        function makeArProduct(data) {
+            let pos = 0;
+            let ar_product = [];
             let entry = {
-                'PRODUCT_ID': 0,
-                'NAME': 'form',
+                'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
                 'PRICE': 1,
                 'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
                 'QUANTITY': 1,
                 'XML_ID': 'xml'
             };
+
+            ar_product.push(
+                {
+                    "id": 'NAME',
+                    "name": data.NAME,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'CREDIT_NAME',
+                    "name": data.CREDIT_NAME,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'SUM',
+                    "name": data.SUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'CITY',
+                    "name": data.CITY,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'FROM_WHERE',
+                    "name": data.FROM_WHERE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'REQ_URI',
+                    "name": data.REQ_URI,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CAMPAIGN',
+                    "name": data.UTM_CAMPAIGN,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CONTENT',
+                    "name": data.UTM_CONTENT,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_MEDIUM',
+                    "name": data.UTM_MEDIUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_SOURCE',
+                    "name": data.UTM_SOURCE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_TERM',
+                    "name": data.UTM_TERM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+
+            return ar_product;
+        }
+
+        //let pos = 1;
+        $('#depositOrder').submit(function (e) {
+            e.preventDefault();
+            let pos = 0;
+            /*let entry = {
+                'PRODUCT_ID': 0,
+                'NAME': 'form',
+                'PRICE': 1,
+                'DETAIL_PAGE_URL': '<?//= $_SERVER['REQUEST_URI'] ?>',
+                'QUANTITY': 1,
+                'XML_ID': 'xml'
+            };*/
             let ar_product = [];
             let postTemplateID = <?= $postTemplateID; ?>;
-            if(postTemplateID) {
+            /*if(postTemplateID) {
                 entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
             }
             ar_product.push(
@@ -318,10 +455,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     "position": 1,
                     "xml": entry.XML_ID,
                 },
-            );
-            makeDataLayer(pos++, ar_product);
-            console.log(window.dataLayer);
-            yandexMetrikaForm();
+            );*/
 
             if ($("#politics").prop("checked")) {
                 console.log('form');
@@ -336,6 +470,14 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                         dataType: "json",
                         success: function (data) {
                             $('#reloadCaptcha').click();
+                            let response = data.message[0];
+                            if(response.type) {
+                                console.log(response.data.APPLICATION_ID);
+                                ar_product = makeArProduct(response.data);
+                                makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                console.log(window.dataLayer);
+                                yandexMetrikaForm();
+                            }
 
                             if (data.message && data.message.length > 0) {
                                 $(".v21_alert_depositOrder_item").remove()
