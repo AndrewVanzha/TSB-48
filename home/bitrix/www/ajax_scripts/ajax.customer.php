@@ -17,7 +17,7 @@ function sanitizePost(array $data): array
     }*/
     return $data;
 }
-/*
+
 function getSex(array $data): array
 {
     if ($data['SEX'] === 'Мужской') {
@@ -26,7 +26,7 @@ function getSex(array $data): array
         $data['RECOURSE'] = 'Уважаемая';
     }
     return $data;
-}*/
+}
 
 function finish(array $result): void
 {
@@ -119,19 +119,20 @@ $propertiesPost["DATE_CREATE"] = date('d.m.Y H:i:s', time());
 //file_put_contents("/home/bitrix/www".'/logs/a_$elementFields.json', json_encode($elementFields));
 
 if ($id = $element->Add($elementFields)) {
-    $arResult["message"][] = [
-        "text" => "Заявка успешно отправлена",
-        "type" => true,
-    ];
-
     $postFields = array_merge($fields, $propertiesPost);
     $postFields['APPLICATION_ID'] = $id;
     $postFields['RECOURSE'] = 'Уважаемый(ая)';
     $postFields['DATE_CREATE'] = $elementFields['DATE_CREATE'];
 
-    //$postFields = getSex($postFields);
-    file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
+    $postFields = getSex($postFields);
+    //file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
     //file_put_contents("/home/bitrix/www".'/logs/a_$arParams.json', json_encode($arParams));
+
+    $arResult["message"][] = [
+        "data" => $postFields,
+        "text" => "Заявка успешно отправлена",
+        "type" => true,
+    ];
 
     //if ($arParams->ADMIN_EVENT != 'NONE') {
     if ($arParams["ADMIN_EVENT"] != 'NONE') {
