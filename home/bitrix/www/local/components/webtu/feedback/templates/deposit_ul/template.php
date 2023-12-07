@@ -286,7 +286,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
        function makeDataLayer(id, ar_product) {
            window.dataLayer.push({
-               //local_dataLayer.push({
                "ecommerce": {
                    "currencyCode": "RUB",
                    "purchase": {
@@ -299,36 +298,125 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
            });
        }
 
-       let pos = 1;
-       $('#applicationForm').submit(function (e) {
-           e.preventDefault();
+       function makeArProduct(data) {
+           let pos = 0;
+           let ar_product = [];
            let entry = {
-               'PRODUCT_ID': 0,
-               'NAME': 'form',
+               'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+               'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
                'PRICE': 1,
                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
                'QUANTITY': 1,
                'XML_ID': 'xml'
            };
-           let ar_product = [];
-           let postTemplateID = <?= $postTemplateID; ?>;
-           if(postTemplateID) {
-               entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-           }
+
            ar_product.push(
                {
-                   "id": entry.PRODUCT_ID,
-                   "name": entry.NAME,
+                   "id": 'DEPOSIT_SUM',
+                   "name": data.DEPOSIT_SUM,
                    "price": entry.PRICE,
                    "category": entry.DETAIL_PAGE_URL,
                    "quantity": entry.QUANTITY,
-                   "position": 1,
+                   "position": pos++,
                    "xml": entry.XML_ID,
                },
            );
-           makeDataLayer(pos++, ar_product);
-           console.log(window.dataLayer);
-           //yandexMetrikaForm();
+           ar_product.push(
+               {
+                   "id": 'CITY',
+                   "name": data.CITY,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'FROM_WHERE',
+                   "name": data.FROM_WHERE,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'REQ_URI',
+                   "name": data.REQ_URI,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_CAMPAIGN',
+                   "name": data.UTM_CAMPAIGN,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_CONTENT',
+                   "name": data.UTM_CONTENT,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_MEDIUM',
+                   "name": data.UTM_MEDIUM,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_SOURCE',
+                   "name": data.UTM_SOURCE,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_TERM',
+                   "name": data.UTM_TERM,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+
+           return ar_product;
+       }
+
+       $('#applicationForm').submit(function (e) {
+           e.preventDefault();
+           let ar_product = [];
+           let postTemplateID = <?= $postTemplateID; ?>;
 
            console.log('form');
            //if ($("#politics2").prop("checked")) {
@@ -346,6 +434,18 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                    success: function (data) {
                        //console.log('**');
                        if (data.status) {
+                           let response = data.message[0];
+                           //console.log('response');
+                           if(response.type) {
+                               //console.log(response.data);
+                               console.log(response.data.APPLICATION_ID);
+                               ar_product = makeArProduct(response.data);
+                               //console.log(ar_product);
+                               makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                               //console.log(window.dataLayer);
+                               //yandexMetrikaForm();
+                           }
+
                            clearFields ();
                            $('input[name="CAPTCHA_WORD"]').parent().parent().removeClass("is-error");
                            $('input[name="CAPTCHA_WORD"]').css('border-color', 'rgba(32, 32, 32, 0.12)');

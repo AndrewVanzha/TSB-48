@@ -6,25 +6,15 @@ CModule::IncludeModule('iblock');
 
 function sanitizePost(array $data): array
 {
-    if (!isset($data['DELIVERYCARD'])) {
-        $data['DELIVERYCARD'] = 'Нет';
-    } else {
-        $data['DELIVERYCARD'] = 'Да';
-    }
     if (!isset($data['CITYZENSHIP'])) {
         $data['CITYZENSHIP'] = 'Нет';
     } else {
         $data['CITYZENSHIP'] = 'Да';
     }
-    if (!empty($data['PASS_ADDR_S'])) {
-        $data['PASS_ADDR_F'] = $data['PASS_ADDR_R'];
-    }
-    if (!empty($data['TYPE_INOY'])) {
-        $data['TYPE_PASS'] = $data['TYPE_INOY'];
-    }
-    if (!empty($data['FIRST_NAME'])) {
+
+    /*if (!empty($data['FIRST_NAME'])) {
         $data['NAME'] = $data['LAST_NAME'] . ' ' . $data['FIRST_NAME'] . ' ' . $data['SECOND_NAME'];
-    }
+    }*/
     return $data;
 }
 
@@ -69,25 +59,16 @@ if (!$APPLICATION->CaptchaCheckCode($fields["CAPTCHA_WORD"], $fields["CAPTCHA_ID
 
     finish($arResult);
 }
+//file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/chastnym-klientam/arenda-seyfov/a_post.json', json_encode($fields));
 
 $fields = sanitizePost($fields);
+//file_put_contents("/home/bitrix/www".'/logs/a_fields.json', json_encode($fields));
 
 $arParamsProperties = json_decode($fields["PROPERTIES"]);
-//file_put_contents("/home/bitrix/www".'/currency/a_$arParamsProperties.json', json_encode($arParamsProperties));
 $arParams = (array) json_decode($fields["PARAMS"]);
-//file_put_contents("/home/bitrix/www".'/currency/a_$arParams.json', json_encode($arParams));
-//$iblock_id = 11;  // Заявка на банковскую карту
-$iblock_id = $arParams["IBLOCK_ID"];  // Заявка на банковскую карту
-/*
-if ($fields["email2"]) {
-    $arResult["status"] = false;
-    $arResult["message"][] = [
-        "text" => "Извините, но что-то пошло не так.",
-        "type" => false,
-    ];
-    finish($arResult);
-}
-*/
+//$iblock_id = 15;  // Онлайн-заявка на аренду сейфа: администратор
+$iblock_id = $arParams["IBLOCK_ID"];  // Заявка на открытие вклада/депозита: администратор
+
 $element = new CIBlockElement;
 
 $properties = [];
@@ -132,18 +113,20 @@ $elementFields['UTM_MEDIUM'] = isset($fields['UTM_MEDIUM'])? $fields['UTM_MEDIUM
 $elementFields['UTM_CAMPAIGN'] = isset($fields['UTM_CAMPAIGN'])? $fields['UTM_CAMPAIGN'] : 'no_data';
 $elementFields['UTM_TERM'] = isset($fields['UTM_TERM'])? $fields['UTM_TERM'] : 'no_data';
 $elementFields['UTM_CONTENT'] = isset($fields['UTM_CONTENT'])? $fields['UTM_CONTENT'] : 'no_data';
-$elementFields['FORM'] = 86;  //  Заявка на банковскую карту
+$elementFields['FORM'] = 100;  //  Заявка на открытие вклада/депозита: администратор
 
-//echo '<pre>';print_r($elementFields);echo '</pre>';
-//file_put_contents("/home/bitrix/www".'/currency/a_$elementFields.json', json_encode($elementFields));
+$propertiesPost["DATE_CREATE"] = date('d.m.Y H:i:s', time());
+//file_put_contents("/home/bitrix/www".'/logs/a_$elementFields.json', json_encode($elementFields));
 
 if ($id = $element->Add($elementFields)) {
     $postFields = array_merge($fields, $propertiesPost);
     $postFields['APPLICATION_ID'] = $id;
+    $postFields['RECOURSE'] = 'Уважаемый(ая)';
     $postFields['DATE_CREATE'] = $elementFields['DATE_CREATE'];
 
     $postFields = getSex($postFields);
-    //file_put_contents("/home/bitrix/www".'/currency/a_$postFields.json', json_encode($postFields));
+    //file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
+    //file_put_contents("/home/bitrix/www".'/logs/a_$arParams.json', json_encode($arParams));
 
     $arResult["message"][] = [
         "data" => $postFields,
@@ -151,12 +134,18 @@ if ($id = $element->Add($elementFields)) {
         "type" => true,
     ];
 
+    //if ($arParams->ADMIN_EVENT != 'NONE') {
     if ($arParams["ADMIN_EVENT"] != 'NONE') {
-        CEvent::Send($arParams["ADMIN_EVENT"], $arParams["SITES"], $postFields);
+        $v1 = CEvent::Send($arParams["ADMIN_EVENT"], $arParams["SITES"], $postFields);
+        //$v1 = CEvent::Send($arParams->ADMIN_EVENT, $arParams->SITES, $postFields);
     }
+
+    //if ($arParams->USER_EVENT != 'NONE') {
     if ($arParams["USER_EVENT"] != 'NONE') {
-        CEvent::Send($arParams["USER_EVENT"], $arParams["SITES"], $postFields);
+        $v2 = CEvent::Send($arParams["USER_EVENT"], $arParams["SITES"], $postFields);
+        //$v2 = CEvent::Send($arParams->USER_EVENT, $arParams->SITES, $postFields);
     }
+    //file_put_contents("/home/bitrix/www".'/logs/a_v_post.json', json_encode([$v1, $v2]));
 } else {
     $arResult["status"] = false;
     $arResult["message"][] = [
