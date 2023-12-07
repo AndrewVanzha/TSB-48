@@ -219,34 +219,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
 <script>
     $(document).ready(function() {
-        // https://osipenkov.ru/tracking-fileds-yandex-metrika-gtm/
-        // https://blog.targeting.school/kakie-byvayut-tseli-v-ya-metrike-i-kak-rabotaet-novaya-tsel-otpravka-formy/
-        // https://www.yandex.ru/video/preview/17446571467160561628
-        function yandexMetrikaForm() {
-            //yaCounter49389685
-            //yaCounter315345643.reachGoal('applicationForm'); // ошика
-            //ym(315345643, 'reachGoal', 'applicationForm');
-
-            let formFields = {
-                'Поля формы':
-                    {
-                        'LAST_NAME': $('input[name="LAST_NAME"]').val(),
-                        'FIRST_NAME': $('input[name="FIRST_NAME"]').val(),
-                        'SECOND_NAME': $('input[name="SECOND_NAME"]').val(),
-                        'PHONE': $('input[name="PHONE"]').val(),
-                        'EMAIL': $('input[name="EMAIL"]').val(),
-                        'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
-                        'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
-                        'SUM': $('input[name="SUM"]').val(),
-                        'CITY': $('select[name="CITY"] option:selected').val(),
-                    }
-            };
-            //console.log(formFields);
-            ym(317314390, 'reachGoal', 'depositOrder', formFields);
-
-            return true;
-        }
-
         function requiredFields() {
             let arFields = [
                 'input[name="PHONE"]',
@@ -275,6 +247,27 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             }
 
             return (countErr > 0) ? false : true;
+        }
+
+        function yandexMetrikaForm() {
+            let formFields = {
+                'Поля формы':
+                    {
+                        'LAST_NAME': $('input[name="LAST_NAME"]').val(),
+                        'FIRST_NAME': $('input[name="FIRST_NAME"]').val(),
+                        'SECOND_NAME': $('input[name="SECOND_NAME"]').val(),
+                        'PHONE': $('input[name="PHONE"]').val(),
+                        'EMAIL': $('input[name="EMAIL"]').val(),
+                        'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
+                        'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
+                        'SUM': $('input[name="SUM"]').val(),
+                        'CITY': $('select[name="CITY"] option:selected').val(),
+                    }
+            };
+            //console.log(formFields);
+            ym(317314390, 'reachGoal', 'depositOrder', formFields);
+
+            return true;
         }
 
         function makeDataLayer(id, ar_product) {
@@ -435,15 +428,14 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                         },
                         dataType: "json",
                         success: function (data) {
-                            console.log(data);
-
+                            //console.log(data);
                             if (data.message) {
                                 let response = data.message[0];
                                 if(response.type) {
                                     //console.log(response.data.APPLICATION_ID);
                                     ar_product = makeArProduct(response.data);
                                     makeDataLayer(response.data.APPLICATION_ID, ar_product);
-                                    console.log(window.dataLayer);
+                                    //console.log(window.dataLayer);
                                     yandexMetrikaForm();
                                 }
                             }
