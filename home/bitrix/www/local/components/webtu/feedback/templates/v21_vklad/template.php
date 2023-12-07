@@ -436,6 +436,18 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                         dataType: "json",
                         success: function (data) {
                             console.log(data);
+
+                            if (data.message) {
+                                let response = data.message[0];
+                                if(response.type) {
+                                    //console.log(response.data.APPLICATION_ID);
+                                    ar_product = makeArProduct(response.data);
+                                    makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                    console.log(window.dataLayer);
+                                    yandexMetrikaForm();
+                                }
+                            }
+
                             $('#reloadCaptcha').click();
                             if (data.message && data.message.length > 0) {
                                 $(".v21_alert_depositOrder_item").remove()
@@ -450,15 +462,6 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                                 });
                             }
                             if (data.status) {
-                                let response = data.message[0];
-                                if(response.type) {
-                                    //console.log(response.data.APPLICATION_ID);
-                                    ar_product = makeArProduct(response.data);
-                                    makeDataLayer(response.data.APPLICATION_ID, ar_product);
-                                    //console.log(window.dataLayer);
-                                    yandexMetrikaForm();
-                                }
-
                                 $("#depositOrder")[0].reset();
                             }
 
