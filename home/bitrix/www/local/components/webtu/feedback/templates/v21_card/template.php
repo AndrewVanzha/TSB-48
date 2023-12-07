@@ -895,19 +895,18 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                             console.log(data);
                             $('#reloadCaptcha').click();
 
-                            if (data.message && data.message.length > 0) {
+                            if (data.message) {
                                 let response = data.message[0];
-                                console.log('data.message');
                                 if(response.type) {
-                                    //console.log(response.data);
-                                    console.log(response.data.APPLICATION_ID);
+                                    //console.log(response.data.APPLICATION_ID);
                                     ar_product = makeArProduct(response.data);
-                                    //console.log(ar_product);
                                     makeDataLayer(response.data.APPLICATION_ID, ar_product);
                                     console.log(window.dataLayer);
                                     //yandexMetrikaForm();
                                 }
+                            }
 
+                            if (data.message && data.message.length > 0) {
                                 $(".v21_alert_orderCard_item").remove()
                                 $.each(data.message, function (key, field) {
                                     $('#v21_alert_orderCard .v21-modal__window').append(

@@ -42,6 +42,7 @@ $fields = [];
 if ($_POST["fields"]) {
     parse_str($_POST['fields'], $fields);
 }
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_post_$fields.json', json_encode($fields));
 
 if (count($fields)  < 1) {
     $arResult["status"] = false;
@@ -123,7 +124,7 @@ $elementFields['UTM_CONTENT'] = isset($fields['UTM_CONTENT'])? $fields['UTM_CONT
 $elementFields['FORM'] = 100;  //  Заявка на открытие вклада/депозита: администратор
 
 //$propertiesPost["DATE_CREATE"] = date('d.m.Y H:i:s', time());
-//file_put_contents("/home/bitrix/www".'/currency/a_$elementFields.json', json_encode($elementFields));
+//file_put_contents("/home/bitrix/www".'/logs/a_$elementFields.json', json_encode($elementFields));
 
 if ($id = $element->Add($elementFields)) {
     $postFields = array_merge($fields, $propertiesPost);

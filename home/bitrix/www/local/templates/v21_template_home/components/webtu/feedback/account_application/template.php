@@ -477,7 +477,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     },
                     dataType: "json",
                     success: function (data) {
-                        //console.log('**');
+                        //console.log(data);
                         if (data.status) {
                             let response = data.message[0];
                             //console.log('data.message');

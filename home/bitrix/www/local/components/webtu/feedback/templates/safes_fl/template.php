@@ -28,7 +28,7 @@
             <??><input type="hidden" id="safes_name" name="NAME_SAFES" value="Сейф для частного клиента"><??>
             <input type="hidden" id="safes_options" name="OPTIONS" value="">
 
-            <??><input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>"><??>
+            <??><input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>"><??>
             <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
 
             <div class="card-application--content">
@@ -210,7 +210,6 @@
 
 
 <script type="text/javascript">
-
    $(document).ready(function(){
       $('#reloadCaptchaSafe').click(function(){
         $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function(data) {
@@ -219,137 +218,274 @@
         });
         return false;
       });
+
+       function changeColors(scrollTop) {
+           let opacityLevel = 1;
+           let param1;  // rgba(21,24,45,1);
+           let param2;  // rgba(0,52,94,1);
+           const inversionOffset = 100; // метка первой смены цвета, привязана к блоку - не нужна
+           const opacityOffset = 0; // метка отмены смены цвета, привязана к блоку - не нужна
+           const classOffset = 150; // не нужна
+           const windowInnerWidth = window.innerWidth;
+           let formBlockTop = $('.card-application--form').offset().top;
+           let fixLevel1 = formBlockTop - windowInnerWidth * .17; // уровень первого переключения было .35
+           let fixLevel2 = formBlockTop + $('.card-application--form').height() * .6 - opacityOffset; // уровень второго переключения
+           let fixLevel3 = formBlockTop - inversionOffset + classOffset; // не нужен
+           let fixLevel = (fixLevel1 - scrollTop) / opacityOffset; // диапазон смены прозрачности - не нужен
+
+           if(scrollTop > fixLevel2) {
+               //$('.v21-card-application').css('background', 'linear-gradient(106.11deg, '+param1+' 27.82%, '+param2+' 100%)');
+               $('.safes-page__background-blue').css('opacity', '0');
+               $('.v21 .v21-card-application').removeClass('js-color-switch');
+               $('.v21 .v21-safe-info').removeClass('js-color-switch');
+               $('.v21 .v21-safes-advantages').removeClass('js-color-switch');
+           } else if(scrollTop > fixLevel1) {
+               $('.safes-page__background-blue').css('opacity', '1');
+               $('.v21 .v21-card-application').addClass('js-color-switch');
+               $('.v21 .v21-safe-info').addClass('js-color-switch');
+               $('.v21 .v21-safes-advantages').addClass('js-color-switch');
+           } else {
+               //$('.v21-card-application').css('background', 'linear-gradient(106.11deg, '+param1+' 27.82%, '+param2+' 100%)');
+               $('.safes-page__background-blue').css('opacity', '0');
+               $('.v21 .v21-card-application').removeClass('js-color-switch');
+               $('.v21 .v21-safe-info').removeClass('js-color-switch');
+               $('.v21 .v21-safes-advantages').removeClass('js-color-switch');
+           }
+       }
+       changeColors($(window).scrollTop());
+
+       $(window).on('scroll',function(){
+           let $window = $(window);
+           let scrollTop = $window.scrollTop();
+           //console.log('scrollTop='+scrollTop);
+
+           changeColors(scrollTop);
+       });
+
+       function clearFields () {
+           $('textarea').val('').css('box-shadow', 'none');
+           $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
+
+           $('textarea').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+           $('input').focusout(function () {
+               $(this).css('box-shadow', '');
+           });
+       }
+
+       if ($('.alert-success').length > 0) {
+           clearFields ();
+       }
+
+       /*$('.feedback_form .button').click(function () {
+           $(".alert").remove();
+
+       });*/
+
+       function requiredFields() {
+           let arFields = [
+               'input[name="NAME"]',
+               'input[name="PHONE"]',
+               'input[name="EMAIL"]',
+               'input[name="FROM_WHERE"]',
+           ];
+
+           let countErr = 0;
+
+           arFields.forEach(function (value) {
+               if ($(value).val() == '') {
+                   $(value).parent().addClass("is-error");
+                   countErr += 1;
+               } else {
+                   $(value).parent().removeClass("is-error");
+               }
+           });
+           if($('#politics2').is(':checked')) {
+               $('#politics2').parent().parent().removeClass("is-error");
+           } else {
+               countErr += 1;
+               $('#politics2').parent().parent().addClass("is-error");
+           }
+
+           return (countErr > 0) ? false : true;
+       }
+
+       function makeDataLayer(id, ar_product) {
+           window.dataLayer.push({
+               "ecommerce": {
+                   "currencyCode": "RUB",
+                   "purchase": {
+                       "actionField": {
+                           "id" : id
+                       },
+                       "products": ar_product,
+                   }
+               }
+           });
+       }
+
+       function makeArProduct(data) {
+           let pos = 0;
+           let ar_product = [];
+           let entry = {
+               'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+               'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+               'PRICE': 1,
+               'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+               'QUANTITY': 1,
+               'XML_ID': 'xml'
+           };
+
+           ar_product.push(
+               {
+                   "id": 'TYPE',
+                   "name": data.TYPE,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'TIME',
+                   "name": data.TIME,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'FROM_WHERE',
+                   "name": data.FROM_WHERE,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'REQ_URI',
+                   "name": data.REQ_URI,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_CAMPAIGN',
+                   "name": data.UTM_CAMPAIGN,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_CONTENT',
+                   "name": data.UTM_CONTENT,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_MEDIUM',
+                   "name": data.UTM_MEDIUM,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_SOURCE',
+                   "name": data.UTM_SOURCE,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+           ar_product.push(
+               {
+                   "id": 'UTM_TERM',
+                   "name": data.UTM_TERM,
+                   "price": entry.PRICE,
+                   "category": entry.DETAIL_PAGE_URL,
+                   "quantity": entry.QUANTITY,
+                   "position": pos++,
+                   "xml": entry.XML_ID,
+               },
+           );
+
+           return ar_product;
+       }
+
+       $('#applicationForm').submit(function (e) {
+           e.preventDefault();
+           console.log('form');
+           let ar_product = [];
+           //if ($("#politics2").prop("checked")) {
+           //$('#politics2').parent().parent().removeClass("is-error");
+           if (requiredFields()) {
+               $.ajax({
+                   type: "POST",
+                   url: '/ajax_scripts/ajax.customer.php',
+                   data: {
+                       'fields': $(this).serialize(),
+                   },
+                   dataType: "json",
+                   success: function (data) {
+                       //console.log(data);
+                       if (data.status) {
+                           let response = data.message[0];
+                           if(response.type) {
+                               //console.log(response.data);
+                               console.log(response.data.APPLICATION_ID);
+                               ar_product = makeArProduct(response.data);
+                               makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                               console.log(window.dataLayer);
+                               //yandexMetrikaForm();
+                           }
+
+                           clearFields ();
+                           $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                           document.location.href = "/thanks/";
+                       } else {
+                           if (!data.captcha){
+                               console.log('not OK');
+                               $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                           } else {
+                               $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                           }
+                       }
+                   }
+               });
+           }
+           //} else {
+           //    $('#politics2').parent().parent().addClass("is-error");
+           //}
+       });
    });
-   
-</script>
-
-<script>
-    function changeColors(scrollTop) {
-        let opacityLevel = 1;
-        let param1;  // rgba(21,24,45,1);
-        let param2;  // rgba(0,52,94,1);
-        const inversionOffset = 100; // метка первой смены цвета, привязана к блоку - не нужна
-        const opacityOffset = 0; // метка отмены смены цвета, привязана к блоку - не нужна
-        const classOffset = 150; // не нужна
-        const windowInnerWidth = window.innerWidth;
-        let formBlockTop = $('.card-application--form').offset().top;
-        let fixLevel1 = formBlockTop - windowInnerWidth * .17; // уровень первого переключения было .35
-        let fixLevel2 = formBlockTop + $('.card-application--form').height() * .6 - opacityOffset; // уровень второго переключения
-        let fixLevel3 = formBlockTop - inversionOffset + classOffset; // не нужен
-        let fixLevel = (fixLevel1 - scrollTop) / opacityOffset; // диапазон смены прозрачности - не нужен
-
-        if(scrollTop > fixLevel2) {
-            //$('.v21-card-application').css('background', 'linear-gradient(106.11deg, '+param1+' 27.82%, '+param2+' 100%)');
-            $('.safes-page__background-blue').css('opacity', '0');
-            $('.v21 .v21-card-application').removeClass('js-color-switch');
-            $('.v21 .v21-safe-info').removeClass('js-color-switch');
-            $('.v21 .v21-safes-advantages').removeClass('js-color-switch');
-        } else if(scrollTop > fixLevel1) {
-            $('.safes-page__background-blue').css('opacity', '1');
-            $('.v21 .v21-card-application').addClass('js-color-switch');
-            $('.v21 .v21-safe-info').addClass('js-color-switch');
-            $('.v21 .v21-safes-advantages').addClass('js-color-switch');
-        } else {
-            //$('.v21-card-application').css('background', 'linear-gradient(106.11deg, '+param1+' 27.82%, '+param2+' 100%)');
-            $('.safes-page__background-blue').css('opacity', '0');
-            $('.v21 .v21-card-application').removeClass('js-color-switch');
-            $('.v21 .v21-safe-info').removeClass('js-color-switch');
-            $('.v21 .v21-safes-advantages').removeClass('js-color-switch');
-        }
-    }
-    changeColors($(window).scrollTop());
-
-    $(window).on('scroll',function(){
-        let $window = $(window);
-        let scrollTop = $window.scrollTop();
-        //console.log('scrollTop='+scrollTop);
-
-        changeColors(scrollTop);
-    });
-
-    function clearFields () {
-        $('textarea').val('').css('box-shadow', 'none');
-        $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
-
-        $('textarea').focusout(function () {   
-            $(this).css('box-shadow', '');
-        });
-        $('input').focusout(function () {
-            $(this).css('box-shadow', '');
-        });
-    }
-
-    if ($('.alert-success').length > 0) {
-        clearFields ();
-    }
-
-    /*$('.feedback_form .button').click(function () {
-        $(".alert").remove();
-
-    });*/
-
-    function requiredFields() {
-        let arFields = [
-            'input[name="NAME"]',
-            'input[name="PHONE"]',
-            'input[name="EMAIL"]',
-            'input[name="FROM_WHERE"]',
-        ];
-
-        let countErr = 0;
-
-        arFields.forEach(function (value) {
-            if ($(value).val() == '') {
-                $(value).parent().addClass("is-error");
-                countErr += 1;
-            } else {
-                $(value).parent().removeClass("is-error");
-            }
-        });
-        if($('#politics2').is(':checked')) {
-            $('#politics2').parent().parent().removeClass("is-error");
-        } else {
-            countErr += 1;
-            $('#politics2').parent().parent().addClass("is-error");
-        }
-
-        return (countErr > 0) ? false : true;
-    }
-
-    $('#applicationForm').submit(function (e) {
-        e.preventDefault();
-        console.log('form');
-        //if ($("#politics2").prop("checked")) {
-            //$('#politics2').parent().parent().removeClass("is-error");
-            if (requiredFields()) {
-                $.ajax({
-                    type: "POST",
-                    url: '/ajax_scripts/ajax.customer.php',
-                    data: {
-                        'fields': $(this).serialize(),
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        if (data.status) {
-                            clearFields ();
-                            $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
-                            document.location.href = "/thanks/";
-                        } else {
-                            if (!data.captcha){
-                            console.log('not OK');
-                                $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
-                            } else {
-                                $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
-                            }
-                        }
-                    }
-                });
-            }
-        //} else {
-        //    $('#politics2').parent().parent().addClass("is-error");
-        //}
-    });
-
 </script>
 
 <? if (isset($_REQUEST['AJAX_CALL'])) { ?>
