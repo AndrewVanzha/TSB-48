@@ -281,7 +281,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                    //console.log(window.dataLayer);
                }
                else {
-                   console.log('Ошибка заполнения массива POST');
+                   console.log('В массиве $POST нет коммерции');
                }
            }
        }
