@@ -415,7 +415,14 @@ use Bitrix\Main\Page\Asset; ?>
       "PROPERTIES" => array(
         0 => "PHONE",
         1 => "TIME",
-        2 => "FOLDER"
+        2 => "FOLDER",
+        3 => "FROM_WHERE",
+        4 => "REQ_URI",
+        5 => "UTM_SOURCE",
+        6 => "UTM_MEDIUM",
+        7 => "UTM_CAMPAIGN",
+        8 => "UTM_TERM",
+        9 => "UTM_CONTENT"
       ),
       "ADMIN_EVENT" => "WEBTU_FEEDBACK_CALLBACK",
       "USER_EVENT"  => "NONE",
@@ -425,7 +432,8 @@ use Bitrix\Main\Page\Asset; ?>
       "AJAX_OPTION_JUMP" => "N",
       "AJAX_OPTION_STYLE" => "Y",
       "AJAX_OPTION_HISTORY" => "N",
-      "AJAX_OPTION_ADDITIONAL" => ""
+      "AJAX_OPTION_ADDITIONAL" => "",
+      "UTM" => "83",
     ),
     false
   ); ?>
