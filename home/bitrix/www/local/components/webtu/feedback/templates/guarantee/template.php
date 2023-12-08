@@ -19,7 +19,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 
     <input type="hidden" name="FORM_ID" value="<?=$arResult['FORM_ID']?>">
     <input type="hidden" name="SESSION_ID" value="<?=bitrix_sessid()?>">
-    <input type="hidden" name="REQ_URI" value="<?= $_SERVER['REQUEST_URI'] ?>">
+    <input type="hidden" name="REQ_URI" value="<?= $_SERVER['SCRIPT_URL'] ?>">
     <input type="hidden" name="FOLDER" value="<?= $APPLICATION->GetTitle() ?>">
 
     <div class="popup-form_content">
@@ -327,135 +327,266 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
 </form>
 
 <script type="text/javascript">
-
-   $(document).ready(function(){
-       // https://osipenkov.ru/tracking-fileds-yandex-metrika-gtm/
-       // https://blog.targeting.school/kakie-byvayut-tseli-v-ya-metrike-i-kak-rabotaet-novaya-tsel-otpravka-formy/
-       // https://www.yandex.ru/video/preview/17446571467160561628
-       function yandexMetrikaForm() {
-           //yaCounter49389685
-           //yaCounter315345643.reachGoal('applicationForm'); // ошика
-           //ym(315345643, 'reachGoal', 'applicationForm');
-
-           let formFields = {
-               'Поля формы':
-                   {
-                       'LAST_NAME': $('input[name="LAST_NAME"]').val(),
-                       'FIRST_NAME': $('input[name="FIRST_NAME"]').val(),
-                       'SECOND_NAME': $('input[name="SECOND_NAME"]').val(),
-                       'PHONE': $('input[name="PHONE"]').val(),
-                       'EMAIL': $('input[name="EMAIL"]').val(),
-                       'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
-                       'BIRTHDATE': $('input[name="BIRTHDATE"]').val(),
-                       'SUM': $('input[name="SUM"]').val(),
-                       'CITY': $('select[name="CITY"] option:selected').val(),
-                   }
-           };
-           //console.log(formFields);
-           //ym(316212751, 'reachGoal', 'depositOrder', formFields);
-
-           return true;
-       }
-
-       $('#reloadCaptcha').click(function(){
-        $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function(data) {
-            $('#captchaImg').attr('src','/bitrix/tools/captcha.php?captcha_sid='+data);
-            $('#captchaSid').val(data);
+    $(document).ready(function(){
+        $('#reloadCaptcha').click(function(){
+            $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function(data) {
+                $('#captchaImg').attr('src','/bitrix/tools/captcha.php?captcha_sid='+data);
+                $('#captchaSid').val(data);
+            });
+            return false;
         });
-        return false;
-      });
 
-       function requiredContacts () {
-           if ($('input[name="EMAIL"]').val() !== '') {
-               $('input[name="EMAIL"]').attr('required', true);
-               $('input[name="PHONE"]').attr('required', false);
-           } else {
-               $('input[name="PHONE"]').attr('required', true);
-               $('input[name="EMAIL"]').attr('required', false);
-           }
-       }
+        function requiredContacts () {
+            if ($('input[name="EMAIL"]').val() !== '') {
+                $('input[name="EMAIL"]').attr('required', true);
+                $('input[name="PHONE"]').attr('required', false);
+            } else {
+                $('input[name="PHONE"]').attr('required', true);
+                $('input[name="EMAIL"]').attr('required', false);
+            }
+        }
 
-       $('input[name="EMAIL"]').on('focusout', function () {
-           requiredContacts ();
-       });
+        $('input[name="EMAIL"]').on('focusout', function () {
+            requiredContacts ();
+        });
 
-       $('input[name="PHONE"]').on('focusout', function () {
-           requiredContacts ();
-       });
+        $('input[name="PHONE"]').on('focusout', function () {
+            requiredContacts ();
+        });
 
-       function clearFields () {
-           $('textarea').val('').css('box-shadow', 'none');
-           $('input:not([type="hidden"]').val('').css('box-shadow', 'none');
+        function clearFields () {
+            $('textarea').val('').css('box-shadow', 'none');
+            $('input:not([type="hidden"]').val('').css('box-shadow', 'none');
 
-           $('textarea').focusout(function () {
-               $(this).css('box-shadow', '');
-           });
-           $('input').focusout(function () {
-               $(this).css('box-shadow', '');
-           });
-       }
+            $('textarea').focusout(function () {
+                $(this).css('box-shadow', '');
+            });
+            $('input').focusout(function () {
+                $(this).css('box-shadow', '');
+            });
+        }
 
-       if ($('.alert-success').length > 0) {
-           clearFields ();
-       }
+        if ($('.alert-success').length > 0) {
+            clearFields ();
+        }
 
-       function makeDataLayer(id, ar_product) {
-           window.dataLayer.push({
-               //local_dataLayer.push({
-               "ecommerce": {
-                   "currencyCode": "RUB",
-                   "purchase": {
-                       "actionField": {
-                           "id" : id
-                       },
-                       "products": ar_product,
-                   }
+        function yandexMetrikaForm() {
+            let formFields = {
+                'Поля формы':
+                    {
+                        'CITY': $('select[name="CITY"] option:selected').val(),
+                        'DATE': $('input[name="LAST_NAME"]').val(),
+                        'TARGET': $('input[name="FIRST_NAME"]').val(),
+                        'PROVISION': $('input[name="BIRTHDATE"]').val(),
+                        'SUM': $('input[name="SUM"]').val(),
+                        //'PHONE': $('input[name="PHONE"]').val(),
+                        //'EMAIL': $('input[name="EMAIL"]').val(),
+                        'FROM_WHERE': $('input[name="FROM_WHERE"]').val(),
+                    }
+            };
+            //console.log(formFields);
+            //ym(316212751, 'reachGoal', 'depositOrder', formFields);
+
+            return true;
+        }
+
+        function makeDataLayer(id, ar_product) {
+            window.dataLayer.push({
+                "ecommerce": {
+                    "currencyCode": "RUB",
+                    "purchase": {
+                        "actionField": {
+                            "id" : id
+                        },
+                        "products": ar_product,
+                    }
+                }
+            });
+        }
+
+        function makeArProduct(data) {
+            let pos = 0;
+            let ar_product = [];
+            let entry = {
+                'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'PRICE': 1,
+                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+                'QUANTITY': 1,
+                'XML_ID': 'xml'
+            };
+
+            ar_product.push(
+                {
+                    "id": 'CITY',
+                    "name": data.CITY,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'SUM',
+                    "name": data.SUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'DATE',
+                    "name": data.DATE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'TARGET',
+                    "name": data.TARGET,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'PROVISION',
+                    "name": data.PROVISION,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'FROM_WHERE',
+                    "name": data.FROM_WHERE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'REQ_URI',
+                    "name": data.REQ_URI,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CAMPAIGN',
+                    "name": data.UTM_CAMPAIGN,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CONTENT',
+                    "name": data.UTM_CONTENT,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_MEDIUM',
+                    "name": data.UTM_MEDIUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_SOURCE',
+                    "name": data.UTM_SOURCE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_TERM',
+                    "name": data.UTM_TERM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+
+            return ar_product;
+        }
+
+        function checkCommerce() {
+            let ar_product = [];
+            let result_data = <?= CUtil::PHPToJSObject($arResult); ?>; // данные для электронной коммерции
+           //console.log(result_data);
+           if (result_data['COMMERCE']) {
+               //console.log(result_data['COMMERCE']);
+               let commerce = result_data['COMMERCE'];
+               if (commerce.type && result_data['ERRORS'].length == 0) {
+                   //console.log(commerce.data);
+                   console.log(commerce.data.APPLICATION_ID);
+                   ar_product = makeArProduct(commerce.data);
+                   makeDataLayer(commerce.data.APPLICATION_ID, ar_product);
+                   //console.log(window.dataLayer);
                }
-           });
+               else {
+                   console.log('В массиве $POST нет коммерции');
+               }
+           }
        }
 
-       let pos = 1;
-       //$('.feedback_form .button').click(function () {
-       $('.popup-form_content .button').click(function () {
-           let entry = {
-               'PRODUCT_ID': 0,
-               'NAME': 'form',
-               'PRICE': 1,
-               'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
-               'QUANTITY': 1,
-               'XML_ID': 'xml'
-           };
-           let ar_product = [];
-           let postTemplateID = <?= $postTemplateID; ?>;
-           if(postTemplateID) {
-               entry.PRODUCT_ID = postTemplateID; // ID почтового шаблона
-           }
-           ar_product.push(
-               {
-                   "id": entry.PRODUCT_ID,
-                   "name": entry.NAME,
-                   "price": entry.PRICE,
-                   "category": entry.DETAIL_PAGE_URL,
-                   "quantity": entry.QUANTITY,
-                   "position": 1,
-                   "xml": entry.XML_ID,
-               },
-           );
-           makeDataLayer(pos++, ar_product);
-           console.log(window.dataLayer);
-           //yandexMetrikaForm();
+       checkCommerce();
 
-           $(".alert").remove();
-       });
+        //$('.feedback_form .button').click(function () {
+        $('.popup-form_content .button').click(function () {
+            $(".alert").remove();
+        });
 
-       $('.agreement input[required]').change(function () {
-           if ( $(this).is(':checked') ) {
-               $(this).closest('.agreement').css('box-shadow', '');
-           } else {
-               $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
-           }
-       });
-
+        $('.agreement input[required]').change(function () {
+            if ( $(this).is(':checked') ) {
+                $(this).closest('.agreement').css('box-shadow', '');
+            } else {
+                $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
+            }
+        });
+    });
 </script>
 
 <? if (isset($_REQUEST['AJAX_CALL'])) { ?>
