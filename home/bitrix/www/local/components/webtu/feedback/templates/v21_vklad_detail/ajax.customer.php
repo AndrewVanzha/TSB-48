@@ -42,6 +42,7 @@ $fields = [];
 if ($_POST["fields"]) {
     parse_str($_POST['fields'], $fields);
 }
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_post_$fields.json', json_encode($fields));
 
 if (count($fields)  < 1) {
     $arResult["status"] = false;
@@ -110,15 +111,16 @@ $elementFields['PREVIEW_TEXT'] = isset($fields['PREVIEW_TEXT']) ? $fields['PREVI
 $elementFields['DETAIL_TEXT']  = isset($fields['DETAIL_TEXT'])  ? $fields['DETAIL_TEXT']  : '';
 
 if ($id = $element->Add($elementFields)) {
-    $arResult["message"][] = [
-        "text" => "Заявка успешно отправлена",
-        "type" => true,
-    ];
-
     $postFields = array_merge($fields, $propertiesPost);
     $postFields['APPLICATION_ID'] = $id;
 
     $postFields = getSex($postFields);
+
+    $arResult["message"][] = [
+        "data" => $postFields,
+        "text" => "Заявка успешно отправлена",
+        "type" => true,
+    ];
 
     if ($arParams->ADMIN_EVENT != 'NONE') {
         CEvent::Send($arParams->ADMIN_EVENT, $arParams->SITES, $postFields);
