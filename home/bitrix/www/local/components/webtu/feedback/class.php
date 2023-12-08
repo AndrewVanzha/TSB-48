@@ -55,7 +55,7 @@ class WebtuFeedback extends CBitrixComponent
         global $APPLICATION;
 
         $post = $this->sanitizePost();
-        //file_put_contents("/home/bitrix/www".'/currency/a_post.json', json_encode($post));
+        //file_put_contents("/home/bitrix/www".'/logs/a_post.json', json_encode($post));
 
         if ($post['FORM_ID'] !== $this->arResult['FORM_ID']) {
             return false;
@@ -104,7 +104,7 @@ class WebtuFeedback extends CBitrixComponent
         $fields['NAME']         = isset($post['NAME'])         ? $post['NAME']         : 'Новое обращение';
         $fields['PREVIEW_TEXT'] = isset($post['PREVIEW_TEXT']) ? $post['PREVIEW_TEXT'] : '';
         $fields['DETAIL_TEXT']  = isset($post['DETAIL_TEXT'])  ? $post['DETAIL_TEXT']  : '';
-        file_put_contents("/home/bitrix/www".'/currency/a_$fields.json', json_encode($fields));
+        file_put_contents("/home/bitrix/www".'/logs/a_$fields.json', json_encode($fields));
 
         if (isset($this->arParams['UTM']) && $this->arParams['UTM'] != 'N') {
             $fields['UTM_SOURCE'] = isset($post['UTM_SOURCE'])? $post['UTM_SOURCE'] : 'no_data';
@@ -120,7 +120,7 @@ class WebtuFeedback extends CBitrixComponent
 
             $postFields = array_merge($fields, $propertiesPost);
             $postFields['APPLICATION_ID'] = $id;
-            file_put_contents("/home/bitrix/www".'/currency/a_$postFields.json', json_encode($postFields));
+            file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
 
             if (isset($this->arParams['EVENT_CALLBACK'])) {
                 if (is_callable($this->arParams['EVENT_CALLBACK'])) {
@@ -130,20 +130,31 @@ class WebtuFeedback extends CBitrixComponent
 
             $this->arResult['POST'] = $this->post;
 
+            $this->arResult["COMMERCE"] = [
+                "data" => $postFields,
+                "text" => "Заявка успешно отправлена",
+                "type" => true,
+            ];
+
             if ($this->arParams['ADMIN_EVENT'] != 'NONE') {
                 $jjj = CEvent::Send($this->arParams['ADMIN_EVENT'], $this->arParams['SITES'], $postFields);
-                file_put_contents("/home/bitrix/www".'/currency/a_$jjj.json', json_encode($jjj));
+                file_put_contents("/home/bitrix/www".'/logs/a_post_result_admin.json', json_encode($jjj));
             }
 
             if ($this->arParams['USER_EVENT'] != 'NONE') {
                 $iii = CEvent::Send($this->arParams['USER_EVENT'], $this->arParams['SITES'], $postFields);
-                file_put_contents("/home/bitrix/www".'/currency/a_$iii.json', json_encode($iii));
+                file_put_contents("/home/bitrix/www".'/logs/a_post_result_user.json', json_encode($iii));
             }
 
             return $id;
         } else {
             $this->addError($element->LAST_ERROR);
             $this->arResult['POST'] = $this->post;
+
+            $this->arResult["COMMERCE"] = [
+                "text" => "Заявка не отправлена",
+                "type" => false,
+            ];
 
             return false;
         }
@@ -157,6 +168,9 @@ class WebtuFeedback extends CBitrixComponent
 
         $this->arResult['FORM_ID'] = $this->arParams['AJAX_ID'];
 
+        $this->arResult["COMMERCE"] = [
+            "type" => false,
+        ];
         if (isset($_POST['WEBTU_FEEDBACK'])) {
             $this->post();
         }
@@ -173,7 +187,7 @@ class WebtuFeedback extends CBitrixComponent
         $this->arResult['ERRORS']  = $this->getErrors();
         $this->arResult['SUCCESS'] = $this->getSuccess();
         $this->arResult['CAPTCHA'] = htmlspecialchars($APPLICATION->CaptchaGetCode());
-        //file_put_contents("/home/bitrix/www".'/currency/a_error_class.json', json_encode($this->arResult['ERRORS']));
+        //file_put_contents("/home/bitrix/www".'/logs/a_error_class.json', json_encode($this->arResult['ERRORS']));
 
         $this->includeComponentTemplate();
     }
@@ -200,7 +214,7 @@ class WebtuFeedback extends CBitrixComponent
 
     public function collectUTMstatus()
     {
-        //file_put_contents("/home/bitrix/www".'/currency/a_formsID.json', json_encode($this->formsID));
+        //file_put_contents("/home/bitrix/www".'/logs/a_formsID.json', json_encode($this->formsID));
 
         $now = new DateTime();
         $arPropsIx = [ // для фильтрации массива свойств - там много лишнего
