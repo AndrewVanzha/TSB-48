@@ -22,7 +22,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
         <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="POST" class="v21-service-form" id="investOrder">
             <input type="hidden" name="FORM_ID" value="<?= $arResult['FORM_ID'] ?>">
             <input type="hidden" name="SESSION_ID" value="<?= bitrix_sessid() ?>">
-            <input type="hidden" name="email2" value="">
+            <?/*?><input type="hidden" name="email2" value=""><?*/?>
 
             <input type="hidden" id="CREDIT_NAME" name="CREDIT_NAME" value="">
             <input type="hidden" id="PARAMS" name="PARAMS" value='<?= json_encode($arParams["OPTIONS"]) ?>'>
@@ -190,6 +190,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                     </div><!-- /.v21-grid__item -->
 
                     <div class="v21-grid__item">
+                        <?/*?><button class="v21-modal__button v21-button" name="WEBTU_FEEDBACK"><?*/?>
                         <button class="v21-modal__button v21-button" name="WEBTU_FEEDBACK">
                             <?= GetMessage("WEBTU_FEEDBACK_8_BUTTON") ?>
                         </button>
@@ -200,7 +201,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
     </div><!-- /.v21-modal__window -->
 </div>
 
-<div data-overlay="v21_overlay" class="v21-modal v21-fade js-v21-modal" id="v21_alert_investOrder">
+<div data-overlay="v21_overlay" class="v21-modal v21-fade js-v21-modal_" id="v21_alert_investOrder">
     <div class="v21-modal__window js-v21-modal-window">
         <a href="#v21_alert_investOrder" class="v21-modal__close js-v21-modal-toggle">
             <svg width="24" height="24">
@@ -218,7 +219,8 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 'input[name="EMAIL"]',
                 'input[name="LAST_NAME"]',
                 'input[name="FIRST_NAME"]',
-                'input[name="BIRTHDATE"]'
+                'input[name="BIRTHDATE"]',
+                'input[name="FROM_WHERE"]',
             ];
 
             var countErr = 0;
@@ -407,9 +409,14 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
             e.preventDefault();
             let ar_product = [];
             let postTemplateID = <?= $postTemplateID; ?>;
+            console.log('form');
+            //console.log('captcha id');
+            //console.log($('#captchaSid').val());
             if ($("#politics").prop("checked")) {
+                //console.log('form 1');
                 $('#politics').parent().parent().removeClass("is-error");
                 if (requiredFields()) {
+                    //console.log('form 2');
                     $.ajax({
                         type: "POST",
                         url: '/local/components/webtu/feedback/templates/v21_deposit_fiz/ajax.customer.php',
@@ -425,12 +432,12 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                                     //console.log(response.data.APPLICATION_ID);
                                     ar_product = makeArProduct(response.data);
                                     makeDataLayer(response.data.APPLICATION_ID, ar_product);
-                                    //console.log(window.dataLayer);
+                                    console.log(window.dataLayer);
                                     //yandexMetrikaForm();
                                 }
                             }
 
-                            $('#reloadCaptcha').click();
+                            //$('#reloadCaptcha').click();
                             if (data.message && data.message.length > 0) {
                                 $(".v21_alert_investOrder_item").remove()
                                 $.each(data.message, function (key, field) {

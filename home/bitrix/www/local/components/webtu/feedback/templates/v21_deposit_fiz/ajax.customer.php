@@ -42,6 +42,7 @@ $fields = [];
 if ($_POST["fields"]) {
     parse_str($_POST['fields'], $fields);
 }
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_post_$fields.json', json_encode($fields));
 
 if (count($fields)  < 1) {
     $arResult["status"] = false;
@@ -56,6 +57,8 @@ if (count($fields)  < 1) {
 if (!$APPLICATION->CaptchaCheckCode($fields["CAPTCHA_WORD"], $fields["CAPTCHA_ID"])) {
     $arResult["status"] = false;
     $arResult["captcha"] = false;
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_captcha_$arResult_depozit.json', json_encode($arResult));
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_captcha_id_.json', json_encode($fields["CAPTCHA_ID"]));
 
     finish($arResult);
 }
@@ -63,7 +66,8 @@ if (!$APPLICATION->CaptchaCheckCode($fields["CAPTCHA_WORD"], $fields["CAPTCHA_ID
 $fields = sanitizePost($fields);
 
 $arParams = json_decode($fields["PARAMS"]);
-
+file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/logs/a_post_iblock.json', json_encode($arParams->IBLOCK_ID));
+/*
 if ($fields["email2"]) {
     $arResult["status"] = false;
     $arResult["message"][] = [
@@ -72,7 +76,7 @@ if ($fields["email2"]) {
     ];
     finish($arResult);
 }
-
+*/
 $element = new CIBlockElement;
 
 $properties = [];
@@ -114,6 +118,7 @@ if ($id = $element->Add($elementFields)) {
     $postFields['APPLICATION_ID'] = $id;
 
     $postFields = getSex($postFields);
+    file_put_contents("/home/bitrix/www".'/logs/a_ajax_$postFields.json', json_encode($postFields));
 
     $arResult["message"][] = [
         "data" => $postFields,
