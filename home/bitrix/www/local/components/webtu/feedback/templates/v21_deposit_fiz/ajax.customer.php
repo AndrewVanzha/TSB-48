@@ -110,15 +110,16 @@ $elementFields['PREVIEW_TEXT'] = isset($fields['PREVIEW_TEXT']) ? $fields['PREVI
 $elementFields['DETAIL_TEXT']  = isset($fields['DETAIL_TEXT'])  ? $fields['DETAIL_TEXT']  : '';
 
 if ($id = $element->Add($elementFields)) {
-    $arResult["message"][] = [
-        "text" => "Заявка успешно отправлена",
-        "type" => true,
-    ];
-
     $postFields = array_merge($fields, $propertiesPost);
     $postFields['APPLICATION_ID'] = $id;
 
     $postFields = getSex($postFields);
+
+    $arResult["message"][] = [
+        "data" => $postFields,
+        "text" => "Заявка успешно отправлена",
+        "type" => true,
+    ];
 
     if ($arParams->ADMIN_EVENT != 'NONE') {
         CEvent::Send($arParams->ADMIN_EVENT, $arParams->SITES, $postFields);
