@@ -160,7 +160,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
            clearFields ();
        }
 
-       function makeDataLayer(id, ar_product) {
+       function makeDataLayer10(id, ar_product) {
            window.dataLayer.push({
                //local_dataLayer.push({
                "ecommerce": {
@@ -175,7 +175,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
            });
        }
 
-       function makeArProduct(data) {
+       function makeArProduct10(data) {
            let pos = 0;
            let ar_product = [];
            let entry = {
@@ -289,8 +289,8 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                if (commerce.type && result_data['ERRORS'].length == 0) {
                    //console.log(commerce.data);
                    console.log(commerce.data.APPLICATION_ID);
-                   ar_product = makeArProduct(commerce.data);
-                   makeDataLayer(commerce.data.APPLICATION_ID, ar_product);
+                   ar_product = makeArProduct10(commerce.data);
+                   makeDataLayer10(commerce.data.APPLICATION_ID, ar_product);
                    //console.log(window.dataLayer);
                }
                else {
