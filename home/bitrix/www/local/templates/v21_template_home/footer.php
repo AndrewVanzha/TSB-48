@@ -7,6 +7,12 @@ use Bitrix\Main\Page\Asset; ?>
   </div><!-- /.v21-container -->
   </div><!-- /.v21-section -->
 <? endif ?>
+<? global $USER;
+if ($USER->IsAuthorized()) {
+    $rsUser = CUser::GetByID($USER->GetID());
+    $arUser = $rsUser->Fetch(); // $arUser['ID'] = 107, 111, 249 Волкова
+    //echo "<pre>"; print_r($arUser); echo "</pre>";
+} ?>
 
 <footer class="v21-footer">
   <? $APPLICATION->IncludeComponent(
@@ -233,6 +239,11 @@ use Bitrix\Main\Page\Asset; ?>
               </div><!-- /.v21-grid__item -->
 
               <div class="v21-grid__item v21-grid__item--1x2@sm v21-grid__item--1x3@lg" style="align-self: flex-end;">
+                  <? if($arUser['ID'] == 107 || $arUser['ID'] == 111 || $arUser['ID'] == 249) : // 107, 111, 249 Волкова ?>
+                      <div class="v21-footer__entry">
+                          <a href="/reports/forms-report/" class="v21-button v21-button--link">Отчет по формам</a>
+                      </div>
+                  <? endif; ?>
                   <div class="v21-footer__entry" style="margin-bottom: 3px;">
                       <?/*?><p class="v21-p"><?= GetMessage("C") ?> <?= GetMessage("OGRN") ?></p><?*/?>
                       <p class="v21-p" style="color: #202020;"><?= GetMessage("OGRN") ?></p>
