@@ -55,7 +55,7 @@ class WebtuFeedback extends CBitrixComponent
         global $APPLICATION;
 
         $post = $this->sanitizePost();
-        file_put_contents("/home/bitrix/www".'/logs/a_class_post.json', json_encode($post));
+        //file_put_contents("/home/bitrix/www".'/logs/a_class_post.json', json_encode($post));
 
         if ($post['FORM_ID'] !== $this->arResult['FORM_ID']) {
             return false;
