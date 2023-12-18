@@ -12,20 +12,13 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_a
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_before.php");
 
 use Bitrix\Main\Loader;
+use Debugg\Oop\My;
+
 Loader::includeModule('iblock');
 $reportFile = '/reports/forms-report/report.xls';
 ?>
 <?
-function logger($type, $message)
-{
-    file_put_contents(
-        $_SERVER['DOCUMENT_ROOT'] . '/logs/' . $type . '.log',
-        '[' . date('d.m.Y H:i:s') . ']' . $message . PHP_EOL,
-        FILE_APPEND
-    );
-}
-
-//debugg($_POST);
+//My::debugg($_POST);
 $has_checkbox = false;
 $iblockID_list = [];
 foreach ($_POST as $key=>$item) {
@@ -42,7 +35,7 @@ if (!$has_checkbox) {
         <a href="admin_step.php" class="adm-btn adm-btn-save">Создать новый отчет</a>
     <?php
 } else {
-    //debugg($iblockID_list);
+    //My::debugg($iblockID_list);
     print_r('Отработаны формы:' . '<br>');
     foreach ($iblockID_list as $value) {
         print_r($value . '<br>');
@@ -75,7 +68,7 @@ if (!$has_checkbox) {
         $arFormElements[] = $ar_element;
         unset($ar_props);
     }
-    //debugg($arFormElements);
+    //My::debugg($arFormElements);
 
     $arResultList = [];
     for ($ii=0; $ii<count($iblockID_list); $ii++) {
@@ -91,8 +84,9 @@ if (!$has_checkbox) {
             }
         }
     }
-    //debugg($arResultList);
-    file_put_contents("/home/bitrix/www".'/logs/a_$arResultList.json', json_encode($arResultList));
+    //My::debugg($arResultList);
+    //file_put_contents("/home/bitrix/www".'/logs/a_$arResultList.json', json_encode($arResultList));
+    My::logger('arResultList', $arResultList);
 
     //header('Content-Type: application/vnd.ms-excel; charset=utf-8');
     //header("Content-Disposition: attachment;filename=".date("d-m-Y")."-export.xls");
@@ -148,7 +142,7 @@ if (!$has_checkbox) {
     try {
         $vtfile = file_put_contents($_SERVER["DOCUMENT_ROOT"] . $reportFile, $fileHeader . $fileBody . $fileFooter);
     }  catch (Exception $e) {
-        logger('report-error', $e->getMessage()); //
+        My::logger('report-error', $e->getMessage()); //
     }
     print_r('Записано ' . $vtfile . '<br>' . '<br>');
     ?>
