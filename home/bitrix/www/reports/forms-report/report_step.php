@@ -36,7 +36,7 @@ if (!$has_checkbox) {
     <?php
 } else {
     //Dvlp::debugg($iblockID_list);
-    print_r('Отработаны формы:' . '<br>');
+    print_r('Обработаны формы:' . '<br>');
     foreach ($iblockID_list as $value) {
         print_r($value . '<br>');
     }
