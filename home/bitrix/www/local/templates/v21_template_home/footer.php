@@ -162,6 +162,9 @@ if ($USER->IsAuthorized()) {
                   <p class="v21-footer__info">
                       <a href="/2023/1/booklet_SVO.pdf">Информация о кредитных каникулах для участников СВО</a>
                   </p>
+                  <p class="v21-footer__info">
+                      <a href="/2023/12/debt.pdf">Способы урегулирования задолженности</a>
+                  </p>
 
               </div><!-- /.v21-grid__item -->
           </div><!-- /.v21-grid -->
