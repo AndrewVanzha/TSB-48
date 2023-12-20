@@ -5,14 +5,14 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/main/include/prolog_admin_a
 
 //use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Type\DateTime;
-use Debugg\Oop\My;
+use Debugg\Oop\Dvlp;
 
 CJSCore::Init(array("jquery"));
 //Asset::getInstance()->addCss("/reports/forms-report/style.css");
 \Bitrix\Main\Loader::includeModule('iblock');
 ?>
 <?php
-//My::debugg($_POST);
+//Dvlp::debugg($_POST);
 $iBlockList = [];
 $arFilter = ['SITE_ID'=>'s1', 'ACTIVE'=>'Y', 'CNT_ACTIVE'=>'Y', 'TYPE'=>'feedback'];
 $res = CIBlock::GetList(
@@ -43,15 +43,15 @@ if (!empty($_POST['dateFrom'])) {
         $dateTo = $_POST['dateTo'];
     }
 }
-//My::debugg($dateFrom);
-//My::debugg($dateTo);
+//Dvlp::debugg($dateFrom);
+//Dvlp::debugg($dateTo);
 
 $arFormElements = [];
 $iblockID_list = [];
 foreach ($iBlockList as $item) {
     $iblockID_list[] = $item['ID'];
 }
-//My::debugg($iblockID_list);
+//Dvlp::debugg($iblockID_list);
 $elements = CIBlockElement::GetList (
     Array("IBLOCK_ID" => "ASC"),
     Array("IBLOCK_ID" => $iblockID_list, '>=DATE_CREATE' => $dateFrom),
@@ -62,7 +62,7 @@ $elements = CIBlockElement::GetList (
 while ($ar_fields = $elements->GetNext()) {
     $arFormElements[] = $ar_fields;
 }
-//My::debugg($arFormElements);
+//Dvlp::debugg($arFormElements);
 
 $arBlockList = [];
 for ($ii=0; $ii<count($iblockID_list); $ii++) {
@@ -75,7 +75,7 @@ for ($ii=0; $ii<count($iblockID_list); $ii++) {
         }
     }
 }
-//My::debugg($arBlockList);
+//Dvlp::debugg($arBlockList);
 unset($iBlockList);
 $iBlockList = [];
 $ii = 0;
@@ -86,7 +86,7 @@ foreach ($arBlockList as $item) {
     $iBlockList[$ii]['ELEMENT_CNT'] = count($item);
     $ii += 1;
 }
-//My::debugg($iBlockList);
+//Dvlp::debugg($iBlockList);
 ?>
 <style>
     .adm-block-wrapper .iblock-table--header {
@@ -199,7 +199,7 @@ foreach ($arBlockList as $item) {
     });
 </script>
 <?php
-//My::debugg($iBlockList);
+//Dvlp::debugg($iBlockList);
 ?>
 <?
 require($_SERVER["DOCUMENT_ROOT"] . BX_ROOT . "/modules/main/include/epilog_admin.php"); ?>

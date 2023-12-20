@@ -1,7 +1,7 @@
 <?php
 namespace Debugg\Oop;
 
-class My
+class Dvlp
 {
     /**
      * Печать инфо на экран
