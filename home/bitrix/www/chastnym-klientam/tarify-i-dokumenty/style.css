@@ -1,0 +1,203 @@
+.v21 .v21-tarifdok {}
+.v21 .v21-tarifdok-page--header {
+    margin: 0 0 28px 0;
+    /*max-width: 640px;*/
+    font-family: Canela Deck LC;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #00345e;
+}
+.v21 .v21-tarifdok-page--subheader {
+    margin: 0 0 20px 0;
+    color: #00345e;
+    font-family: RF Dewi;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 42px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .v21 .v21-tarifdok-page--header {
+        margin-bottom: 45px;
+        font-size: 58px;
+        line-height: 46px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .v21 .v21-tarifdok-page--subheader {
+        text-align: center;
+        font-size: 40px;
+        line-height: 52px;
+    }
+}
+
+
+.v21 .rko-doc {
+    margin-bottom: 64px;
+    font-family: RF Dewi;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    /*outline: 1px solid darkolivegreen;*/
+}
+.v21 .rko-doc .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.v21 .rko-doc__block {
+    margin-bottom: 62px;
+}
+.v21 .rko-doc__rate {}
+.v21 .rko-doc__header {}
+.v21 .rko-doc__title {
+    margin: 0 0 30px 0;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0.01em;
+}
+.v21 .rko-doc__items {}
+.v21 .rko-doc__items .ls-documents__item {
+    width: 100%;
+}
+.v21 .rko-doc__items .ls-documents__item .ls-documents__name {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+}
+.v21 .rko-doc__items .ls-documents__item .ls-documents__link {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    color: #00345e;
+}
+.v21 .rko-doc__contract {}
+.v21 .rko-doc__push-bank {}
+.v21 .rko-doc__client-bank {}
+.v21 .rko-doc__all {
+    display: flex;
+    margin: 32px 0 0 0;
+    position: relative;
+    color: #202020;
+}
+.v21 .rko-doc__all--link-button {
+    display: block;
+    margin: 0;
+    font-family: RF Dewi;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0;
+    color: #00345e;
+}
+.v21 .rko-doc__all--link-details {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 23px;
+    color: #00345e;
+}
+.v21 .rko-doc__all--link-details span:hover {
+    color: #a58a57;
+}
+.v21 .rko-doc__all--link-details:hover svg path {
+    fill: #a58a57;
+}
+.v21 .rko-doc__all--link-arrow {
+    position: relative;
+    right: -7px;
+    top: 1px;
+}
+
+@media all and (max-width: 929px) {
+    .rko-doc__block {
+        margin-bottom: 24px;
+    }
+}
+
+
+.v21 .eq-docs {
+    margin-bottom: 100px;
+    color: #202020;
+    font-family: RF Dewi;
+}
+.v21 .eq-docs__title {
+    margin: 0 0 30px 0;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 29px;
+    letter-spacing: 0.01em;
+}
+.v21 .eq-docs__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 30px;
+}
+.v21 .eq-docs__list .ls-documents__item {
+    width: 100%;
+}
+.v21 .eq-docs__list .ls-documents__item .ls-documents__name {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+}
+.v21 .eq-docs__list .ls-documents__item .ls-documents__link {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    color: #00345e;
+}
+
+@media screen and (min-width: 480px) {
+    .v21 .eq-docs {
+        margin-bottom: 120px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .v21 .eq-docs__list {
+        justify-content: flex-start;
+        column-gap: 15px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .v21 .eq-docs__list .ls-documents__item {
+        width: 48%;
+        /*flex: 1 1 calc((100% / 2) - 15px);*/
+    }
+    .v21 .eq-docs__list .ls-documents__item:not(:nth-of-type(2n+1)) {
+        padding-left: 15px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .v21 .rko-doc {
+        margin-bottom: 120px;
+    }
+    .v21 .eq-docs__list .ls-documents__item {
+        width: 32%;
+        /*flex: 1 1 calc((100% / 3) - (2 * 15px));*/
+    }
+    .v21 .eq-docs__list .ls-documents__item:not(:nth-of-type(3n+1)) {
+        padding-left: 15px;
+    }
+    .v21 .eq-docs__list .ls-documents__item:nth-of-type(3n+3) {
+        padding-left: 30px;
+    }
+}
+@media screen and (min-width: 1280px) {
+}
+@media screen and (min-width: 1440px) {
+}
