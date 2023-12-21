@@ -117,7 +117,7 @@
                                 </select>
                                 <?*/?>
                                 <?/*?><span class="input-group__label input-group__label--city"><?= GetMessage("WEBTU_FEEDBACK_3_CITY") ?></span><?*/?>
-                                <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114)); ?>
+                                <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y")); ?>
                                 <select name="CITY" class="v21-input-group__field v21-select js-v21-select city-select">
                                     <? foreach ($arResult['CITIES'] as $city) : ?>
                                         <option value="<?= $city ?>"
