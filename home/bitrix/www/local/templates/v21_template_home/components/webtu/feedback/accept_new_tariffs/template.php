@@ -399,7 +399,7 @@
                         dataType: "json",
                         success: function (data) {
                             $('#reloadCaptcha').click();
-                            console.log(data);
+                            //console.log(data);
                             if (data.status) {
                                 let response = data.message[0];
                                 //console.log(response);
