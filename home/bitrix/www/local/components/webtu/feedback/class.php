@@ -104,7 +104,7 @@ class WebtuFeedback extends CBitrixComponent
         $fields['NAME']         = isset($post['NAME'])         ? $post['NAME']         : 'Новое обращение';
         $fields['PREVIEW_TEXT'] = isset($post['PREVIEW_TEXT']) ? $post['PREVIEW_TEXT'] : '';
         $fields['DETAIL_TEXT']  = isset($post['DETAIL_TEXT'])  ? $post['DETAIL_TEXT']  : '';
-        file_put_contents("/home/bitrix/www".'/logs/a_$fields.json', json_encode($fields));
+        Dvlp::logger('feedback_class_$fields', $fields);
 
         if (isset($this->arParams['UTM']) && $this->arParams['UTM'] != 'N') {
             $fields['UTM_SOURCE'] = isset($post['UTM_SOURCE'])? $post['UTM_SOURCE'] : 'no_data';
@@ -120,7 +120,7 @@ class WebtuFeedback extends CBitrixComponent
 
             $postFields = array_merge($fields, $propertiesPost);
             $postFields['APPLICATION_ID'] = $id;
-            file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
+            Dvlp::logger('feedback_class_$postFields', $postFields);
 
             if (isset($this->arParams['EVENT_CALLBACK'])) {
                 if (is_callable($this->arParams['EVENT_CALLBACK'])) {

@@ -68,7 +68,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                         <? CModule::IncludeModule('iblock'); ?>
                         <div class="v21-input-group">
                             <span class="v21-input-group__label"><b><?= GetMessage("WEBTU_FEEDBACK_4_CITY") ?></b></span>
-                            <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114)); ?>
+                            <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y")); ?>
                             <select name="CITY" class="v21-input-group__field v21-field jjs-v21-select">
                                 <? while ($city = $cities->Fetch()) { ?>
                                     <option value="<?= $city['NAME'] ?>" <? if ($arResult['POST']['CITY'] == $city['NAME']) { ?>selected<? } ?> <? if (!isset($arResult['POST']['CITY']) && $city['NAME'] == 'Москва') { ?>selected<? } ?>>

@@ -136,7 +136,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                 <div class="select-box">
 
                     <? CModule::IncludeModule('iblock'); ?>
-                    <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114)); ?>
+                    <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y")); ?>
 
                     <select name="CITY">
 

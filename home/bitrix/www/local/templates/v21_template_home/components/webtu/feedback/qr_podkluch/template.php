@@ -91,7 +91,7 @@ while($arMess = $rs_mess->GetNext()) { // нахожу ID почтового ш�
                             <div class="input-group">
                                 <?/*?><span class="input-group__label"><?= GetMessage("WEBTU_FEEDBACK_3_CITY") ?></span><?*/?>
                                 <??><? CModule::IncludeModule('iblock'); ?>
-                                <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114)); ?>
+                                <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y")); ?>
                                 <select name="CITY" class="input-group__field select_field">
                                     <? while ($city = $cities->Fetch()) : ?>
                                         <option value="<?= $city['NAME'] ?>">

@@ -80,7 +80,7 @@
                         <div class="grid__item-1">
                             <div class="input-group">
                                 <??><? CModule::IncludeModule('iblock'); ?>
-                                <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114)); ?>
+                                <? $cities = CIblockElement::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => 114, "ACTIVE_DATE" => "Y", "ACTIVE" => "Y")); ?>
                                 <select name="CITY" class="input-group__field select_field">
                                     <? while ($city = $cities->Fetch()) : ?>
                                         <option value="<?= $city['NAME'] ?>">

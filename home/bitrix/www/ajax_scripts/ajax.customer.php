@@ -1,6 +1,7 @@
 <?
 require_once($_SERVER['DOCUMENT_ROOT'] . "/bitrix/modules/main/include/prolog_before.php");
 global $APPLICATION;
+use Debugg\Oop\Dvlp;
 
 CModule::IncludeModule('iblock');
 
@@ -125,7 +126,7 @@ if ($id = $element->Add($elementFields)) {
     $postFields['DATE_CREATE'] = $elementFields['DATE_CREATE'];
 
     $postFields = getSex($postFields);
-    //file_put_contents("/home/bitrix/www".'/logs/a_$postFields.json', json_encode($postFields));
+    Dvlp::logger('common_ajax_postFields', $postFields);
     //file_put_contents("/home/bitrix/www".'/logs/a_$arParams.json', json_encode($arParams));
 
     $arResult["message"][] = [
