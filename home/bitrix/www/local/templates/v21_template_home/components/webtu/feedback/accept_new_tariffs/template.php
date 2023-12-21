@@ -56,7 +56,7 @@
                             <label class="input-group">
                                 <input type="text" name="NAME" placeholder="ФИО" class="input-group__field"
                                     <? if (isset($arResult['POST']['NAME'])) { ?> value="<?=$arResult['POST']['NAME']?>" <? } ?>
-                                required >
+                                 >
                                 <span class="input-group__label"><?=GetMessage("WEBTU_FEEDBACK_3_NAME")?></span>
                                 <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
                             </label>
@@ -68,7 +68,7 @@
                             <label class="input-group">
                                 <input type="tel" name="PHONE" placeholder="+7 ___ ___ __ __" data-inputmask="'mask': '+7 999 999 99 99'" class="input-group__field"
                                     <? if (isset($arResult['POST']['PHONE'])) { ?> value="<?=$arResult['POST']['PHONE']?>" <? } ?>
-                                required >
+                                >
                                 <span class="input-group__label"><?= GetMessage("WEBTU_FEEDBACK_3_PHONE") ?></span>
                                 <span class="v21-input-group__warn">Обязательное поле к заполнению</span>
                             </label>
@@ -104,11 +104,9 @@
                             </div>
 
                             <div class="grid__item-2">
-                                <div class="captcha_input input-group">
+                                <div class="v21-input-group">
                                     <input type="text" name="CAPTCHA_WORD" placeholder="<?= GetMessage('WEBTU_FEEDBACK_CAPTCHA') ?>" class="input-group__field input-captcha" id="CAPTCHA_WORD">
-                                    <? if (in_array("Неверно введен код с картинки", $arResult['ERRORS'])) : ?>
-                                        <span class="v21-input-group__warn" style="display: block;">Неверно введен код с картинки</span>
-                                    <? endif; ?>
+                                    <span class="v21-input-group__warn">Неверно введен код с картинки</span>
                                 </div>
                             </div>
                         </div>
@@ -204,255 +202,244 @@
             return false;
         });
 
-    });
-</script>
-
-<script>
-    function requiredContacts () {
-        if ($('input[name="NAME"]').val() !== '') {
-            $('input[name="PHONE"]').attr('required', false);
-        } else {
-            $('input[name="PHONE"]').attr('required', true);
-        }
-    }
-
-    $('input[name="PHONE"]').on('focusout', function () {
-        requiredContacts ();
-    });
-
-
-    function clearFields () {
-        $('textarea').val('').css('box-shadow', 'none');
-        $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
-
-        $('textarea').focusout(function () {   
-            $(this).css('box-shadow', '');
-        });
-        $('input').focusout(function () {
-            $(this).css('box-shadow', '');
-        });
-    }
-
-    if ($('.alert-success').length > 0) {
-        clearFields ();
-        //document.location.href = "/thanks/";
-    }
-
-    $('.feedback_form .button').click(function () {
-        $(".alert").remove();
-    });
-
-
-    $('.agreement input[required]').change(function () {
-        if ( $(this).is(':checked') ) {
-            $(this).closest('.agreement').css('box-shadow', '');
-        } else {
-            $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
-        }
-    });
-
-    $('.js-calculator-operation--disagree').click(function () {
-        $('.v21-tariff-agree--content').addClass('v21-tariff-agree--form__disagree');
-    });
-    $('.js-calculator-operation--agree').click(function () {
-        $('.v21-tariff-agree--content').removeClass('v21-tariff-agree--form__disagree');
-    });
-
-    function requiredFields() {
-        var arFields = [
-            'input[name="NAME"]',
-            'input[name="PHONE"]',
-            'input[name="CAPTCHA_WORD"]',
-            //'input[name="EMAIL"]',
-        ];
-
-        var countErr = 0;
-
-        arFields.forEach(function (value) {
-            if ($(value).val() == '') {
-                $(value).parent().addClass("is-error");
-                countErr++;
+        function requiredContacts () {
+            if ($('input[name="NAME"]').val() !== '') {
+                $('input[name="PHONE"]').attr('required', false);
             } else {
-                $(value).parent().removeClass("is-error");
+                $('input[name="PHONE"]').attr('required', true);
             }
-        });
-
-        return (countErr > 0) ? false : true;
-    }
-
-    function makeDataLayer(id, ar_product) {
-        window.dataLayer.push({
-            "ecommerce": {
-                "currencyCode": "RUB",
-                "purchase": {
-                    "actionField": {
-                        "id" : id
-                    },
-                    "products": ar_product,
-                }
-            }
-        });
-    }
-
-    function makeArProduct(data) {
-        let pos = 0;
-        let ar_product = [];
-        let entry = {
-            'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
-            'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
-            'PRICE': 1,
-            'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
-            'QUANTITY': 1,
-            'XML_ID': 'xml'
-        };
-
-        ar_product.push(
-            {
-                "id": 'AGREE',
-                "name": data.AGREE,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'REQ_URI',
-                "name": data.REQ_URI,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'UTM_CAMPAIGN',
-                "name": data.UTM_CAMPAIGN,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'UTM_CONTENT',
-                "name": data.UTM_CONTENT,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'UTM_MEDIUM',
-                "name": data.UTM_MEDIUM,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'UTM_SOURCE',
-                "name": data.UTM_SOURCE,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-        ar_product.push(
-            {
-                "id": 'UTM_TERM',
-                "name": data.UTM_TERM,
-                "price": entry.PRICE,
-                "category": entry.DETAIL_PAGE_URL,
-                "quantity": entry.QUANTITY,
-                "position": pos++,
-                "xml": entry.XML_ID,
-            },
-        );
-
-        return ar_product;
-    }
-
-    $('#fNewTariffsForm').submit(function (e) {
-        e.preventDefault();
-        let ar_product = [];
-        //console.log('submit='+$("#politics").prop("checked"));
-
-        if ($("#politics").prop("checked")) {
-            $('#politics').parent().parent().removeClass("is-error");
-            if (requiredFields()) {
-                $.ajax({
-                    type: "POST",
-                    url: '/local/templates/v21_template_home/components/webtu/feedback/accept_new_tariffs/ajax.customer.php',
-                    data: {
-                        'fields': $(this).serialize(),
-                    },
-                    dataType: "json",
-                    success: function (data) {
-                        $('#reloadCaptcha').click();
-                        console.log(data);
-                        if (data.status) {
-                            let response = data.message[0];
-                            //console.log(response);
-                            if(response.type) {
-                                console.log(response.data.APPLICATION_ID);
-                                ar_product = makeArProduct(response.data);
-                                makeDataLayer(response.data.APPLICATION_ID, ar_product);
-                                console.log(window.dataLayer);
-                                //yandexMetrikaForm();
-                            }
-
-                            if (data.message && data.message.length > 0) {
-                                $(".v21_alert_fNewTariffsForm_item").remove()
-                                /*$.each(data.message, function (key, field) {
-                                    $('#v21_alert_fNewTariffsForm .v21-modal__window').append(
-                                        '<div class="v21-grid__item v21_alert_fNewTariffsForm_item" style="font-size: 20px; padding: 0; text-align: center;">' + field.text + '</div>'
-                                    );
-
-                                    if (!field.type) {
-                                        $('.v21_alert_fNewTariffsForm_item').css("color", "red");
-                                    }
-                                });*/
-                            }
-                            $("#fNewTariffsForm")[0].reset();
-                            document.location.href = "/thanks/";
-                        }
-
-                        if (!data.captcha){
-                            $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
-                        } else {
-                            $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
-                            tsb21.modal.toggleModal('v21_alert_fNewTariffsForm');
-                        }
-                    }
-                });
-            }
-        } else {
-            $('#politics').parent().parent().addClass("is-error");
         }
-    });
 
-    /*$('#reloadCaptcha').click(function () {
-        $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function (data) {
-            $('#captchaImg').attr('src', '/bitrix/tools/captcha.php?captcha_sid=' + data);
-            $('#captchaSid').val(data);
+        $('input[name="PHONE"]').on('focusout', function () {
+            requiredContacts ();
         });
-        return false;
-    });*/
+
+
+        function clearFields () {
+            $('textarea').val('').css('box-shadow', 'none');
+            $('input:not([type="hidden"])').val('').css('box-shadow', 'none');
+
+            $('textarea').focusout(function () {
+                $(this).css('box-shadow', '');
+            });
+            $('input').focusout(function () {
+                $(this).css('box-shadow', '');
+            });
+        }
+
+        if ($('.alert-success').length > 0) {
+            clearFields ();
+            //document.location.href = "/thanks/";
+        }
+
+        $('.feedback_form .button').click(function () {
+            $(".alert").remove();
+        });
+
+
+        $('.agreement input[required]').change(function () {
+            if ( $(this).is(':checked') ) {
+                $(this).closest('.agreement').css('box-shadow', '');
+            } else {
+                $(this).closest('.agreement').css('box-shadow', '0 0 2px 1px red');
+            }
+        });
+
+        $('.js-calculator-operation--disagree').click(function () {
+            $('.v21-tariff-agree--content').addClass('v21-tariff-agree--form__disagree');
+        });
+        $('.js-calculator-operation--agree').click(function () {
+            $('.v21-tariff-agree--content').removeClass('v21-tariff-agree--form__disagree');
+        });
+
+        function requiredFields() {
+            var arFields = [
+                'input[name="NAME"]',
+                'input[name="PHONE"]',
+                'input[name="CAPTCHA_WORD"]',
+                //'input[name="EMAIL"]',
+            ];
+
+            var countErr = 0;
+
+            arFields.forEach(function (value) {
+                if ($(value).val() == '') {
+                    $(value).parent().addClass("is-error");
+                    countErr++;
+                } else {
+                    $(value).parent().removeClass("is-error");
+                }
+            });
+
+            return (countErr > 0) ? false : true;
+        }
+
+        function makeDataLayer(id, ar_product) {
+            window.dataLayer.push({
+                "ecommerce": {
+                    "currencyCode": "RUB",
+                    "purchase": {
+                        "actionField": {
+                            "id" : id
+                        },
+                        "products": ar_product,
+                    }
+                }
+            });
+        }
+
+        function makeArProduct(data) {
+            let pos = 0;
+            let ar_product = [];
+            let entry = {
+                'PRODUCT_ID': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'NAME': '<?= $_SERVER['SCRIPT_URL'] ?>',
+                'PRICE': 1,
+                'DETAIL_PAGE_URL': '<?= $_SERVER['REQUEST_URI'] ?>',
+                'QUANTITY': 1,
+                'XML_ID': 'xml'
+            };
+
+            ar_product.push(
+                {
+                    "id": 'AGREE',
+                    "name": data.AGREE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'REQ_URI',
+                    "name": data.REQ_URI,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CAMPAIGN',
+                    "name": data.UTM_CAMPAIGN,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_CONTENT',
+                    "name": data.UTM_CONTENT,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_MEDIUM',
+                    "name": data.UTM_MEDIUM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_SOURCE',
+                    "name": data.UTM_SOURCE,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+            ar_product.push(
+                {
+                    "id": 'UTM_TERM',
+                    "name": data.UTM_TERM,
+                    "price": entry.PRICE,
+                    "category": entry.DETAIL_PAGE_URL,
+                    "quantity": entry.QUANTITY,
+                    "position": pos++,
+                    "xml": entry.XML_ID,
+                },
+            );
+
+            return ar_product;
+        }
+
+        $('#fNewTariffsForm').submit(function (e) {
+            e.preventDefault();
+            console.log('form');
+            let ar_product = [];
+            //console.log('submit='+$("#politics").prop("checked"));
+
+            if ($("#politics").prop("checked")) {
+                $('#politics').parent().parent().removeClass("is-error");
+                if (requiredFields()) {
+                    $.ajax({
+                        type: "POST",
+                        url: '/ajax_scripts/ajax.customer.php',
+                        data: {
+                            'fields': $(this).serialize(),
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            $('#reloadCaptcha').click();
+                            console.log(data);
+                            if (data.status) {
+                                let response = data.message[0];
+                                //console.log(response);
+                                if(response.type) {
+                                    console.log(response.data.APPLICATION_ID);
+                                    ar_product = makeArProduct(response.data);
+                                    makeDataLayer(response.data.APPLICATION_ID, ar_product);
+                                    console.log(window.dataLayer);
+                                    //yandexMetrikaForm();
+                                }
+
+                                //$("#fNewTariffsForm")[0].reset();
+                                clearFields ();
+                                $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                                document.location.href = "/thanks/";
+                            } else {
+                                console.log('not OK');
+                                if (!data.captcha){
+                                    $('input[name="CAPTCHA_WORD"]').parent().addClass("is-error");
+                                } else {
+                                    $('input[name="CAPTCHA_WORD"]').parent().removeClass("is-error");
+                                    //tsb21.modal.toggleModal('v21_alert_fNewTariffsForm');
+                                }
+                            }
+                        }
+                    });
+                }
+            } else {
+                $('#politics').parent().parent().addClass("is-error");
+            }
+        });
+
+        /*$('#reloadCaptcha').click(function () {
+            $.getJSON('/local/components/webtu/feedback/reload_captcha.php', function (data) {
+                $('#captchaImg').attr('src', '/bitrix/tools/captcha.php?captcha_sid=' + data);
+                $('#captchaSid').val(data);
+            });
+            return false;
+        });*/
+    });
 </script>
 
 <? if (isset($_REQUEST['AJAX_CALL'])) { ?>
