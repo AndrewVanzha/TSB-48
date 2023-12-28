@@ -320,6 +320,9 @@ $currencyCode = $arParams["CURRENCY"];
                                             </ul>
                                         </div>
                                     <? endif; ?>
+                                    <div>
+                                        <span class="v21-p--hours_add">Режим работы в праздничные дни <a href="/ofisy-i-bankomaty/">смотри тут</a></span>
+                                    </div>
                                 </div>
                                 <?/* else:
                                     $office_name = 'ТСБ-онлайн'; ?>

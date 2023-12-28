@@ -57,6 +57,9 @@ $APPLICATION->SetPageProperty("title", "Обмен валют в " . $title_h1 .
                         <span class="v21-p--hours_add"><?= $arOffice['PROPERTY_ATT_OFFICE_HOURS_VALUE'] . ' | '; ?></span>
                         <a href="tel:<?= $arOffice['PROPERTY_ATT_PHONE_LINK_VALUE']; ?>"><?= $arOffice['PROPERTY_ATT_PHONE_VALUE']; ?></a>
                     </p>
+                    <p>
+                        <span class="v21-p--hours_add">Режим работы в праздничные дни <a href="/ofisy-i-bankomaty/">смотри тут</a></span>
+                    </p>
                 </div>
                 <?/* else:
                         $office_name = 'ТСБ-онлайн'; ?>
