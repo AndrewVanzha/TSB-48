@@ -160,7 +160,7 @@ if ($USER->IsAuthorized()) {
                       <a href="https://fincult.info/">Информация о процедуре внесудебного банкротства</a>
                   </p>
                   <p class="v21-footer__info">
-                      <a href="/2023/1/booklet_SVO.pdf">Информация о кредитных каникулах для участников СВО</a>
+                      <a href="/2023/12/booklet_SVO.pdf">Информация о кредитных каникулах для участников СВО</a>
                   </p>
                   <p class="v21-footer__info">
                       <a href="/2023/12/debt.pdf">Способы урегулирования задолженности</a>
